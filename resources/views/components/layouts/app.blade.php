@@ -24,8 +24,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <script type="application/ld+json">
         {!! json_encode([
-            '@context' => 'https://schema.org',
-            '@type' => 'Organization',
+            "\x40context" => 'https://schema.org',
+            "\x40type" => 'Organization',
             'name' => $siteName,
             'url' => url('/'),
             'logo' => url('/logo.svg'),
