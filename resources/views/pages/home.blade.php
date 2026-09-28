@@ -13,20 +13,20 @@
                     <span class="relative flex size-2"><span class="absolute inline-flex size-full animate-ping rounded-full bg-cyan-400 opacity-75"></span><span class="relative inline-flex size-2 rounded-full bg-cyan-400"></span></span>
                     Official TikTok agency · US · EU · CA
                 </p>
-                <h1 class="mt-7 font-display text-5xl leading-[1.02] font-semibold tracking-tight text-white text-balance sm:text-6xl lg:text-7xl xl:text-[5.4rem]" data-reveal style="--reveal-delay:80ms">
+                <h1 class="mt-7 font-display text-5xl leading-[1.02] font-semibold tracking-tight text-slate-900 text-balance sm:text-6xl lg:text-7xl xl:text-[5.4rem]" data-reveal style="--reveal-delay:80ms">
                     Make waves.<br><span class="text-gradient">Measure impact.</span>
                 </h1>
-                <p class="mt-7 max-w-xl text-lg leading-relaxed text-slate-400 text-pretty sm:text-xl" data-reveal style="--reveal-delay:160ms">
+                <p class="mt-7 max-w-xl text-lg leading-relaxed text-slate-600 text-pretty sm:text-xl" data-reveal style="--reveal-delay:160ms">
                     Swift and effective growth for your company. We run paid social, PPC and conversion optimization with a data-driven approach built on communication, transparency and strategy.
                 </p>
                 <div class="mt-10 flex flex-wrap items-center gap-4" data-reveal style="--reveal-delay:240ms">
                     <x-button href="{{ route('contact') }}" wire:navigate>Get a free growth audit</x-button>
                     <x-button href="#calculator" variant="ghost" icon="chart">Estimate your ROI</x-button>
                 </div>
-                <dl class="mt-14 grid max-w-xl grid-cols-3 gap-4 border-t border-white/10 pt-8" data-reveal style="--reveal-delay:320ms">
-                    <div><dt class="text-xs tracking-wider text-slate-500 uppercase">Markets</dt><dd class="mt-1 font-display text-lg font-semibold text-white sm:text-2xl">US · EU · CA</dd></div>
-                    <div><dt class="text-xs tracking-wider text-slate-500 uppercase">Feed partners</dt><dd class="mt-1 font-display text-lg font-semibold text-white sm:text-2xl">Tier-1</dd></div>
-                    <div><dt class="text-xs tracking-wider text-slate-500 uppercase">Services</dt><dd class="mt-1 font-display text-lg font-semibold text-white sm:text-2xl">{{ count(config('agency.services')) }} in one team</dd></div>
+                <dl class="mt-14 grid max-w-xl grid-cols-3 gap-4 border-t border-slate-200 pt-8" data-reveal style="--reveal-delay:320ms">
+                    <div><dt class="text-xs tracking-wider text-slate-500 uppercase">Markets</dt><dd class="mt-1 font-display text-lg font-semibold text-slate-900 sm:text-2xl">US · EU · CA</dd></div>
+                    <div><dt class="text-xs tracking-wider text-slate-500 uppercase">Feed partners</dt><dd class="mt-1 font-display text-lg font-semibold text-slate-900 sm:text-2xl">Tier-1</dd></div>
+                    <div><dt class="text-xs tracking-wider text-slate-500 uppercase">Services</dt><dd class="mt-1 font-display text-lg font-semibold text-slate-900 sm:text-2xl">{{ count(config('agency.services')) }} in one team</dd></div>
                 </dl>
             </div>
 
@@ -36,8 +36,8 @@
                     @foreach ([0, 1, 2, 3] as $i)
                         <span class="animate-ripple absolute size-[70%] rounded-full border border-indigo-400/40" style="animation-delay: {{ $i }}s"></span>
                     @endforeach
-                    <div class="absolute size-[92%] rounded-full border border-white/5"></div>
-                    <div class="absolute size-[66%] rounded-full border border-dashed border-white/10 animate-spin-slow"></div>
+                    <div class="absolute size-[92%] rounded-full border border-slate-200"></div>
+                    <div class="absolute size-[66%] rounded-full border border-dashed border-slate-200 animate-spin-slow"></div>
                     <div class="glass relative grid size-40 place-items-center rounded-[2.2rem] shadow-[0_30px_120px_-20px_rgb(99_102_241/.7)] sm:size-48">
                         <x-logo-mark id="hero" class="size-24 sm:size-28" />
                     </div>
@@ -52,7 +52,7 @@
                     ];
                 @endphp
                 @foreach ($chips as [$label, $pos, $delay])
-                    <div class="animate-float glass absolute {{ $pos }} flex items-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-medium text-white shadow-xl shadow-black/30" style="animation-delay: {{ $delay }}">
+                    <div class="animate-float glass absolute {{ $pos }} flex items-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-medium text-slate-900 shadow-xl shadow-slate-900/10" style="animation-delay: {{ $delay }}">
                         <span class="size-2 rounded-full bg-brand"></span>{{ $label }}
                     </div>
                 @endforeach
@@ -61,12 +61,12 @@
     </section>
 
     {{-- PARTNERS MARQUEE --}}
-    <section id="partners" class="relative border-y border-white/5 bg-ink-900/60 py-10">
+    <section id="partners" class="relative border-y border-slate-200 bg-slate-50 py-10">
         <p class="text-center text-xs font-medium tracking-[.2em] text-slate-500 uppercase">Platforms and Tier-1 partners we work with</p>
         <div class="relative mt-7 overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
             <div class="animate-marquee flex w-max gap-14 pr-14">
                 @foreach (array_merge(config('agency.partners'), config('agency.partners')) as $partner)
-                    <span class="font-display text-2xl font-semibold whitespace-nowrap text-slate-500 transition hover:text-white">{{ $partner }}</span>
+                    <span class="font-display text-2xl font-semibold whitespace-nowrap text-slate-500 transition hover:text-slate-900">{{ $partner }}</span>
                 @endforeach
             </div>
         </div>
@@ -91,17 +91,17 @@
                            'lg:col-span-2' => $loop->index >= 2,
                        ])>
                         <div class="flex items-start justify-between">
-                            <span class="grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-cyan-400/20 to-fuchsia-500/20 text-cyan-200 ring-1 ring-white/10">
+                            <span class="grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-cyan-400/20 to-fuchsia-500/20 text-indigo-600 ring-1 ring-slate-200">
                                 <x-icon :name="$service['icon']" class="size-6" />
                             </span>
-                            <x-icon name="arrow-up-right" class="size-5 text-slate-500 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white" />
+                            <x-icon name="arrow-up-right" class="size-5 text-slate-500 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-slate-900" />
                         </div>
-                        <p class="mt-8 text-xs font-medium tracking-[.14em] text-cyan-300/80 uppercase">{{ $service['eyebrow'] }}</p>
-                        <h3 class="mt-2 font-display text-2xl font-semibold text-white">{{ $service['title'] }}</h3>
-                        <p class="mt-3 leading-relaxed text-slate-400">{{ $service['short'] }}</p>
+                        <p class="mt-8 text-xs font-medium tracking-[.14em] text-cyan-700 uppercase">{{ $service['eyebrow'] }}</p>
+                        <h3 class="mt-2 font-display text-2xl font-semibold text-slate-900">{{ $service['title'] }}</h3>
+                        <p class="mt-3 leading-relaxed text-slate-600">{{ $service['short'] }}</p>
                         <div class="mt-auto flex flex-wrap gap-2 pt-7">
                             @foreach (array_slice($service['platforms'], 0, 4) as $platform)
-                                <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-300">{{ $platform }}</span>
+                                <span class="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-700">{{ $platform }}</span>
                             @endforeach
                         </div>
                     </a>
@@ -113,14 +113,14 @@
     {{-- TIKTOK SPOTLIGHT --}}
     <section class="relative py-10">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
-            <div class="relative isolate overflow-hidden rounded-[2.5rem] border border-white/10 bg-ink-900 px-6 py-16 sm:px-14 lg:py-20" data-reveal>
+            <div class="relative isolate overflow-hidden rounded-[2.5rem] border border-slate-200 bg-slate-50 px-6 py-16 sm:px-14 lg:py-20" data-reveal>
                 <div class="absolute -top-32 -right-24 -z-10 size-[460px] rounded-full bg-fuchsia-500/25 blur-[110px]"></div>
                 <div class="absolute -bottom-40 -left-24 -z-10 size-[420px] rounded-full bg-cyan-400/20 blur-[110px]"></div>
                 <div class="grid items-center gap-14 lg:grid-cols-2">
                     <div>
                         <p class="eyebrow">Official TikTok agency</p>
-                        <h2 class="mt-5 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">Attract audiences and drive revenue on <span class="text-gradient">TikTok</span></h2>
-                        <p class="mt-5 text-lg leading-relaxed text-slate-400">Agency ad accounts, a dedicated official TikTok support team and creative resources that keep your ads ahead of the feed.</p>
+                        <h2 class="mt-5 font-display text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">Attract audiences and drive revenue on <span class="text-gradient">TikTok</span></h2>
+                        <p class="mt-5 text-lg leading-relaxed text-slate-600">Agency ad accounts, a dedicated official TikTok support team and creative resources that keep your ads ahead of the feed.</p>
                         <div class="mt-9 flex flex-wrap gap-4">
                             <x-button href="{{ route('services.show', 'tiktok-agency') }}" wire:navigate>Explore TikTok Agency</x-button>
                             <x-button href="{{ route('contact') }}?service=tiktok-agency" variant="ghost" wire:navigate>Request an account</x-button>
@@ -134,9 +134,9 @@
                             ['bolt', 'Creative resources', 'Learning center, ad library and hands-on tutorials.'],
                         ] as [$icon, $title, $text])
                             <li class="glass rounded-2xl p-6">
-                                <x-icon :name="$icon" class="size-6 text-fuchsia-300" />
-                                <h3 class="mt-4 font-semibold text-white">{{ $title }}</h3>
-                                <p class="mt-1.5 text-sm leading-relaxed text-slate-400">{{ $text }}</p>
+                                <x-icon :name="$icon" class="size-6 text-fuchsia-600" />
+                                <h3 class="mt-4 font-semibold text-slate-900">{{ $title }}</h3>
+                                <p class="mt-1.5 text-sm leading-relaxed text-slate-600">{{ $text }}</p>
                             </li>
                         @endforeach
                     </ul>
@@ -165,11 +165,11 @@
                 <div class="absolute top-7 right-8 left-8 hidden h-px bg-gradient-to-r from-cyan-400/60 via-indigo-500/60 to-fuchsia-500/60 lg:block"></div>
                 @foreach (config('agency.process') as $step)
                     <li class="relative" data-reveal style="--reveal-delay: {{ $loop->index * 90 }}ms">
-                        <span class="relative grid size-14 place-items-center rounded-2xl border border-white/10 bg-ink-800 font-display text-lg font-semibold text-white shadow-lg shadow-indigo-500/10">
+                        <span class="relative grid size-14 place-items-center rounded-2xl border border-slate-200 bg-white font-display text-lg font-semibold text-slate-900 shadow-lg shadow-indigo-500/10">
                             0{{ $loop->iteration }}
                         </span>
-                        <h3 class="mt-6 font-display text-xl font-semibold text-white">{{ $step['title'] }}</h3>
-                        <p class="mt-2 leading-relaxed text-slate-400">{{ $step['text'] }}</p>
+                        <h3 class="mt-6 font-display text-xl font-semibold text-slate-900">{{ $step['title'] }}</h3>
+                        <p class="mt-2 leading-relaxed text-slate-600">{{ $step['text'] }}</p>
                     </li>
                 @endforeach
             </ol>
@@ -180,12 +180,12 @@
     <section class="relative py-28">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
             <x-section-heading eyebrow="Why Impact Waves" title="Communication, transparency and strategy. <span class='text-slate-500'>Every day.</span>" />
-            <div class="mt-16 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="mt-16 grid gap-px overflow-hidden rounded-3xl border border-slate-200 bg-slate-200 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach (config('agency.values') as $value)
-                    <div class="group bg-ink-950 p-8 transition hover:bg-ink-900" data-reveal style="--reveal-delay: {{ $loop->index * 60 }}ms">
-                        <x-icon :name="$value['icon']" class="size-7 text-cyan-300 transition group-hover:text-fuchsia-300" />
-                        <h3 class="mt-5 font-display text-xl font-semibold text-white">{{ $value['title'] }}</h3>
-                        <p class="mt-2 leading-relaxed text-slate-400">{{ $value['text'] }}</p>
+                    <div class="group bg-white p-8 transition hover:bg-slate-50" data-reveal style="--reveal-delay: {{ $loop->index * 60 }}ms">
+                        <x-icon :name="$value['icon']" class="size-7 text-cyan-600 transition group-hover:text-fuchsia-600" />
+                        <h3 class="mt-5 font-display text-xl font-semibold text-slate-900">{{ $value['title'] }}</h3>
+                        <p class="mt-2 leading-relaxed text-slate-600">{{ $value['text'] }}</p>
                     </div>
                 @endforeach
             </div>
@@ -195,17 +195,17 @@
     {{-- FEED PARTNERS --}}
     <section class="relative py-10">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
-            <div class="grid items-center gap-10 rounded-[2rem] border border-white/10 bg-gradient-to-br from-ink-800 to-ink-950 p-8 sm:p-12 lg:grid-cols-5" data-reveal>
+            <div class="grid items-center gap-10 rounded-[2rem] border border-slate-200 bg-gradient-to-br from-indigo-50/60 to-white p-8 sm:p-12 lg:grid-cols-5" data-reveal>
                 <div class="lg:col-span-2">
                     <p class="eyebrow">Our partners</p>
-                    <h2 class="mt-5 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">Tier-1 feed providers</h2>
-                    <p class="mt-4 leading-relaxed text-slate-400">Monetize your traffic through established search feed partners, with our team helping you onboard and grow.</p>
-                    <a href="{{ route('services.show', 'search-feeds') }}" wire:navigate class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 hover:text-white">Search Feed Monetization <x-icon name="arrow" class="size-4" /></a>
+                    <h2 class="mt-5 font-display text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Tier-1 feed providers</h2>
+                    <p class="mt-4 leading-relaxed text-slate-600">Monetize your traffic through established search feed partners, with our team helping you onboard and grow.</p>
+                    <a href="{{ route('services.show', 'search-feeds') }}" wire:navigate class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-600 hover:text-slate-900">Search Feed Monetization <x-icon name="arrow" class="size-4" /></a>
                 </div>
                 <div class="grid grid-cols-2 gap-4 lg:col-span-3">
                     @foreach (config('agency.feed_partners') as $partner)
                         <div class="card-glow glass grid h-28 place-items-center rounded-2xl">
-                            <span class="font-display text-2xl font-semibold text-white">{{ $partner }}</span>
+                            <span class="font-display text-2xl font-semibold text-slate-900">{{ $partner }}</span>
                         </div>
                     @endforeach
                 </div>
@@ -221,18 +221,18 @@
             </div>
             <div class="lg:col-span-8" x-data="{ active: 0 }">
                 @foreach (config('agency.faq') as $item)
-                    <div class="border-b border-white/10" data-reveal>
+                    <div class="border-b border-slate-200" data-reveal>
                         <button type="button" class="flex w-full items-center justify-between gap-6 py-6 text-left"
                                 @click="active = active === {{ $loop->index }} ? null : {{ $loop->index }}"
                                 :aria-expanded="active === {{ $loop->index }}">
-                            <span class="font-display text-lg font-medium text-white sm:text-xl">{{ $item['q'] }}</span>
-                            <span class="grid size-9 shrink-0 place-items-center rounded-full border border-white/15 text-white transition duration-300"
-                                  :class="active === {{ $loop->index }} && 'rotate-45 bg-white/10'">
+                            <span class="font-display text-lg font-medium text-slate-900 sm:text-xl">{{ $item['q'] }}</span>
+                            <span class="grid size-9 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-900 transition duration-300"
+                                  :class="active === {{ $loop->index }} && 'rotate-45 bg-slate-100'">
                                 <x-icon name="plus" class="size-4" />
                             </span>
                         </button>
                         <div x-show="active === {{ $loop->index }}" x-collapse @if (! $loop->first) x-cloak @endif>
-                            <p class="max-w-2xl pb-6 leading-relaxed text-slate-400">{{ $item['a'] }}</p>
+                            <p class="max-w-2xl pb-6 leading-relaxed text-slate-600">{{ $item['a'] }}</p>
                         </div>
                     </div>
                 @endforeach

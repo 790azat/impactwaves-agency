@@ -5,14 +5,14 @@
     $pageDescription = $description ?? config('agency.description');
 @endphp
 <!DOCTYPE html>
-<html lang="en" class="bg-ink-950">
+<html lang="en" class="bg-white">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $pageTitle }}</title>
     <meta name="description" content="{{ $pageDescription }}">
-    <meta name="theme-color" content="#04050c">
+    <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="{{ url()->current() }}">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <meta property="og:type" content="website">

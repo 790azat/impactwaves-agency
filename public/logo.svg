@@ -10,5 +10,5 @@
   <circle cx="16" cy="24" r="5.5" fill="url(#g)"/>
   <path d="M22 13.6a12 12 0 0 1 0 20.8" stroke="url(#g)" stroke-width="4.2" stroke-linecap="round"/>
   <path d="M26 6.7a20 20 0 0 1 0 34.6" stroke="url(#g)" stroke-width="4.2" stroke-linecap="round" opacity=".75"/>
-  <text x="50" y="32" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="23" font-weight="600" letter-spacing="-.5" fill="#fff">impact<tspan fill="url(#t)">waves</tspan></text>
+  <text x="50" y="32" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="23" font-weight="600" letter-spacing="-.5" fill="#0f172a">impact<tspan fill="url(#t)">waves</tspan></text>
 </svg>
