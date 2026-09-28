@@ -1,9 +1,9 @@
 @php
     $nav = [
-        ['label' => 'Services', 'href' => route('services.index'), 'active' => request()->routeIs('services.*')],
-        ['label' => 'TikTok Agency', 'href' => route('services.show', 'tiktok-agency'), 'active' => request()->is('services/tiktok-agency')],
-        ['label' => 'Expertise', 'href' => route('about'), 'active' => request()->routeIs('about')],
-        ['label' => 'ROI Calculator', 'href' => route('home').'#calculator', 'active' => false],
+        ['label' => 'Services', 'icon' => 'layers', 'href' => route('services.index'), 'active' => request()->routeIs('services.*')],
+        ['label' => 'TikTok Agency', 'icon' => 'bolt', 'href' => route('services.show', 'tiktok-agency'), 'active' => request()->is('services/tiktok-agency')],
+        ['label' => 'Expertise', 'icon' => 'compass', 'href' => route('about'), 'active' => request()->routeIs('about')],
+        ['label' => 'ROI Calculator', 'icon' => 'chart', 'href' => route('home').'#calculator', 'active' => false],
     ];
 @endphp
 <header x-data="{ open: false, scrolled: false }"
@@ -24,10 +24,10 @@
                     <li>
                         <a href="{{ $item['href'] }}" wire:navigate
                            @class([
-                               'rounded-full px-4 py-2 text-sm font-medium transition',
+                               'inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition',
                                'bg-slate-100 text-slate-900' => $item['active'],
                                'text-slate-700 hover:bg-slate-100 hover:text-slate-900' => ! $item['active'],
-                           ])>{{ $item['label'] }}</a>
+                           ])><x-icon :name="$item['icon']" class="size-4 text-indigo-500" />{{ $item['label'] }}</a>
                     </li>
                 @endforeach
             </ul>
@@ -50,7 +50,7 @@
              class="mt-3 rounded-3xl border border-slate-200 bg-white/95 p-3 shadow-2xl shadow-slate-900/10 backdrop-blur-xl lg:hidden">
             <ul class="grid gap-1">
                 @foreach ($nav as $item)
-                    <li><a href="{{ $item['href'] }}" wire:navigate @click="open = false" class="block rounded-2xl px-4 py-3 text-base font-medium text-slate-900 hover:bg-slate-100">{{ $item['label'] }}</a></li>
+                    <li><a href="{{ $item['href'] }}" wire:navigate @click="open = false" class="flex items-center gap-3 rounded-2xl px-4 py-3 text-base font-medium text-slate-900 hover:bg-slate-100"><x-icon :name="$item['icon']" class="size-5 text-indigo-500" />{{ $item['label'] }}</a></li>
                 @endforeach
                 <li class="pt-2"><a href="{{ route('contact') }}" wire:navigate class="btn btn-primary w-full"><x-icon name="rocket" class="size-4" /> Start a project</a></li>
             </ul>
