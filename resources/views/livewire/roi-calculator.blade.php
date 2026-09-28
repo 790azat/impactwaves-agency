@@ -68,6 +68,6 @@
             @endforeach
         </div>
 
-        <a href="{{ route('contact') }}?service=cro" wire:navigate class="btn btn-primary mt-10 w-full">Get a CRO audit</a>
+        <a href="{{ route('contact') }}?service=cro" wire:navigate class="btn btn-primary mt-10 w-full"><x-icon name="chart" class="size-4" /> Get a CRO audit</a>
     </div>
 </div>

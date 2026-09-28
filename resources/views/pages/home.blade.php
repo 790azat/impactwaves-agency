@@ -20,7 +20,7 @@
                     Swift and effective growth for your company. We run paid social, PPC and conversion optimization with a data-driven approach built on communication, transparency and strategy.
                 </p>
                 <div class="mt-10 flex flex-wrap items-center gap-4" data-reveal style="--reveal-delay:240ms">
-                    <x-button href="{{ route('contact') }}" wire:navigate>Get a free growth audit</x-button>
+                    <x-button href="{{ route('contact') }}" icon="sparkles" wire:navigate>Get a free growth audit</x-button>
                     <x-button href="#calculator" variant="ghost" icon="chart">Estimate your ROI</x-button>
                 </div>
                 <dl class="mt-14 grid max-w-xl grid-cols-3 gap-4 border-t border-slate-200 pt-8" data-reveal style="--reveal-delay:320ms">
@@ -79,7 +79,7 @@
                 <x-section-heading eyebrow="What we do" title="Complete solutions for your most <span class='text-gradient'>critical growth</span> requirements">
                     We find the best tools and resources to optimize your revenue opportunities, then execute across every channel that matters.
                 </x-section-heading>
-                <x-button href="{{ route('services.index') }}" variant="ghost" wire:navigate data-reveal>All services</x-button>
+                <x-button href="{{ route('services.index') }}" variant="ghost" icon="layers" wire:navigate data-reveal>All services</x-button>
             </div>
 
             <div class="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-6">
@@ -122,8 +122,8 @@
                         <h2 class="mt-5 font-display text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">Attract audiences and drive revenue on <span class="text-gradient">TikTok</span></h2>
                         <p class="mt-5 text-lg leading-relaxed text-slate-600">Agency ad accounts, a dedicated official TikTok support team and creative resources that keep your ads ahead of the feed.</p>
                         <div class="mt-9 flex flex-wrap gap-4">
-                            <x-button href="{{ route('services.show', 'tiktok-agency') }}" wire:navigate>Explore TikTok Agency</x-button>
-                            <x-button href="{{ route('contact') }}?service=tiktok-agency" variant="ghost" wire:navigate>Request an account</x-button>
+                            <x-button href="{{ route('services.show', 'tiktok-agency') }}" icon="bolt" wire:navigate>Explore TikTok Agency</x-button>
+                            <x-button href="{{ route('contact') }}?service=tiktok-agency" variant="ghost" icon="plus" wire:navigate>Request an account</x-button>
                         </div>
                     </div>
                     <ul class="grid gap-4 sm:grid-cols-2">

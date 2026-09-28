@@ -8,7 +8,7 @@
             </div>
             <h2 class="mt-8 font-display text-3xl font-semibold text-slate-900">Thanks, message received</h2>
             <p class="mx-auto mt-3 max-w-md text-slate-600">We will review your details and get back to you shortly with next steps.</p>
-            <button type="button" wire:click="$set('sent', false)" class="btn btn-ghost mt-8">Send another message</button>
+            <button type="button" wire:click="$set('sent', false)" class="btn btn-ghost mt-8"><x-icon name="refresh" class="size-4" /> Send another message</button>
         </div>
     @else
         <form wire:submit="submit" class="relative grid gap-6" novalidate>
@@ -80,7 +80,7 @@
             <div class="flex flex-col-reverse items-start justify-between gap-4 sm:flex-row sm:items-center">
                 <p class="text-xs text-slate-500">We only use your details to reply to this request.</p>
                 <button type="submit" class="btn btn-primary w-full sm:w-auto" wire:loading.attr="disabled" wire:target="submit">
-                    <span wire:loading.remove wire:target="submit" class="inline-flex items-center gap-2">Send message <x-icon name="arrow" class="size-4" /></span>
+                    <span wire:loading.remove wire:target="submit" class="inline-flex items-center gap-2"><x-icon name="send" class="size-4" /> Send message</span>
                     <span wire:loading wire:target="submit" class="inline-flex items-center gap-2">
                         <svg class="size-4 animate-spin" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".3" stroke-width="3"/><path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
                         Sending...

@@ -7,8 +7,8 @@
             <h1 class="mt-4 font-display text-3xl font-semibold text-slate-900">This wave didn't reach the shore</h1>
             <p class="mt-3 text-slate-600">The page you are looking for doesn't exist or has moved.</p>
             <div class="mt-8 flex justify-center gap-3">
-                <x-button href="{{ route('home') }}">Back home</x-button>
-                <x-button href="{{ route('contact') }}" variant="ghost">Contact us</x-button>
+                <x-button href="{{ route('home') }}" icon="home">Back home</x-button>
+                <x-button href="{{ route('contact') }}" variant="ghost" icon="mail">Contact us</x-button>
             </div>
         </div>
     </section>

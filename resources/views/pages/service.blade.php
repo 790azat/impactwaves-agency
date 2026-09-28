@@ -13,7 +13,7 @@
                 @endforeach
             </div>
             <div class="mt-10 flex flex-wrap gap-4" data-reveal>
-                <x-button href="{{ route('contact') }}?service={{ $slug }}" wire:navigate>Talk to us about {{ $service['title'] }}</x-button>
+                <x-button href="{{ route('contact') }}?service={{ $slug }}" icon="chat" wire:navigate>Talk to us about {{ $service['title'] }}</x-button>
                 <x-button href="{{ route('home') }}#calculator" variant="ghost" icon="chart">Estimate your ROI</x-button>
             </div>
         </div>

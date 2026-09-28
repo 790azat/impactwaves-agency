@@ -34,7 +34,7 @@
 
             <div class="flex items-center gap-2">
                 <a href="{{ route('contact') }}" wire:navigate class="btn btn-primary hidden !py-2.5 sm:inline-flex">
-                    Start a project
+                    <x-icon name="rocket" class="size-4" /> Start a project
                 </a>
                 <button type="button" class="grid size-10 place-items-center rounded-full text-slate-900 hover:bg-slate-100 lg:hidden"
                         @click="open = !open" :aria-expanded="open" aria-controls="mobile-nav" aria-label="Toggle menu">
@@ -52,7 +52,7 @@
                 @foreach ($nav as $item)
                     <li><a href="{{ $item['href'] }}" wire:navigate @click="open = false" class="block rounded-2xl px-4 py-3 text-base font-medium text-slate-900 hover:bg-slate-100">{{ $item['label'] }}</a></li>
                 @endforeach
-                <li class="pt-2"><a href="{{ route('contact') }}" wire:navigate class="btn btn-primary w-full">Start a project</a></li>
+                <li class="pt-2"><a href="{{ route('contact') }}" wire:navigate class="btn btn-primary w-full"><x-icon name="rocket" class="size-4" /> Start a project</a></li>
             </ul>
         </div>
     </div>
