@@ -1,0 +1,49 @@
+<footer class="relative mt-10 border-t border-white/5 bg-ink-950">
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/60 to-transparent"></div>
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <div class="grid gap-12 lg:grid-cols-12">
+            <div class="lg:col-span-5">
+                <x-logo id="ftr" />
+                <p class="mt-5 max-w-sm leading-relaxed text-slate-400">{{ config('agency.tagline') }} Data-driven performance marketing for brands and media buyers across the US, EU and Canada.</p>
+                <div class="mt-6 flex flex-wrap gap-3">
+                    <a href="mailto:{{ config('agency.email') }}" class="btn btn-ghost !px-4 !py-2.5"><x-icon name="mail" class="size-4" /> {{ config('agency.email') }}</a>
+                    <a href="{{ config('agency.linkedin') }}" target="_blank" rel="noopener" class="btn btn-ghost !px-4 !py-2.5" aria-label="LinkedIn">
+                        <svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.8 0 0 .77 0 1.73v20.54C0 23.23.8 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
+                <div>
+                    <h3 class="text-sm font-semibold text-white">Services</h3>
+                    <ul class="mt-4 space-y-3 text-sm">
+                        @foreach (config('agency.services') as $slug => $service)
+                            <li><a href="{{ route('services.show', $slug) }}" wire:navigate class="text-slate-400 transition hover:text-white">{{ $service['title'] }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-white">Company</h3>
+                    <ul class="mt-4 space-y-3 text-sm">
+                        <li><a href="{{ route('about') }}" wire:navigate class="text-slate-400 transition hover:text-white">Expertise</a></li>
+                        <li><a href="{{ route('home') }}#partners" class="text-slate-400 transition hover:text-white">Partners</a></li>
+                        <li><a href="{{ route('home') }}#calculator" class="text-slate-400 transition hover:text-white">ROI calculator</a></li>
+                        <li><a href="{{ route('contact') }}" wire:navigate class="text-slate-400 transition hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-white">Markets</h3>
+                    <ul class="mt-4 space-y-3 text-sm">
+                        @foreach (config('agency.markets') as $market)
+                            <li class="flex items-center gap-2 text-slate-400"><span class="rounded-md bg-white/5 px-1.5 py-0.5 font-mono text-[11px] text-cyan-300">{{ $market['code'] }}</span>{{ $market['name'] }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="mt-14 flex flex-col gap-3 border-t border-white/5 pt-8 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+            <p>&copy; {{ date('Y') }} {{ config('agency.legal_name') }}. All rights reserved.</p>
+            <p>Made to make waves.</p>
+        </div>
+    </div>
+</footer>
