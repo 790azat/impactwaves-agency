@@ -21,7 +21,7 @@
                         'datePublished' => $article['date']->toIso8601String(),
                         'dateModified' => ($article['updated'] ?? $article['date'])->toIso8601String(),
                         'author' => ["\x40type" => 'Organization', 'name' => $article['author'], 'url' => route('about')],
-                        'publisher' => ["\x40type" => 'Organization', 'name' => config('agency.legal_name'), 'logo' => ["\x40type" => 'ImageObject', 'url' => url('/logo.svg')]],
+                        'publisher' => ["\x40type" => 'Organization', 'name' => config('agency.legal_name'), 'logo' => ["\x40type" => 'ImageObject', 'url' => url('/logo.png')]],
                         'image' => url('/og-image.png'),
                         'mainEntityOfPage' => $url,
                         'articleSection' => $section['title'],

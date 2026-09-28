@@ -18,7 +18,7 @@
             "dest": "/build/$1"
         },
         {
-            "src": "/(favicon\\.svg|logo\\.svg|og-image\\.png|robots\\.txt)",
+            "src": "/(favicon\\.svg|apple-touch-icon\\.png|logo\\.svg|logo\\.png|og-image\\.png|robots\\.txt)",
             "dest": "/$1"
         },
         {

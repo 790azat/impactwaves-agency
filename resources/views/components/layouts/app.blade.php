@@ -19,6 +19,7 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="{{ url()->current() }}">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta property="og:type" content="{{ $type }}">
     <meta property="og:site_name" content="{{ $siteName }}">
     <meta property="og:title" content="{{ $pageTitle }}">
@@ -32,7 +33,7 @@
             "\x40type" => 'Organization',
             'name' => $siteName,
             'url' => url('/'),
-            'logo' => url('/logo.svg'),
+            'logo' => url('/logo.png'),
             'description' => config('agency.description'),
             'email' => config('agency.email'),
             'sameAs' => [config('agency.linkedin')],
