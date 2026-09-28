@@ -16,11 +16,6 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        // Always surface exceptions in the platform logs (Vercel captures stderr).
-        $exceptions->report(function (Throwable $e) {
-            error_log('[laravel] '.get_class($e).': '.$e->getMessage().' at '.$e->getFile().':'.$e->getLine());
-        });
-
         $exceptions->shouldRenderJsonWhen(
             fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
         );
