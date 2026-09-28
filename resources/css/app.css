@@ -143,3 +143,24 @@ input[type='range'].range::-moz-range-thumb {
     width: 14px; height: 14px; border-radius: 999px;
     background: #fff; border: 4px solid #6366f1;
 }
+
+/* Long-form article typography (Markdown output). */
+.prose-article {
+    @apply text-[1.075rem] leading-[1.8] text-slate-700;
+    & > * + * { margin-top: 1.25em; }
+    & h2 { @apply mt-14 scroll-mt-28 font-display text-3xl leading-tight font-semibold tracking-tight text-slate-900; }
+    & h3 { @apply mt-10 font-display text-xl font-semibold text-slate-900; }
+    & a { @apply font-medium text-indigo-600 underline decoration-indigo-200 underline-offset-4 hover:decoration-indigo-500; }
+    & strong { @apply font-semibold text-slate-900; }
+    & ul, & ol { padding-left: 1.4em; }
+    & ul { list-style: disc; }
+    & ol { list-style: decimal; }
+    & li + li { margin-top: .5em; }
+    & li::marker { color: #6366f1; }
+    & blockquote { @apply rounded-2xl border-l-4 border-indigo-400 bg-indigo-50/60 px-6 py-4 text-slate-800; }
+    & code { @apply rounded-md bg-slate-100 px-1.5 py-0.5 font-mono text-[.9em] text-fuchsia-700; }
+    & hr { @apply my-12 border-slate-200; }
+    & table { @apply block w-full overflow-x-auto text-left text-[.95rem]; border-collapse: collapse; }
+    & th { @apply border-b-2 border-slate-200 px-4 py-3 font-semibold whitespace-nowrap text-slate-900; }
+    & td { @apply border-b border-slate-200 px-4 py-3 align-top; }
+}

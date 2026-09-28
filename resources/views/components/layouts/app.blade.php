@@ -1,4 +1,4 @@
-@props(['title' => null, 'description' => null])
+@props(['title' => null, 'description' => null, 'type' => 'website', 'keywords' => []])
 @php
     $siteName = config('agency.legal_name');
     $pageTitle = $title ? $title.' · '.$siteName : $siteName.' · Performance marketing for US, EU and Canada';
@@ -12,10 +12,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $pageTitle }}</title>
     <meta name="description" content="{{ $pageDescription }}">
+    @if ($keywords)
+        <meta name="keywords" content="{{ implode(', ', $keywords) }}">
+    @endif
+    <link rel="alternate" type="application/rss+xml" title="{{ $siteName }}" href="{{ route('feed') }}">
     <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="{{ url()->current() }}">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{{ $type }}">
     <meta property="og:site_name" content="{{ $siteName }}">
     <meta property="og:title" content="{{ $pageTitle }}">
     <meta property="og:description" content="{{ $pageDescription }}">
@@ -35,6 +39,7 @@
             'areaServed' => ['US', 'EU', 'CA'],
         ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
     </script>
+    @stack('schema')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>

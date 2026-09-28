@@ -25,7 +25,10 @@
                 <div>
                     <h3 class="text-sm font-semibold text-slate-900">Company</h3>
                     <ul class="mt-4 space-y-3 text-sm">
-                        <li><a href="{{ route('about') }}" wire:navigate class="text-slate-600 transition hover:text-slate-900">Expertise</a></li>
+                        <li><a href="{{ route('about') }}" wire:navigate class="text-slate-600 transition hover:text-slate-900">About</a></li>
+                        @foreach (config('agency.sections') as $key => $section)
+                            <li><a href="{{ route('section', $key) }}" wire:navigate class="text-slate-600 transition hover:text-slate-900">{{ $section['title'] }}</a></li>
+                        @endforeach
                         <li><a href="{{ route('home') }}#partners" class="text-slate-600 transition hover:text-slate-900">Partners</a></li>
                         <li><a href="{{ route('home') }}#calculator" class="text-slate-600 transition hover:text-slate-900">ROI calculator</a></li>
                         <li><a href="{{ route('contact') }}" wire:navigate class="text-slate-600 transition hover:text-slate-900">Contact</a></li>

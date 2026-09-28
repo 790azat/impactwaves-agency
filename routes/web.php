@@ -1,5 +1,6 @@
 <?php
 
+use App\Support\Articles;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.home')->name('home');
@@ -19,19 +20,62 @@ Route::get('/services/{slug}', function (string $slug) {
 
 Route::redirect('/tiktok-agency', '/services/tiktok-agency', 301);
 
-Route::view('/expertise', 'pages.about')->name('about');
+Route::view('/about', 'pages.about')->name('about');
+Route::redirect('/expertise', '/about', 301);
 
 Route::view('/contact', 'pages.contact')->name('contact');
 
+$sections = array_keys(config('agency.sections'));
+
+Route::get('/{section}', function (string $section) {
+    return view('pages.section', [
+        'key' => $section,
+        'section' => config('agency.sections')[$section],
+        'articles' => Articles::inSection($section),
+    ]);
+})->whereIn('section', $sections)->name('section');
+
+Route::get('/{section}/{slug}', function (string $section, string $slug) {
+    $article = Articles::find($section, $slug);
+    abort_unless($article, 404);
+
+    return view('pages.article', [
+        'article' => $article,
+        'section' => config('agency.sections')[$section],
+        'related' => Articles::all()->reject(fn ($a) => $a['section'] === $section && $a['slug'] === $slug)
+            ->sortBy(fn ($a) => $a['section'] === $section ? 0 : 1)->take(3)->values(),
+    ]);
+})->whereIn('section', $sections)->where('slug', '[a-z0-9-]+')->name('article');
+
 Route::get('/sitemap.xml', function () {
     $urls = collect([route('home'), route('services.index'), route('about'), route('contact')])
-        ->merge(collect(config('agency.services'))->keys()->map(fn ($slug) => route('services.show', $slug)));
+        ->merge(collect(config('agency.services'))->keys()->map(fn ($slug) => route('services.show', $slug)))
+        ->merge(collect(config('agency.sections'))->keys()->map(fn ($key) => route('section', $key)))
+        ->map(fn ($url) => ['loc' => $url, 'lastmod' => null])
+        ->merge(Articles::all()->map(fn ($a) => [
+            'loc' => route('article', [$a['section'], $a['slug']]),
+            'lastmod' => ($a['updated'] ?? $a['date'])->toDateString(),
+        ]));
 
     $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
     foreach ($urls as $url) {
-        $xml .= '<url><loc>'.e($url).'</loc></url>';
+        $xml .= '<url><loc>'.e($url['loc']).'</loc>'.($url['lastmod'] ? '<lastmod>'.$url['lastmod'].'</lastmod>' : '').'</url>';
     }
     $xml .= '</urlset>';
 
     return response($xml, 200, ['Content-Type' => 'application/xml']);
 })->name('sitemap');
+
+Route::get('/feed.xml', function () {
+    $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<rss version="2.0"><channel>'
+        .'<title>'.e(config('agency.legal_name')).'</title><link>'.e(route('home')).'</link>'
+        .'<description>'.e(config('agency.description')).'</description>';
+    foreach (Articles::all() as $a) {
+        $url = route('article', [$a['section'], $a['slug']]);
+        $xml .= '<item><title>'.e($a['title']).'</title><link>'.e($url).'</link><guid>'.e($url).'</guid>'
+            .'<pubDate>'.$a['date']->toRssString().'</pubDate><description>'.e($a['description']).'</description></item>';
+    }
+    $xml .= '</channel></rss>';
+
+    return response($xml, 200, ['Content-Type' => 'application/rss+xml']);
+})->name('feed');

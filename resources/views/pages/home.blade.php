@@ -213,6 +213,32 @@
         </div>
     </section>
 
+    {{-- Audiences and latest articles --}}
+    <section class="relative py-28">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6">
+            <x-section-heading eyebrow="Resources" title="Guides for <span class='text-gradient'>media buyers</span> and <span class='text-gradient'>traffic providers</span>">
+                Practical playbooks from a team that buys and monetizes traffic every day.
+            </x-section-heading>
+            <div class="mt-12 grid gap-5 md:grid-cols-2">
+                @foreach (['guides', 'traffic-providers'] as $key)
+                    @php $s = config('agency.sections')[$key]; @endphp
+                    <a href="{{ route('section', $key) }}" wire:navigate class="card-glow group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 p-8 transition duration-300 hover:-translate-y-1 sm:p-10" data-reveal style="--reveal-delay: {{ $loop->index * 80 }}ms">
+                        <span class="grid size-12 place-items-center rounded-2xl bg-brand text-white"><x-icon :name="$s['icon']" class="size-6" /></span>
+                        <p class="mt-6 text-sm font-medium tracking-[.12em] text-indigo-600 uppercase">{{ $s['audience'] }}</p>
+                        <h3 class="mt-2 font-display text-3xl font-semibold text-slate-900">{{ $s['title'] }}</h3>
+                        <p class="mt-3 max-w-md leading-relaxed text-slate-600">{{ $s['lead'] }}</p>
+                        <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-900"><x-icon name="arrow" class="size-4 transition group-hover:translate-x-0.5" /> Explore</span>
+                    </a>
+                @endforeach
+            </div>
+            <div class="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                @foreach (\App\Support\Articles::latest(3) as $article)
+                    <x-article-card :article="$article" data-reveal style="--reveal-delay: {{ $loop->index * 60 }}ms" />
+                @endforeach
+            </div>
+        </div>
+    </section>
+
     {{-- FAQ --}}
     <section class="relative py-28">
         <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-12">

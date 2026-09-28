@@ -1,6 +1,6 @@
-<x-layouts.app title="Expertise" description="How Impact Waves Agency works: a data-driven approach built on communication, transparency and strategy.">
+<x-layouts.app title="About Us: Performance Marketing Agency" description="About Impact Waves Agency: a performance marketing team and official TikTok agency working with brands, media buyers and traffic providers across the US, EU and Canada.">
     @include('partials.page-hero', [
-        'eyebrow' => 'Expertise',
+        'eyebrow' => 'About us',
         'title' => 'A performance team that treats your budget <span class="text-gradient">like its own</span>',
         'lead' => 'Impact Waves is a performance marketing agency. We identify the best tools and resources for optimizing your revenue opportunities and provide complete solutions for your most critical growth requirements.',
     ])

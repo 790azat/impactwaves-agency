@@ -1,9 +1,10 @@
 @php
     $nav = [
         ['label' => 'Services', 'icon' => 'layers', 'href' => route('services.index'), 'active' => request()->routeIs('services.*')],
-        ['label' => 'TikTok Agency', 'icon' => 'bolt', 'href' => route('services.show', 'tiktok-agency'), 'active' => request()->is('services/tiktok-agency')],
-        ['label' => 'Expertise', 'icon' => 'compass', 'href' => route('about'), 'active' => request()->routeIs('about')],
-        ['label' => 'ROI Calculator', 'icon' => 'chart', 'href' => route('home').'#calculator', 'active' => false],
+        ['label' => 'Guides', 'icon' => 'book', 'href' => route('section', 'guides'), 'active' => request()->is('guides*')],
+        ['label' => 'Traffic Providers', 'icon' => 'globe', 'href' => route('section', 'traffic-providers'), 'active' => request()->is('traffic-providers*')],
+        ['label' => 'News', 'icon' => 'newspaper', 'href' => route('section', 'news'), 'active' => request()->is('news*')],
+        ['label' => 'About', 'icon' => 'users', 'href' => route('about'), 'active' => request()->routeIs('about')],
     ];
 @endphp
 <header x-data="{ open: false, scrolled: false }"
@@ -24,7 +25,7 @@
                     <li>
                         <a href="{{ $item['href'] }}" wire:navigate
                            @class([
-                               'inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition',
+                               'inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm xl:px-4 font-medium transition',
                                'bg-slate-100 text-slate-900' => $item['active'],
                                'text-slate-700 hover:bg-slate-100 hover:text-slate-900' => ! $item['active'],
                            ])><x-icon :name="$item['icon']" class="size-4 text-indigo-500" />{{ $item['label'] }}</a>

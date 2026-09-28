@@ -106,6 +106,40 @@ return [
         ],
     ],
 
+    // Content hubs. Articles live in resources/content/{key}/{slug}.md.
+    'sections' => [
+        'guides' => [
+            'nav' => 'Guides',
+            'title' => 'Media Buying Guides',
+            'audience' => 'For media buyers',
+            'icon' => 'book',
+            'headline' => 'Media buying guides for <span class="text-gradient">search arbitrage</span>, TikTok and paid social',
+            'lead' => 'Practical playbooks from a team that buys traffic every day: search arbitrage and RSOC, TikTok agency accounts, tracking, metrics and scaling.',
+            'meta_title' => 'Media Buying Guides: Search Arbitrage, RSOC and TikTok Ads',
+            'meta_description' => 'Free media buying guides for arbitrage teams: how search arbitrage and RSOC work, TikTok agency accounts, RPC, RPM and ROI metrics, and how to scale.',
+        ],
+        'traffic-providers' => [
+            'nav' => 'Traffic Providers',
+            'title' => 'For Traffic Providers',
+            'audience' => 'For publishers and traffic owners',
+            'icon' => 'globe',
+            'headline' => 'Turn your traffic into revenue with <span class="text-gradient">Tier-1 search feeds</span>',
+            'lead' => 'Publishers, networks and domain owners: we help you monetize website traffic through Tier-1 search feed partners, with compliant setups and transparent reporting.',
+            'meta_title' => 'Monetize Website Traffic with Search Feeds',
+            'meta_description' => 'Monetize your website, domain or network traffic with Tier-1 search feed partners. Learn how search feed monetization works and what feed partners expect.',
+        ],
+        'news' => [
+            'nav' => 'News',
+            'title' => 'News',
+            'audience' => 'Agency and industry updates',
+            'icon' => 'newspaper',
+            'headline' => 'News from <span class="text-gradient">Impact Waves</span>',
+            'lead' => 'Agency updates, new partnerships and what is changing in paid social, search and feed monetization.',
+            'meta_title' => 'News: Impact Waves Agency Updates',
+            'meta_description' => 'Latest news from Impact Waves Agency: new services, partnerships and updates on paid social, TikTok ads and search feed monetization.',
+        ],
+    ],
+
     'values' => [
         ['icon' => 'chart', 'title' => 'Data-driven', 'text' => 'Every decision starts with numbers: tracking first, opinions second.'],
         ['icon' => 'chat', 'title' => 'Communication', 'text' => 'Direct access to the people running your campaigns, not an account-manager relay.'],
