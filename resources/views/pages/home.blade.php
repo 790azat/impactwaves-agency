@@ -2,10 +2,7 @@
     {{-- HERO --}}
     <section class="bg-sea relative isolate overflow-hidden pt-36 pb-36 sm:pt-44 lg:pb-48">
         <div class="grid-fade absolute inset-0 -z-10"></div>
-        <div class="absolute -top-40 left-1/2 -z-10 h-[680px] w-[1100px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(8_150_181/.35),transparent)] blur-2xl"></div>
-        <div class="absolute top-40 -right-40 -z-10 h-[420px] w-[420px] rounded-full bg-teal-300/25 blur-[120px]"></div>
-        <div class="absolute top-72 -left-40 -z-10 h-[380px] w-[380px] rounded-full bg-cyan-400/15 blur-[120px]"></div>
-        @include('partials.bubbles', ['count' => 12])
+        <div class="absolute -top-40 left-1/2 -z-10 h-[680px] w-[1100px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(8_150_181/.18),transparent)] blur-2xl"></div>
         <div class="absolute inset-x-0 bottom-0">
             @include('partials.sea-waves', ['id' => 'hero-wave', 'fill' => '#ecfafd', 'class' => 'h-28 sm:h-40'])
         </div>
@@ -13,7 +10,7 @@
         <div class="mx-auto grid max-w-7xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-12">
             <div class="lg:col-span-7">
                 <p class="eyebrow" data-reveal>
-                    <span class="relative flex size-2"><span class="absolute inline-flex size-full animate-ping rounded-full bg-cyan-400 opacity-75"></span><span class="relative inline-flex size-2 rounded-full bg-cyan-400"></span></span>
+                    <span class="size-1.5 rounded-full bg-ocean-500"></span>
                     Official TikTok agency · US · EU · CA
                 </p>
                 <h1 class="mt-7 font-display text-5xl leading-[1.02] font-semibold tracking-tight text-ocean-950 text-balance sm:text-6xl lg:text-7xl xl:text-[5.4rem]" data-reveal style="--reveal-delay:80ms">
@@ -36,29 +33,14 @@
             {{-- Impact visual --}}
             <div class="relative mx-auto aspect-square w-full max-w-[520px] lg:col-span-5" data-reveal style="--reveal-delay:200ms" aria-hidden="true">
                 <div class="absolute inset-0 grid place-items-center">
-                    @foreach ([0, 1, 2, 3] as $i)
-                        <span class="animate-ripple absolute size-[70%] rounded-full border border-ocean-400/40" style="animation-delay: {{ $i }}s"></span>
+                    @foreach ([0, 3] as $i)
+                        <span class="animate-ripple absolute size-[70%] rounded-full border border-ocean-300/40" style="animation-duration: 6s; animation-delay: {{ $i }}s"></span>
                     @endforeach
                     <div class="absolute size-[92%] rounded-full border border-ocean-100"></div>
-                    <div class="absolute size-[66%] rounded-full border border-dashed border-ocean-100 animate-spin-slow"></div>
-                    <div class="glass relative grid size-40 place-items-center rounded-[2.2rem] shadow-[0_30px_120px_-20px_rgb(8_150_181/.7)] sm:size-48">
+                    <div class="glass relative grid size-40 place-items-center rounded-[2.2rem] shadow-[0_24px_60px_-24px_rgb(8_120_152/.45)] sm:size-48">
                         <x-logo-mark id="hero" class="size-24 sm:size-28" />
                     </div>
                 </div>
-                @php
-                    $chips = [
-                        ['TikTok', 'top-[6%] left-[8%]', '0s'],
-                        ['Meta', 'top-[14%] right-[2%]', '1.2s'],
-                        ['Google Ads', 'bottom-[20%] -left-[2%]', '2.1s'],
-                        ['Tier-1 feeds', 'bottom-[6%] right-[8%]', '.6s'],
-                        ['CRO', 'top-[48%] -right-[3%]', '1.6s'],
-                    ];
-                @endphp
-                @foreach ($chips as [$label, $pos, $delay])
-                    <div class="animate-float glass absolute {{ $pos }} flex items-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-medium text-ocean-950 shadow-xl shadow-ocean-900/10" style="animation-delay: {{ $delay }}">
-                        <span class="size-2 rounded-full bg-brand"></span>{{ $label }}
-                    </div>
-                @endforeach
             </div>
         </div>
     </section>

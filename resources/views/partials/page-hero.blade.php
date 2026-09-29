@@ -8,7 +8,6 @@
         <p class="mt-7 max-w-2xl text-lg leading-relaxed text-slate-600 text-pretty sm:text-xl" data-reveal style="--reveal-delay:160ms">{{ $lead }}</p>
         {{ $slot ?? '' }}
     </div>
-    @include('partials.bubbles', ['count' => 8])
     <div class="absolute inset-x-0 bottom-0">
         @include('partials.sea-waves', ['id' => 'page-wave', 'fill' => '#ffffff', 'class' => 'h-16 sm:h-24'])
     </div>
