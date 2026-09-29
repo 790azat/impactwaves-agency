@@ -4,7 +4,7 @@
         <div>
             <x-logo-mark id="nf" class="mx-auto size-20" />
             <p class="mt-8 font-display text-8xl font-semibold text-gradient">404</p>
-            <h1 class="mt-4 font-display text-3xl font-semibold text-slate-900">This wave didn't reach the shore</h1>
+            <h1 class="mt-4 font-display text-3xl font-semibold text-ocean-950">This wave didn't reach the shore</h1>
             <p class="mt-3 text-slate-600">The page you are looking for doesn't exist or has moved.</p>
             <div class="mt-8 flex justify-center gap-3">
                 <x-button href="{{ route('home') }}" icon="home">Back home</x-button>

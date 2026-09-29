@@ -1,6 +1,8 @@
-<footer class="relative mt-10 border-t border-slate-200 bg-white">
-    <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/60 to-transparent"></div>
-    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+<footer class="relative mt-24 bg-ocean-50">
+    <div class="absolute inset-x-0 bottom-full">
+        @include('partials.sea-waves', ['id' => 'footer-wave', 'fill' => '#ecfafd', 'class' => 'h-16 sm:h-24'])
+    </div>
+    <div class="mx-auto max-w-7xl px-4 pt-10 pb-14 sm:px-6">
         <div class="grid gap-12 lg:grid-cols-12">
             <div class="lg:col-span-5">
                 <x-logo id="ftr" />
@@ -15,36 +17,39 @@
             </div>
             <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
                 <div>
-                    <h3 class="text-sm font-semibold text-slate-900">Services</h3>
+                    <h3 class="text-sm font-semibold text-ocean-950">Services</h3>
                     <ul class="mt-4 space-y-3 text-sm">
                         @foreach (config('agency.services') as $slug => $service)
-                            <li><a href="{{ route('services.show', $slug) }}" wire:navigate class="text-slate-600 transition hover:text-slate-900">{{ $service['title'] }}</a></li>
+                            <li><a href="{{ route('services.show', $slug) }}" wire:navigate class="text-slate-600 transition hover:text-ocean-950">{{ $service['title'] }}</a></li>
                         @endforeach
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-sm font-semibold text-slate-900">Company</h3>
+                    <h3 class="text-sm font-semibold text-ocean-950">Company</h3>
                     <ul class="mt-4 space-y-3 text-sm">
-                        <li><a href="{{ route('about') }}" wire:navigate class="text-slate-600 transition hover:text-slate-900">About</a></li>
+                        <li><a href="{{ route('about') }}" wire:navigate class="text-slate-600 transition hover:text-ocean-950">About</a></li>
                         @foreach (config('agency.sections') as $key => $section)
-                            <li><a href="{{ route('section', $key) }}" wire:navigate class="text-slate-600 transition hover:text-slate-900">{{ $section['title'] }}</a></li>
+                            <li><a href="{{ route('section', $key) }}" wire:navigate class="text-slate-600 transition hover:text-ocean-950">{{ $section['title'] }}</a></li>
                         @endforeach
-                        <li><a href="{{ route('home') }}#partners" class="text-slate-600 transition hover:text-slate-900">Partners</a></li>
-                        <li><a href="{{ route('home') }}#calculator" class="text-slate-600 transition hover:text-slate-900">ROI calculator</a></li>
-                        <li><a href="{{ route('contact') }}" wire:navigate class="text-slate-600 transition hover:text-slate-900">Contact</a></li>
+                        <li><a href="{{ route('home') }}#partners" class="text-slate-600 transition hover:text-ocean-950">Partners</a></li>
+                        <li><a href="{{ route('home') }}#calculator" class="text-slate-600 transition hover:text-ocean-950">ROI calculator</a></li>
+                        <li><a href="{{ route('contact') }}" wire:navigate class="text-slate-600 transition hover:text-ocean-950">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-sm font-semibold text-slate-900">Markets</h3>
+                    <h3 class="text-sm font-semibold text-ocean-950">Markets</h3>
                     <ul class="mt-4 space-y-3 text-sm">
                         @foreach (config('agency.markets') as $market)
-                            <li class="flex items-center gap-2 text-slate-600"><span class="rounded-md bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] text-cyan-600">{{ $market['code'] }}</span>{{ $market['name'] }}</li>
+                            <li class="flex items-center gap-2 text-slate-600"><span class="rounded-md bg-ocean-50 px-1.5 py-0.5 font-mono text-[11px] text-cyan-600">{{ $market['code'] }}</span>{{ $market['name'] }}</li>
                         @endforeach
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="mt-14 flex flex-col gap-3 border-t border-slate-200 pt-8 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+    </div>
+    {{-- The shore. --}}
+    <div class="border-t border-sand-200/70 bg-sand-100">
+        <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6">
             <p>&copy; {{ date('Y') }} {{ config('agency.legal_name') }}. All rights reserved.</p>
             <p>Made to make waves.</p>
         </div>

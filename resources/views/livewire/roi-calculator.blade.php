@@ -18,7 +18,7 @@
                 <label class="grid gap-3" wire:key="slider-{{ $prop }}">
                     <span class="flex items-baseline justify-between gap-4">
                         <span class="text-sm font-medium text-slate-700">{{ $label }}</span>
-                        <span class="font-display text-xl font-semibold text-slate-900 tabular-nums">{{ $display }}</span>
+                        <span class="font-display text-xl font-semibold text-ocean-950 tabular-nums">{{ $display }}</span>
                     </span>
                     <input type="range" class="range w-full" min="{{ $min }}" max="{{ $max }}" step="{{ $step }}"
                            wire:model.live.debounce.120ms="{{ $prop }}" aria-label="{{ $label }}">
@@ -28,8 +28,8 @@
         <p class="mt-8 text-xs leading-relaxed text-slate-500">Estimates for illustration only. Real results depend on your market, offer, creative and tracking.</p>
     </div>
 
-    <div class="relative isolate overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 p-6 sm:p-10 lg:col-span-5">
-        <div class="absolute -top-20 -right-20 -z-10 size-72 rounded-full bg-fuchsia-500/25 blur-3xl"></div>
+    <div class="relative isolate overflow-hidden rounded-[2rem] border border-ocean-100 bg-ocean-50 p-6 sm:p-10 lg:col-span-5">
+        <div class="absolute -top-20 -right-20 -z-10 size-72 rounded-full bg-teal-500/25 blur-3xl"></div>
         <div class="absolute -bottom-20 -left-20 -z-10 size-72 rounded-full bg-cyan-400/20 blur-3xl"></div>
 
         <div class="flex items-center justify-between">
@@ -45,9 +45,9 @@
                 ['ROAS', number_format($cur['roas'], 2).'x → '.number_format($opt['roas'], 2).'x'],
                 ['Cost per acquisition', RoiCalculator::money($cur['cpa']).' → '.RoiCalculator::money($opt['cpa'])],
             ] as [$label, $value])
-                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <div class="rounded-2xl border border-ocean-100 bg-ocean-50 p-4">
                     <p class="text-xs text-slate-500">{{ $label }}</p>
-                    <p class="mt-1 font-semibold text-slate-900 tabular-nums">{{ $value }}</p>
+                    <p class="mt-1 font-semibold text-ocean-950 tabular-nums">{{ $value }}</p>
                 </div>
             @endforeach
         </div>
@@ -56,12 +56,12 @@
         <div class="mt-8 space-y-4">
             @foreach ([
                 ['Ad spend', $budget, 'bg-slate-300'],
-                ['Revenue today', $cur['revenue'], 'bg-gradient-to-r from-cyan-400 to-indigo-500'],
+                ['Revenue today', $cur['revenue'], 'bg-gradient-to-r from-cyan-400 to-ocean-500'],
                 ['Revenue with CRO', $opt['revenue'], 'bg-brand'],
             ] as [$label, $value, $color])
                 <div>
-                    <div class="flex justify-between text-xs"><span class="text-slate-600">{{ $label }}</span><span class="font-medium text-slate-900 tabular-nums">{{ RoiCalculator::money($value) }}</span></div>
-                    <div class="mt-1.5 h-2.5 overflow-hidden rounded-full bg-slate-100">
+                    <div class="flex justify-between text-xs"><span class="text-slate-600">{{ $label }}</span><span class="font-medium text-ocean-950 tabular-nums">{{ RoiCalculator::money($value) }}</span></div>
+                    <div class="mt-1.5 h-2.5 overflow-hidden rounded-full bg-ocean-50">
                         <div class="{{ $color }} h-full rounded-full transition-all duration-500 ease-out" style="width: {{ max(2, $value / $max * 100) }}%"></div>
                     </div>
                 </div>

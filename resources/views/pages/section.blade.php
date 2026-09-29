@@ -33,7 +33,7 @@
                 ] as [$icon, $title, $text])
                     <div class="glass rounded-3xl p-7" data-reveal style="--reveal-delay: {{ $loop->index * 80 }}ms">
                         <x-icon :name="$icon" class="size-7 text-cyan-600" />
-                        <h2 class="mt-5 font-display text-xl font-semibold text-slate-900">{{ $title }}</h2>
+                        <h2 class="mt-5 font-display text-xl font-semibold text-ocean-950">{{ $title }}</h2>
                         <p class="mt-2 leading-relaxed text-slate-600">{{ $text }}</p>
                     </div>
                 @endforeach
@@ -48,13 +48,13 @@
     <section class="py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
             <div class="flex flex-wrap items-end justify-between gap-4">
-                <h2 class="font-display text-3xl font-semibold text-slate-900" data-reveal>{{ $key === 'news' ? 'Latest news' : 'Articles' }}</h2>
+                <h2 class="font-display text-3xl font-semibold text-ocean-950" data-reveal>{{ $key === 'news' ? 'Latest news' : 'Articles' }}</h2>
                 <nav class="flex flex-wrap gap-2" aria-label="Sections" data-reveal>
                     @foreach (config('agency.sections') as $k => $s)
                         <a href="{{ route('section', $k) }}" wire:navigate @class([
                             'inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition',
-                            'border-indigo-200 bg-indigo-50 text-indigo-700' => $k === $key,
-                            'border-slate-200 text-slate-600 hover:border-slate-300 hover:text-slate-900' => $k !== $key,
+                            'border-ocean-200 bg-ocean-50 text-ocean-700' => $k === $key,
+                            'border-ocean-100 text-slate-600 hover:border-ocean-200 hover:text-ocean-950' => $k !== $key,
                         ])><x-icon :name="$s['icon']" class="size-4" /> {{ $s['nav'] }}</a>
                     @endforeach
                 </nav>

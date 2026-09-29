@@ -18,10 +18,28 @@
     --color-wave-indigo: #6366f1;
     --color-wave-fuchsia: #e879f9;
 
+    /* Ocean palette: foam at the surface, deep water at the bottom. */
+    --color-ocean-50: #ecfafd;
+    --color-ocean-100: #d2f3f9;
+    --color-ocean-200: #a6e5f1;
+    --color-ocean-300: #67cfe3;
+    --color-ocean-400: #22b4cf;
+    --color-ocean-500: #0896b5;
+    --color-ocean-600: #077898;
+    --color-ocean-700: #0b607c;
+    --color-ocean-800: #0f4e66;
+    --color-ocean-900: #0f3d53;
+    --color-ocean-950: #072a3d;
+    --color-sand-50: #fdfaf3;
+    --color-sand-100: #f8f0e0;
+    --color-sand-200: #efdfc0;
+
     --animate-marquee: marquee 40s linear infinite;
     --animate-float: float 7s ease-in-out infinite;
     --animate-spin-slow: spin 22s linear infinite;
     --animate-ripple: ripple 4s cubic-bezier(.2,.6,.3,1) infinite;
+    --animate-bubble: bubble 9s ease-in infinite;
+    --animate-sway: sway 6s ease-in-out infinite;
 
     @keyframes marquee {
         from { transform: translateX(0); }
@@ -31,6 +49,21 @@
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(-14px); }
     }
+    @keyframes bubble {
+        0% { transform: translate(0, 0) scale(.6); opacity: 0; }
+        10% { opacity: .9; }
+        50% { transform: translate(14px, -45vh) scale(1); }
+        90% { opacity: .7; }
+        100% { transform: translate(-8px, -90vh) scale(1.15); opacity: 0; }
+    }
+    @keyframes sway {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(-2.5%); }
+    }
+    @keyframes swell {
+        from { transform: translate3d(-90px, 0, 0); }
+        to { transform: translate3d(85px, 0, 0); }
+    }
     @keyframes ripple {
         0% { transform: scale(.3); opacity: .9; }
         100% { transform: scale(1.6); opacity: 0; }
@@ -39,51 +72,61 @@
 
 @layer base {
     html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
-    body { @apply bg-white font-sans text-slate-700 antialiased; }
-    ::selection { background: rgb(99 102 241 / .2); color: #0f172a; }
+    body { @apply bg-white font-sans text-slate-600 antialiased; }
+    ::selection { background: rgb(34 180 207 / .25); color: #072a3d; }
     [x-cloak] { display: none !important; }
 }
 
 @utility text-gradient {
-    background-image: linear-gradient(100deg, #0891b2 0%, #6366f1 50%, #c026d3 100%);
+    background-image: linear-gradient(100deg, #0ea5b7 0%, #0877b8 50%, #164b8f 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
 @utility bg-brand {
-    background-image: linear-gradient(110deg, #22d3ee 0%, #6366f1 50%, #d946ef 100%);
+    background-image: linear-gradient(115deg, #2cc5d8 0%, #0a8ac4 48%, #0f5a9c 100%);
 }
 
 @utility glass {
-    background: rgb(255 255 255 / .8);
-    border: 1px solid rgb(15 23 42 / .08);
-    box-shadow: 0 1px 2px rgb(15 23 42 / .04), 0 12px 32px -12px rgb(15 23 42 / .12);
+    background: rgb(255 255 255 / .82);
+    border: 1px solid rgb(8 150 181 / .12);
+    box-shadow: 0 1px 2px rgb(7 42 61 / .04), 0 14px 34px -14px rgb(8 120 152 / .22);
     backdrop-filter: blur(14px);
 }
 
+/* Concentric ripples spreading from the top, like a stone dropped in water. */
 @utility grid-fade {
-    background-image:
-        linear-gradient(rgb(15 23 42 / .05) 1px, transparent 1px),
-        linear-gradient(90deg, rgb(15 23 42 / .05) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+    background-image: repeating-radial-gradient(circle at 50% -10%, transparent 0 46px, rgb(8 150 181 / .09) 47px 48px);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, #000 25%, transparent 75%);
+}
+
+/* Light surface water: sky at the top fading into foam. */
+@utility bg-sea {
+    background: linear-gradient(180deg, #e3f6fb 0%, #f3fbfd 45%, #ffffff 100%);
+}
+
+/* Deep water: from a turquoise surface down to the deep. */
+@utility bg-deep {
+    background:
+        radial-gradient(900px 300px at 50% -80px, rgb(255 255 255 / .35), transparent 70%),
+        linear-gradient(180deg, #13b3cc 0%, #0a86b8 40%, #0c5d91 75%, #0e4274 100%);
 }
 
 @utility eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-white px-3.5 py-1.5 text-xs font-medium tracking-[.14em] text-indigo-600 uppercase shadow-sm;
+    @apply inline-flex items-center gap-2 rounded-full border border-ocean-100 bg-white/90 px-3.5 py-1.5 text-xs font-medium tracking-[.14em] text-ocean-600 uppercase shadow-sm;
 }
 
 @utility btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ocean-500;
 }
 
 @utility btn-primary {
-    @apply bg-brand text-white shadow-[0_10px_30px_-10px_rgb(99_102_241/.6)] hover:shadow-[0_14px_40px_-8px_rgb(217_70_239/.55)] hover:brightness-105;
+    @apply bg-brand text-white shadow-[0_10px_30px_-10px_rgb(8_138_196/.65)] hover:shadow-[0_14px_40px_-8px_rgb(44_197_216/.6)] hover:brightness-105;
 }
 
 @utility btn-ghost {
-    @apply border border-slate-300 bg-white text-slate-900 hover:border-slate-400 hover:bg-slate-50;
+    @apply border border-ocean-200 bg-white text-ocean-950 hover:border-ocean-300 hover:bg-ocean-50;
 }
 
 @utility card-glow {
@@ -95,7 +138,7 @@
         inset: 0;
         border-radius: inherit;
         padding: 1px;
-        background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgb(99 102 241 / .7), rgb(217 70 239 / .45) 40%, transparent 70%);
+        background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgb(34 180 207 / .75), rgb(10 138 196 / .45) 40%, transparent 70%);
         -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
         -webkit-mask-composite: xor;
         mask-composite: exclude;
@@ -107,7 +150,7 @@
 }
 
 @utility field {
-    @apply w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 transition outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-500/10;
+    @apply w-full rounded-xl border border-ocean-200 bg-white px-4 py-3 text-ocean-950 placeholder:text-slate-400 transition outline-none focus:border-ocean-400 focus:ring-4 focus:ring-ocean-400/15;
 }
 
 /* Scroll reveal: elements start hidden only when JS is running. */
@@ -129,38 +172,45 @@ input[type='range'].range {
     appearance: none;
     height: 6px;
     border-radius: 999px;
-    background: linear-gradient(90deg, #22d3ee, #6366f1 var(--fill, 50%), #e2e8f0 var(--fill, 50%));
+    background: linear-gradient(90deg, #2cc5d8, #0a8ac4 var(--fill, 50%), #d2f3f9 var(--fill, 50%));
     outline: none;
     cursor: pointer;
 }
 input[type='range'].range::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 20px; height: 20px; border-radius: 999px;
-    background: #fff; border: 4px solid #6366f1;
-    box-shadow: 0 0 0 6px rgb(99 102 241 / .2);
+    background: #fff; border: 4px solid #0a8ac4;
+    box-shadow: 0 0 0 6px rgb(10 138 196 / .2);
 }
 input[type='range'].range::-moz-range-thumb {
     width: 14px; height: 14px; border-radius: 999px;
-    background: #fff; border: 4px solid #6366f1;
+    background: #fff; border: 4px solid #0a8ac4;
 }
 
 /* Long-form article typography (Markdown output). */
 .prose-article {
     @apply text-[1.075rem] leading-[1.8] text-slate-700;
     & > * + * { margin-top: 1.25em; }
-    & h2 { @apply mt-14 scroll-mt-28 font-display text-3xl leading-tight font-semibold tracking-tight text-slate-900; }
-    & h3 { @apply mt-10 font-display text-xl font-semibold text-slate-900; }
-    & a { @apply font-medium text-indigo-600 underline decoration-indigo-200 underline-offset-4 hover:decoration-indigo-500; }
-    & strong { @apply font-semibold text-slate-900; }
+    & h2 { @apply mt-14 scroll-mt-28 font-display text-3xl leading-tight font-semibold tracking-tight text-ocean-950; }
+    & h3 { @apply mt-10 font-display text-xl font-semibold text-ocean-950; }
+    & a { @apply font-medium text-ocean-600 underline decoration-ocean-200 underline-offset-4 hover:decoration-ocean-500; }
+    & strong { @apply font-semibold text-ocean-950; }
     & ul, & ol { padding-left: 1.4em; }
     & ul { list-style: disc; }
     & ol { list-style: decimal; }
     & li + li { margin-top: .5em; }
-    & li::marker { color: #6366f1; }
-    & blockquote { @apply rounded-2xl border-l-4 border-indigo-400 bg-indigo-50/60 px-6 py-4 text-slate-800; }
-    & code { @apply rounded-md bg-slate-100 px-1.5 py-0.5 font-mono text-[.9em] text-fuchsia-700; }
-    & hr { @apply my-12 border-slate-200; }
+    & li::marker { color: #0896b5; }
+    & blockquote { @apply rounded-2xl border-l-4 border-ocean-400 bg-ocean-50/60 px-6 py-4 text-ocean-900; }
+    & code { @apply rounded-md bg-ocean-50 px-1.5 py-0.5 font-mono text-[.9em] text-teal-700; }
+    & hr { @apply my-12 border-ocean-100; }
     & table { @apply block w-full overflow-x-auto text-left text-[.95rem]; border-collapse: collapse; }
-    & th { @apply border-b-2 border-slate-200 px-4 py-3 font-semibold whitespace-nowrap text-slate-900; }
-    & td { @apply border-b border-slate-200 px-4 py-3 align-top; }
+    & th { @apply border-b-2 border-ocean-100 px-4 py-3 font-semibold whitespace-nowrap text-ocean-950; }
+    & td { @apply border-b border-ocean-100 px-4 py-3 align-top; }
 }
+
+/* Surface waves: layered, drifting at different speeds (see partials/sea-waves). */
+.sea-waves use { animation: swell 22s cubic-bezier(.55,.5,.45,.5) infinite; }
+.sea-waves use:nth-child(1) { animation-delay: -2s; animation-duration: 9s; }
+.sea-waves use:nth-child(2) { animation-delay: -3s; animation-duration: 12s; }
+.sea-waves use:nth-child(3) { animation-delay: -4s; animation-duration: 15s; }
+.sea-waves use:nth-child(4) { animation-delay: -5s; animation-duration: 22s; }
