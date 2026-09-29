@@ -3,6 +3,7 @@
     <section class="bg-sea relative isolate overflow-hidden pt-36 pb-36 sm:pt-44 lg:pb-48">
         <div class="grid-fade absolute inset-0 -z-10"></div>
         <div class="absolute -top-40 left-1/2 -z-10 h-[680px] w-[1100px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(8_150_181/.18),transparent)] blur-2xl"></div>
+        @include('partials.bubbles', ['count' => 12])
         <div class="absolute inset-x-0 bottom-0">
             @include('partials.sea-waves', ['id' => 'hero-wave', 'fill' => '#ecfafd', 'class' => 'h-28 sm:h-40'])
         </div>

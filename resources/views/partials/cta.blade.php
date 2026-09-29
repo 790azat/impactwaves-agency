@@ -5,6 +5,7 @@
             <div class="absolute inset-x-0 top-0 -z-10 rotate-180">
                 @include('partials.sea-waves', ['id' => 'cta-wave', 'fill' => 'rgb(255 255 255 / .9)', 'tint' => '255 255 255', 'class' => 'h-16 sm:h-20'])
             </div>
+            @include('partials.bubbles', ['count' => 14, 'color' => 'border-white/50 bg-white/15'])
             <h2 class="mx-auto max-w-3xl font-display text-4xl font-semibold tracking-tight text-white text-balance sm:text-6xl">Ready to make some waves?</h2>
             <p class="mx-auto mt-6 max-w-xl text-lg text-white/85">If you need an effective solution for your business, tell us about your goals. We will come back with a plan.</p>
             <div class="mt-10 flex flex-wrap justify-center gap-4">

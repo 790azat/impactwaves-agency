@@ -38,6 +38,7 @@
     --animate-float: float 7s ease-in-out infinite;
     --animate-spin-slow: spin 22s linear infinite;
     --animate-ripple: ripple 4s cubic-bezier(.2,.6,.3,1) infinite;
+    --animate-bubble: bubble 9s ease-in infinite;
 
     @keyframes marquee {
         from { transform: translateX(0); }
@@ -46,6 +47,13 @@
     @keyframes float {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(-14px); }
+    }
+    @keyframes bubble {
+        0% { transform: translate(0, 0) scale(.6); opacity: 0; }
+        10% { opacity: .9; }
+        50% { transform: translate(14px, -45vh) scale(1); }
+        90% { opacity: .7; }
+        100% { transform: translate(-8px, -90vh) scale(1.15); opacity: 0; }
     }
     @keyframes swell {
         from { transform: translate3d(-90px, 0, 0); }
