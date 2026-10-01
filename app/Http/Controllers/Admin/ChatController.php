@@ -72,8 +72,10 @@ class ChatController extends Controller
 
         try {
             $bot = Telegram::call('getMe');
+            // Lets Telegram through Vercel Authentication while the site is not public yet.
+            $bypass = config('services.telegram.vercel_bypass');
             Telegram::call('setWebhook', [
-                'url' => route('telegram.webhook'),
+                'url' => route('telegram.webhook', $bypass ? ['x-vercel-protection-bypass' => $bypass] : []),
                 'secret_token' => Telegram::webhookSecret(),
                 'allowed_updates' => ['message'],
                 'drop_pending_updates' => true,

@@ -38,6 +38,8 @@ return [
     'telegram' => [
         'bot_token' => env('TELEGRAM_BOT_TOKEN'),
         'chat_id' => env('TELEGRAM_CHAT_ID'),
+        // Set by Vercel when Protection Bypass for Automation is on; lets the webhook through.
+        'vercel_bypass' => env('VERCEL_AUTOMATION_BYPASS_SECRET'),
     ],
 
 ];

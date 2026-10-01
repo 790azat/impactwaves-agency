@@ -17,6 +17,17 @@ foreach (['DATABASE_URL_UNPOOLED', 'POSTGRES_URL_NON_POOLING', 'DATABASE_URL', '
     }
 }
 
+// The runtime's libpq has no SNI support, so Neon needs the endpoint id passed
+// in the password ("endpoint=<id>;<password>"), see https://neon.tech/sni.
+if ($databaseUrl && ($parts = parse_url($databaseUrl)) && str_ends_with($parts['host'] ?? '', '.neon.tech')
+    && ! str_contains(rawurldecode($parts['pass'] ?? ''), 'endpoint=')) {
+    $endpoint = preg_replace('/-pooler$/', '', explode('.', $parts['host'])[0]);
+    $databaseUrl = $parts['scheme'].'://'.($parts['user'] ?? '')
+        .':'.rawurlencode('endpoint='.$endpoint.';'.rawurldecode($parts['pass'] ?? ''))
+        .'@'.$parts['host'].(isset($parts['port']) ? ':'.$parts['port'] : '')
+        .($parts['path'] ?? '').(isset($parts['query']) ? '?'.$parts['query'] : '');
+}
+
 // These must hold on Vercel no matter what is set in the dashboard (for example
 // values imported from .env.example): the filesystem is read-only.
 $forced = [
