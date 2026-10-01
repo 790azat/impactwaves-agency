@@ -6,7 +6,7 @@
     @if (! $telegram['token'] || ! $telegram['chat'])
         <section class="mb-6 rounded-xl border border-ocean-200 bg-white p-6">
             <h2 class="font-display text-lg font-semibold text-ocean-950">Connect the Telegram bot</h2>
-            <p class="mt-1 text-sm text-slate-600">The chat button appears on the site once the bot is connected, so every message reaches you.</p>
+            <p class="mt-1 text-sm text-slate-600">The chat is already on the site and conversations show up below. Connect the bot to also get every message in Telegram and answer from there.</p>
             <ol class="mt-5 grid gap-4 text-sm">
                 <li class="flex gap-3">
                     <span @class(['grid size-6 shrink-0 place-items-center rounded-full text-xs font-semibold', 'bg-emerald-100 text-emerald-800' => $telegram['token'], 'bg-ocean-600 text-white' => ! $telegram['token']])>@if ($telegram['token'])<x-icon name="check" class="size-3.5" />@else 1 @endif</span>

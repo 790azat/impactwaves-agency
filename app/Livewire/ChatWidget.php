@@ -101,8 +101,9 @@ class ChatWidget extends Component
     {
         $messages = collect();
 
-        // Shown once the bot is connected, so every message reaches the team.
-        $available = Telegram::ready();
+        // Shown whenever the database is there: messages are kept in Admin → Chats
+        // and also forwarded to Telegram once the bot is connected.
+        $available = ! (config('database.default') === 'sqlite' && config('database.connections.sqlite.database') === ':memory:');
 
         if ($available) {
             try {
