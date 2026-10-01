@@ -25,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
         if (config('database.auto_migrate') && ! $this->app->runningInConsole()) {
             $this->setUpDatabaseOnce();
         }
+
+        \App\Support\ServiceTexts::apply();
     }
 
     /**

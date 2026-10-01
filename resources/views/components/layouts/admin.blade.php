@@ -5,6 +5,7 @@
         ['label' => 'Leads', 'icon' => 'inbox', 'route' => 'admin.leads.index', 'match' => 'admin.leads.*'],
         ['label' => 'Chats', 'icon' => 'chat', 'route' => 'admin.chats.index', 'match' => 'admin.chats.*'],
         ['label' => 'Users', 'icon' => 'users', 'route' => 'admin.users.index', 'match' => 'admin.users.*'],
+        ['label' => 'Services', 'icon' => 'layers', 'route' => 'admin.services.index', 'match' => 'admin.services.*'],
         ['label' => 'Articles', 'icon' => 'newspaper', 'route' => 'admin.articles.index', 'match' => 'admin.articles.*'],
         ['label' => 'Vacancies', 'icon' => 'briefcase', 'route' => 'admin.vacancies.index', 'match' => 'admin.vacancies.*'],
         ['label' => 'Company', 'icon' => 'map-pin', 'route' => 'admin.company.edit', 'match' => 'admin.company.*'],

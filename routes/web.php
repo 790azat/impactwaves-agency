@@ -90,6 +90,11 @@ Route::middleware(['auth', EnsureAdmin::class])->prefix('admin')->name('admin.')
     Route::put('/articles/{section}/{slug}', [Admin\ArticleController::class, 'update'])->name('articles.update');
     Route::delete('/articles/{section}/{slug}', [Admin\ArticleController::class, 'destroy'])->name('articles.destroy');
 
+    Route::get('/services', [Admin\ServiceController::class, 'index'])->name('services.index');
+    Route::get('/services/{slug}', [Admin\ServiceController::class, 'edit'])->name('services.edit');
+    Route::put('/services/{slug}', [Admin\ServiceController::class, 'update'])->name('services.update');
+    Route::delete('/services/{slug}', [Admin\ServiceController::class, 'destroy'])->name('services.destroy');
+
     Route::resource('vacancies', Admin\VacancyController::class)->except('show');
 
     Route::get('/company', [Admin\CompanyController::class, 'edit'])->name('company.edit');
