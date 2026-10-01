@@ -15,6 +15,16 @@ class ChatController extends Controller
 {
     public function index(): View
     {
+        // Connect the bot on the first visit once the token is set, so the
+        // only step left for the admin is pressing Start in Telegram.
+        if (Telegram::token() && ! Settings::get('telegram_bot_username')) {
+            try {
+                $this->registerWebhook();
+            } catch (\Throwable $e) {
+                Log::warning('Automatic Telegram connect failed', ['error' => $e->getMessage()]);
+            }
+        }
+
         return view('admin.chats.index', [
             'conversations' => ChatConversation::with('latestMessage')->withCount('messages')
                 ->orderByDesc('last_message_at')->paginate(30),
@@ -71,20 +81,27 @@ class ChatController extends Controller
         }
 
         try {
-            $bot = Telegram::call('getMe');
-            // Lets Telegram through Vercel Authentication while the site is not public yet.
-            $bypass = config('services.telegram.vercel_bypass');
-            Telegram::call('setWebhook', [
-                'url' => route('telegram.webhook', $bypass ? ['x-vercel-protection-bypass' => $bypass] : []),
-                'secret_token' => Telegram::webhookSecret(),
-                'allowed_updates' => ['message'],
-                'drop_pending_updates' => true,
-            ]);
-            Settings::set('telegram_bot_username', $bot['username'] ?? null);
+            $bot = $this->registerWebhook();
         } catch (\Throwable $e) {
             return back()->with('error', 'Telegram rejected the request: '.$e->getMessage());
         }
 
         return back()->with('status', 'Bot @'.($bot['username'] ?? '').' is connected. Now open the link below and press Start.');
+    }
+
+    protected function registerWebhook(): array
+    {
+        $bot = Telegram::call('getMe');
+        // Lets Telegram through Vercel Authentication while the site is not public yet.
+        $bypass = config('services.telegram.vercel_bypass');
+        Telegram::call('setWebhook', [
+            'url' => route('telegram.webhook', $bypass ? ['x-vercel-protection-bypass' => $bypass] : []),
+            'secret_token' => Telegram::webhookSecret(),
+            'allowed_updates' => ['message'],
+            'drop_pending_updates' => true,
+        ]);
+        Settings::set('telegram_bot_username', $bot['username'] ?? null);
+
+        return $bot;
     }
 }
