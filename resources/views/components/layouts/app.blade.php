@@ -18,6 +18,7 @@
     <link rel="alternate" type="application/rss+xml" title="{{ $siteName }}" href="{{ route('feed') }}">
     <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="{{ url()->current() }}">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta property="og:type" content="{{ $type }}">
