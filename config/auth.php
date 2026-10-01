@@ -114,4 +114,20 @@ return [
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Admin Account
+    |--------------------------------------------------------------------------
+    |
+    | When both are set, this admin account is created on first boot if it
+    | does not exist yet (the password is only used then; change it later in
+    | the account page). Admins can promote other users in the admin panel.
+    |
+    */
+
+    'admin' => [
+        'email' => env('ADMIN_EMAIL'),
+        'password' => env('ADMIN_PASSWORD'),
+    ],
+
 ];

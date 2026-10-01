@@ -2,15 +2,20 @@
 
 namespace App\Support;
 
+use App\Models\Article;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 /**
- * Markdown articles stored in resources/content/{section}/{slug}.md.
+ * Articles come from two places:
  *
- * Each file starts with a front matter block of "key: value" lines between
- * two "---" lines. List values (keywords) are comma separated.
+ * - Markdown files in resources/content/{section}/{slug}.md. Each file starts
+ *   with a front matter block of "key: value" lines between two "---" lines.
+ *   List values (keywords) are comma separated.
+ * - The articles table, edited in the admin panel. A row with the same section
+ *   and slug overrides the file; an unpublished row hides it.
  */
 class Articles
 {
@@ -18,8 +23,25 @@ class Articles
 
     public static function all(): Collection
     {
-        return static::$cache ??= collect(glob(resource_path('content/*/*.md')))
-            ->map(fn (string $path) => static::parse($path))
+        return static::$cache ??= static::merged()
+            ->filter(fn (array $article) => $article['published'])
+            ->values();
+    }
+
+    /**
+     * Every article including unpublished ones, for the admin panel.
+     */
+    public static function merged(): Collection
+    {
+        $articles = static::fromFiles()->keyBy(fn ($a) => $a['section'].'/'.$a['slug']);
+
+        foreach (static::fromDatabase() as $article) {
+            $key = $article['section'].'/'.$article['slug'];
+            $article['overrides_file'] = $articles->has($key) && $articles[$key]['source'] === 'file';
+            $articles[$key] = $article;
+        }
+
+        return $articles
             ->filter(fn (array $article) => isset(config('agency.sections')[$article['section']]))
             ->sortByDesc('date')
             ->values();
@@ -40,6 +62,51 @@ class Articles
         return static::all()->take($count);
     }
 
+    public static function file(string $section, string $slug): ?array
+    {
+        $path = resource_path("content/$section/$slug.md");
+
+        return is_file($path) ? static::parse($path) : null;
+    }
+
+    public static function flush(): void
+    {
+        static::$cache = null;
+    }
+
+    protected static function fromFiles(): Collection
+    {
+        return collect(glob(resource_path('content/*/*.md')))->map(fn (string $path) => static::parse($path));
+    }
+
+    protected static function fromDatabase(): Collection
+    {
+        if (config('database.default') === 'sqlite' && config('database.connections.sqlite.database') === ':memory:') {
+            return collect();
+        }
+
+        try {
+            return Article::all()->map(fn (Article $row) => static::build(
+                $row->section,
+                $row->slug,
+                [
+                    'title' => $row->title,
+                    'description' => $row->description,
+                    'keywords' => $row->keywords,
+                    'tag' => $row->tag,
+                    'author' => $row->author,
+                    'date' => $row->published_on->toDateString(),
+                    'updated' => $row->updated_at?->isAfter($row->published_on->copy()->endOfDay()) ? $row->updated_at->toDateString() : null,
+                ],
+                $row->body,
+            ) + ['source' => 'database', 'id' => $row->id, 'published' => $row->published]);
+        } catch (\Throwable $e) {
+            Log::warning('Articles table unavailable, using Markdown files only', ['error' => $e->getMessage()]);
+
+            return collect();
+        }
+    }
+
     protected static function parse(string $path): array
     {
         $raw = file_get_contents($path);
@@ -55,7 +122,15 @@ class Articles
             $raw = $m[2];
         }
 
-        $html = Str::markdown($raw, ['html_input' => 'allow', 'allow_unsafe_links' => false]);
+        $meta['date'] ??= date('Y-m-d', filemtime($path));
+
+        return static::build(basename(dirname($path)), basename($path, '.md'), $meta, $raw)
+            + ['source' => 'file', 'published' => true];
+    }
+
+    protected static function build(string $section, string $slug, array $meta, string $markdown): array
+    {
+        $html = Str::markdown($markdown, ['html_input' => 'allow', 'allow_unsafe_links' => false]);
 
         // Give h2 headings ids so the table of contents can link to them.
         $toc = [];
@@ -70,15 +145,16 @@ class Articles
         $words = str_word_count(strip_tags($html));
 
         return [
-            'section' => basename(dirname($path)),
-            'slug' => basename($path, '.md'),
-            'title' => $meta['title'] ?? Str::headline(basename($path, '.md')),
+            'section' => $section,
+            'slug' => $slug,
+            'title' => ($meta['title'] ?? null) ?: Str::headline($slug),
             'description' => $meta['description'] ?? '',
             'keywords' => array_values(array_filter(array_map('trim', explode(',', $meta['keywords'] ?? '')))),
-            'date' => Carbon::parse($meta['date'] ?? filemtime($path)),
-            'updated' => isset($meta['updated']) ? Carbon::parse($meta['updated']) : null,
-            'author' => $meta['author'] ?? 'Impact Waves Team',
-            'tag' => $meta['tag'] ?? null,
+            'date' => Carbon::parse($meta['date']),
+            'updated' => ! empty($meta['updated']) ? Carbon::parse($meta['updated']) : null,
+            'author' => ($meta['author'] ?? null) ?: 'Impact Waves Team',
+            'tag' => ($meta['tag'] ?? null) ?: null,
+            'markdown' => $markdown,
             'html' => $html,
             'toc' => $toc,
             'minutes' => max(1, (int) ceil($words / 220)),

@@ -1,4 +1,4 @@
-@props(['title' => null, 'description' => null, 'type' => 'website', 'keywords' => []])
+@props(['title' => null, 'description' => null, 'type' => 'website', 'keywords' => [], 'noindex' => false])
 @php
     $siteName = config('agency.legal_name');
     $pageTitle = $title ? $title.' · '.$siteName : $siteName.' · Performance marketing for US, EU and Canada';
@@ -12,6 +12,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $pageTitle }}</title>
     <meta name="description" content="{{ $pageDescription }}">
+    @if ($noindex)
+        <meta name="robots" content="noindex">
+    @endif
     @if ($keywords)
         <meta name="keywords" content="{{ implode(', ', $keywords) }}">
     @endif

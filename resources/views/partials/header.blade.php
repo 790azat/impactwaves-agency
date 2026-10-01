@@ -34,6 +34,17 @@
             </ul>
 
             <div class="flex items-center gap-2">
+                @auth
+                    <a href="{{ auth()->user()->is_admin ? route('admin.dashboard') : route('account') }}"
+                       class="hidden items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-ocean-50 hover:text-ocean-950 sm:inline-flex"
+                       title="{{ auth()->user()->is_admin ? 'Admin panel' : 'My account' }}">
+                        <x-icon :name="auth()->user()->is_admin ? 'shield' : 'user'" class="size-4 text-ocean-500" /><span class="hidden xl:inline">{{ auth()->user()->is_admin ? 'Admin' : 'Account' }}</span>
+                    </a>
+                @else
+                    <a href="{{ route('login') }}" class="hidden items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-ocean-50 hover:text-ocean-950 sm:inline-flex">
+                        <x-icon name="user" class="size-4 text-ocean-500" /><span class="hidden xl:inline">Sign in</span>
+                    </a>
+                @endauth
                 <a href="{{ route('contact') }}" wire:navigate class="btn btn-primary hidden !py-2.5 sm:inline-flex">
                     <x-icon name="rocket" class="size-4" /> Start a project
                 </a>
@@ -53,6 +64,13 @@
                 @foreach ($nav as $item)
                     <li><a href="{{ $item['href'] }}" wire:navigate @click="open = false" class="flex items-center gap-3 rounded-2xl px-4 py-3 text-base font-medium text-ocean-950 hover:bg-ocean-50"><x-icon :name="$item['icon']" class="size-5 text-ocean-500" />{{ $item['label'] }}</a></li>
                 @endforeach
+                <li>
+                    @auth
+                        <a href="{{ auth()->user()->is_admin ? route('admin.dashboard') : route('account') }}" class="flex items-center gap-3 rounded-2xl px-4 py-3 text-base font-medium text-ocean-950 hover:bg-ocean-50"><x-icon :name="auth()->user()->is_admin ? 'shield' : 'user'" class="size-5 text-ocean-500" />{{ auth()->user()->is_admin ? 'Admin panel' : 'My account' }}</a>
+                    @else
+                        <a href="{{ route('login') }}" class="flex items-center gap-3 rounded-2xl px-4 py-3 text-base font-medium text-ocean-950 hover:bg-ocean-50"><x-icon name="user" class="size-5 text-ocean-500" />Sign in</a>
+                    @endauth
+                </li>
                 <li class="pt-2"><a href="{{ route('contact') }}" wire:navigate class="btn btn-primary w-full"><x-icon name="rocket" class="size-4" /> Start a project</a></li>
             </ul>
         </div>

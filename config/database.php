@@ -97,6 +97,7 @@ return [
             'prefix_indexes' => true,
             'search_path' => 'public',
             'sslmode' => env('DB_SSLMODE', 'prefer'),
+            'options' => extension_loaded('pdo_pgsql') ? [PDO::ATTR_TIMEOUT => 8] : [],
         ],
 
         'sqlsrv' => [
@@ -126,6 +127,10 @@ return [
     | the migrations on disk haven't actually been run on the database.
     |
     */
+
+    // Run pending migrations on the first request of each Vercel instance
+    // (see AppServiceProvider), since the build step has no PHP.
+    'auto_migrate' => (bool) env('DB_AUTO_MIGRATE', false),
 
     'migrations' => [
         'table' => 'migrations',

@@ -1,12 +1,24 @@
 <?php
 
 /*
- * Vercel entry point. Serverless functions only have a writable /tmp and no
- * database, so point every cache/compiled path there and use stateless drivers.
+ * Vercel entry point. Serverless functions only have a writable /tmp, so point
+ * every cache/compiled path there. Accounts, leads and admin-edited articles
+ * live in Postgres (Neon, connected in Vercel Storage); without it the public
+ * site still works from Markdown files and stateless drivers.
  */
 
+// Neon's Vercel integration exposes these. The direct (unpooled) URL is
+// preferred because PDO uses server-side prepared statements.
+$databaseUrl = null;
+foreach (['DATABASE_URL_UNPOOLED', 'POSTGRES_URL_NON_POOLING', 'DATABASE_URL', 'POSTGRES_URL'] as $key) {
+    if (($value = getenv($key)) && str_starts_with($value, 'postgres')) {
+        $databaseUrl = $value;
+        break;
+    }
+}
+
 // These must hold on Vercel no matter what is set in the dashboard (for example
-// values imported from .env.example): the filesystem is read-only and there is no DB.
+// values imported from .env.example): the filesystem is read-only.
 $forced = [
     'APP_CONFIG_CACHE' => '/tmp/config.php',
     'APP_EVENTS_CACHE' => '/tmp/events.php',
@@ -14,15 +26,24 @@ $forced = [
     'APP_ROUTES_CACHE' => '/tmp/routes.php',
     'APP_SERVICES_CACHE' => '/tmp/services.php',
     'VIEW_COMPILED_PATH' => '/tmp/views',
-    'CACHE_STORE' => 'array',
     'SESSION_DRIVER' => 'cookie',
     'LOG_CHANNEL' => 'stderr',
     'QUEUE_CONNECTION' => 'sync',
-    'DB_CONNECTION' => 'sqlite',
-    'DB_DATABASE' => ':memory:',
     'BROADCAST_CONNECTION' => 'log',
     'FILESYSTEM_DISK' => 'local',
     'APP_MAINTENANCE_DRIVER' => 'file',
+];
+
+$forced += $databaseUrl ? [
+    'DB_CONNECTION' => 'pgsql',
+    'DB_URL' => $databaseUrl,
+    'DB_SSLMODE' => 'require',
+    'DB_AUTO_MIGRATE' => 'true',
+    'CACHE_STORE' => 'database',
+] : [
+    'DB_CONNECTION' => 'sqlite',
+    'DB_DATABASE' => ':memory:',
+    'CACHE_STORE' => 'array',
 ];
 
 // Sensible values when the dashboard leaves these empty.

@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\Admin;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\PasswordResetController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Middleware\EnsureAdmin;
 use App\Support\Articles;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +30,44 @@ Route::view('/about', 'pages.about')->name('about');
 Route::redirect('/expertise', '/about', 301);
 
 Route::view('/contact', 'pages.contact')->name('contact');
+
+Route::middleware('guest')->group(function () {
+    Route::get('/register', [RegisterController::class, 'create'])->name('register');
+    Route::post('/register', [RegisterController::class, 'store'])->middleware('throttle:10,10');
+    Route::get('/login', [LoginController::class, 'create'])->name('login');
+    Route::post('/login', [LoginController::class, 'store']);
+    Route::get('/forgot-password', [PasswordResetController::class, 'request'])->name('password.request');
+    Route::post('/forgot-password', [PasswordResetController::class, 'email'])->middleware('throttle:6,10')->name('password.email');
+    Route::get('/reset-password/{token}', [PasswordResetController::class, 'edit'])->name('password.reset');
+    Route::post('/reset-password', [PasswordResetController::class, 'update'])->name('password.update');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
+    Route::get('/account', [AccountController::class, 'show'])->name('account');
+    Route::put('/account', [AccountController::class, 'update'])->name('account.update');
+    Route::put('/account/password', [AccountController::class, 'password'])->name('account.password');
+});
+
+Route::middleware(['auth', EnsureAdmin::class])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', Admin\DashboardController::class)->name('dashboard');
+
+    Route::get('/leads', [Admin\LeadController::class, 'index'])->name('leads.index');
+    Route::get('/leads/{lead}', [Admin\LeadController::class, 'show'])->name('leads.show');
+    Route::put('/leads/{lead}', [Admin\LeadController::class, 'update'])->name('leads.update');
+    Route::delete('/leads/{lead}', [Admin\LeadController::class, 'destroy'])->name('leads.destroy');
+
+    Route::get('/users', [Admin\UserController::class, 'index'])->name('users.index');
+    Route::put('/users/{user}', [Admin\UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}', [Admin\UserController::class, 'destroy'])->name('users.destroy');
+
+    Route::get('/articles', [Admin\ArticleController::class, 'index'])->name('articles.index');
+    Route::get('/articles/create', [Admin\ArticleController::class, 'create'])->name('articles.create');
+    Route::post('/articles', [Admin\ArticleController::class, 'store'])->name('articles.store');
+    Route::get('/articles/{section}/{slug}', [Admin\ArticleController::class, 'edit'])->name('articles.edit');
+    Route::put('/articles/{section}/{slug}', [Admin\ArticleController::class, 'update'])->name('articles.update');
+    Route::delete('/articles/{section}/{slug}', [Admin\ArticleController::class, 'destroy'])->name('articles.destroy');
+});
 
 $sections = array_keys(config('agency.sections'));
 

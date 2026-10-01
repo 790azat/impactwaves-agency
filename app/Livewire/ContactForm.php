@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Models\Lead;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -33,6 +35,12 @@ class ContactForm extends Component
     {
         if ($service && array_key_exists($service, config('agency.services'))) {
             $this->services = [$service];
+        }
+
+        if ($user = Auth::user()) {
+            $this->name = $user->name;
+            $this->email = $user->email;
+            $this->company = (string) $user->company;
         }
     }
 
@@ -84,6 +92,7 @@ class ContactForm extends Component
         RateLimiter::hit($key, 600);
 
         $body = $this->formatLead($data);
+        $stored = $this->storeLead($data);
 
         try {
             Mail::raw($body, function ($mail) use ($data) {
@@ -94,15 +103,44 @@ class ContactForm extends Component
             $this->notifyTelegram($body);
         } catch (\Throwable $e) {
             Log::error('Contact form delivery failed', ['error' => $e->getMessage()]);
-            $this->addError('form', 'Something went wrong while sending. Please email us at '.config('agency.email').'.');
 
-            return;
+            // The lead is safe in the admin panel even if the notification failed.
+            if (! $stored) {
+                $this->addError('form', 'Something went wrong while sending. Please email us at '.config('agency.email').'.');
+
+                return;
+            }
         }
 
         Log::info('New contact lead', ['email' => $data['email'], 'services' => $data['services']]);
 
-        $this->reset(['name', 'email', 'company', 'budget', 'services', 'message']);
+        $this->reset(['budget', 'services', 'message']);
+        if (! Auth::check()) {
+            $this->reset(['name', 'email', 'company']);
+        }
         $this->sent = true;
+    }
+
+    private function storeLead(array $data): bool
+    {
+        try {
+            Lead::create([
+                'user_id' => Auth::id(),
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'company' => $data['company'] ?: null,
+                'budget' => $data['budget'],
+                'services' => $data['services'],
+                'message' => $data['message'],
+                'ip_address' => request()->ip(),
+            ]);
+
+            return true;
+        } catch (\Throwable $e) {
+            Log::warning('Lead was not stored', ['error' => $e->getMessage()]);
+
+            return false;
+        }
     }
 
     private function formatLead(array $data): string
