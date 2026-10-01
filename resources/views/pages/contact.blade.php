@@ -1,6 +1,6 @@
 <x-layouts.app title="Contact" description="Tell Impact Waves about your goals and get a growth plan for paid social, PPC, CRO, TikTok or search feeds.">
     <section class="relative isolate overflow-hidden pt-40 pb-24 sm:pt-48">
-        <div class="grid-fade absolute inset-0 -z-10"></div>
+        @include('partials.caustics', ['tint' => true, 'fade' => 'radial-gradient(ellipse 70% 70% at 70% 10%, #000 15%, transparent 70%)'])
         <div class="absolute -top-48 left-1/3 -z-10 h-[560px] w-[900px] rounded-full bg-[radial-gradient(closest-side,rgb(45_212_191/.22),transparent)] blur-2xl"></div>
         <div class="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-12">
             <div class="lg:col-span-5">

@@ -1,6 +1,6 @@
 {{-- Expects: $eyebrow, $title, $lead --}}
-<section class="bg-sea relative isolate overflow-hidden pt-40 pb-32 sm:pt-48 sm:pb-40">
-    <div class="grid-fade absolute inset-0 -z-10"></div>
+<section class="bg-sea relative isolate overflow-hidden border-b border-ocean-100 pt-40 pb-20 sm:pt-48 sm:pb-24">
+    @include('partials.caustics', ['tint' => true, 'fade' => 'radial-gradient(ellipse 70% 80% at 80% 10%, #000 15%, transparent 70%)'])
     <div class="absolute -top-48 left-1/2 -z-10 h-[560px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(8_150_181/.3),transparent)] blur-2xl"></div>
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
         <p class="eyebrow" data-reveal>{{ $eyebrow }}</p>
@@ -8,8 +8,5 @@
         <p class="mt-7 max-w-2xl text-lg leading-relaxed text-slate-600 text-pretty sm:text-xl" data-reveal style="--reveal-delay:160ms">{{ $lead }}</p>
         {{ $slot ?? '' }}
     </div>
-    @include('partials.bubbles', ['count' => 8])
-    <div class="absolute inset-x-0 bottom-0">
-        @include('partials.sea-waves', ['id' => 'page-wave', 'fill' => '#ffffff', 'class' => 'h-16 sm:h-24'])
-    </div>
+    @include('partials.bubbles', ['count' => 7, 'light' => true, 'rise' => '480px'])
 </section>

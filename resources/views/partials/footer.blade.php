@@ -1,7 +1,4 @@
-<footer class="relative mt-24 bg-ocean-50">
-    <div class="absolute inset-x-0 bottom-full">
-        @include('partials.sea-waves', ['id' => 'footer-wave', 'fill' => '#ecfafd', 'class' => 'h-16 sm:h-24'])
-    </div>
+<footer class="relative mt-16 border-t border-ocean-100 bg-ocean-50">
     <div class="mx-auto max-w-7xl px-4 pt-10 pb-14 sm:px-6">
         <div class="grid gap-12 lg:grid-cols-12">
             <div class="lg:col-span-5">

@@ -1,6 +1,6 @@
 <x-layouts.app title="Page not found">
     <section class="relative isolate grid min-h-[80vh] place-items-center overflow-hidden px-4 pt-32 text-center">
-        <div class="grid-fade absolute inset-0 -z-10"></div>
+        @include('partials.caustics', ['tint' => true, 'fade' => 'radial-gradient(ellipse 70% 70% at 70% 10%, #000 15%, transparent 70%)'])
         <div>
             <x-logo-mark id="nf" class="mx-auto size-20" />
             <p class="mt-8 font-display text-8xl font-semibold text-gradient">404</p>

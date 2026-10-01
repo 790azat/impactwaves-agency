@@ -1,12 +1,7 @@
 <x-layouts.app>
     {{-- HERO --}}
-    <section class="bg-sea relative isolate overflow-hidden pt-36 pb-36 sm:pt-44 lg:pb-48">
-        <div class="grid-fade absolute inset-0 -z-10"></div>
-        <div class="absolute -top-40 left-1/2 -z-10 h-[680px] w-[1100px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(8_150_181/.18),transparent)] blur-2xl"></div>
-        @include('partials.bubbles', ['count' => 12])
-        <div class="absolute inset-x-0 bottom-0">
-            @include('partials.sea-waves', ['id' => 'hero-wave', 'fill' => '#ecfafd', 'class' => 'h-28 sm:h-40'])
-        </div>
+    <section class="bg-sea relative isolate overflow-hidden border-b border-ocean-100 pt-36 pb-24 sm:pt-44 lg:pb-32">
+        @include('partials.caustics', ['tint' => true, 'fade' => 'radial-gradient(ellipse 60% 70% at 85% 30%, #000 10%, transparent 70%)'])
 
         <div class="mx-auto grid max-w-7xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-12">
             <div class="lg:col-span-7">
@@ -31,15 +26,18 @@
                 </dl>
             </div>
 
-            {{-- Impact visual --}}
-            <div class="relative mx-auto aspect-square w-full max-w-[520px] lg:col-span-5" data-reveal style="--reveal-delay:200ms" aria-hidden="true">
-                <div class="absolute inset-0 grid place-items-center">
-                    @foreach ([0, 3] as $i)
-                        <span class="animate-ripple absolute size-[70%] rounded-full border border-ocean-300/40" style="animation-duration: 6s; animation-delay: {{ $i }}s"></span>
-                    @endforeach
-                    <div class="absolute size-[92%] rounded-full border border-ocean-100"></div>
-                    <div class="glass relative grid size-40 place-items-center rounded-[2.2rem] shadow-[0_24px_60px_-24px_rgb(8_120_152/.45)] sm:size-48">
-                        <x-logo-mark id="hero" class="size-24 sm:size-28" />
+            {{-- A window into the water: refracted sunlight and rising air. --}}
+            <div class="relative mx-auto w-full max-w-[460px] lg:col-span-5" data-reveal style="--reveal-delay:200ms" aria-hidden="true">
+                <div class="water relative isolate aspect-[4/5] overflow-hidden rounded-[2rem] shadow-[0_40px_80px_-40px_rgb(7_42_61/.55)] ring-1 ring-ocean-900/10">
+                    @include('partials.caustics', ['fade' => 'linear-gradient(180deg, #000 0%, rgb(0 0 0 / .55) 45%, transparent 95%)', 'opacity' => .55])
+                    <div class="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-ocean-950/35 to-transparent"></div>
+                    @include('partials.bubbles', ['count' => 14, 'rise' => '640px'])
+                    <div class="absolute inset-x-6 bottom-6 flex items-end justify-between text-white">
+                        <div>
+                            <p class="text-[11px] font-medium tracking-[.2em] text-white/70 uppercase">Official TikTok agency</p>
+                            <p class="mt-1.5 font-display text-xl font-semibold">Paid social · PPC · CRO · Feeds</p>
+                        </div>
+                        <x-logo-mark id="hero" class="h-7 w-10 shrink-0 opacity-90 [&_path]:stroke-white" />
                     </div>
                 </div>
             </div>
@@ -47,7 +45,7 @@
     </section>
 
     {{-- PARTNERS MARQUEE --}}
-    <section id="partners" class="relative border-b border-ocean-100 bg-ocean-50 pt-4 pb-10">
+    <section id="partners" class="relative border-b border-ocean-100 bg-ocean-50 py-10">
         <p class="text-center text-xs font-medium tracking-[.2em] text-slate-500 uppercase">Platforms and Tier-1 partners we work with</p>
         <div class="relative mt-7 overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
             <div class="animate-marquee flex w-max gap-14 pr-14">

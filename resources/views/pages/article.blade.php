@@ -41,8 +41,8 @@
     @endpush
 
     <article>
-        <header class="bg-sea relative isolate overflow-hidden pt-36 pb-28 sm:pt-44 sm:pb-32">
-            <div class="grid-fade absolute inset-0 -z-10"></div>
+        <header class="bg-sea relative isolate overflow-hidden border-b border-ocean-100 pt-36 pb-16 sm:pt-44 sm:pb-20">
+            @include('partials.caustics', ['tint' => true, 'fade' => 'radial-gradient(ellipse 70% 80% at 80% 10%, #000 15%, transparent 70%)'])
             <div class="absolute -top-48 left-1/2 -z-10 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(8_150_181/.25),transparent)] blur-2xl"></div>
             <div class="mx-auto max-w-4xl px-4 sm:px-6">
                 <nav aria-label="Breadcrumb" class="text-sm text-slate-500" data-reveal>
@@ -60,9 +60,6 @@
                     <time datetime="{{ $article['date']->toDateString() }}">{{ $article['date']->format('F j, Y') }}</time>
                     <span class="inline-flex items-center gap-2"><x-icon name="clock" class="size-4" /> {{ $article['minutes'] }} min read</span>
                 </div>
-            </div>
-            <div class="absolute inset-x-0 bottom-0">
-                @include('partials.sea-waves', ['id' => 'article-wave', 'fill' => '#ffffff', 'class' => 'h-14 sm:h-20'])
             </div>
         </header>
 
