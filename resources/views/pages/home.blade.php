@@ -35,18 +35,43 @@
                 </dl>
             </div>
 
-            {{-- A window into the water: refracted sunlight and rising air. --}}
+            {{-- An ad in the feed and what it earned: the work the agency does, shown as a phone with live-looking metrics. --}}
             <div class="relative mx-auto w-full max-w-[460px] lg:col-span-5" data-reveal style="--reveal-delay:200ms" aria-hidden="true">
-                <div class="water relative isolate aspect-[4/5] overflow-hidden rounded-2xl shadow-[0_40px_80px_-40px_rgb(7_24_54/.45)] ring-1 ring-ocean-900/10">
-                    @include('partials.caustics', ['fade' => 'linear-gradient(180deg, #000 0%, rgb(0 0 0 / .55) 45%, transparent 95%)', 'opacity' => .55])
-                    <div class="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-ocean-950/35 to-transparent"></div>
-                    @include('partials.bubbles', ['count' => 14, 'rise' => '640px'])
-                    <div class="absolute inset-x-6 bottom-6 flex items-end justify-between text-white">
-                        <div>
-                            <p class="text-[11px] font-medium tracking-[.2em] text-white/70 uppercase">Official TikTok agency</p>
-                            <p class="mt-1.5 font-display text-xl font-semibold">Paid social · PPC · CRO · Feeds</p>
+                <div class="relative mx-auto aspect-[4/5] max-w-full">
+                    {{-- Phone --}}
+                    <div class="absolute top-1/2 left-1/2 h-[min(540px,100%)] aspect-[1/2] -translate-x-1/2 -translate-y-1/2 rounded-[2.5rem] bg-ocean-950 p-2.5 shadow-[0_40px_80px_-30px_rgb(7_24_54/.55)]">
+                        <div class="water relative isolate h-full overflow-hidden rounded-[2rem]">
+                            @include('partials.caustics', ['fade' => 'linear-gradient(180deg, #000 10%, transparent 75%)', 'opacity' => .5])
+                            <div class="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-ocean-950/50 to-transparent"></div>
+                            @include('partials.bubbles', ['count' => 9, 'rise' => '520px'])
+                            <p class="absolute inset-x-0 top-4 text-center text-xs font-semibold text-white/80">Following <span class="mx-1">·</span> <span class="text-white">For You</span></p>
+
+                            <div class="absolute right-3 bottom-28 grid justify-items-center gap-4 text-[10px] font-semibold text-white">
+                                <span class="grid justify-items-center gap-1"><svg class="size-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.6 1.2 4.4 2.5h1.8c.8-1.3 2.2-2.5 4.4-2.5 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21Z"/></svg>48.2K</span>
+                                <span class="grid justify-items-center gap-1"><svg class="size-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.9 2 11.6c0 2.4 1.2 4.6 3.1 6.1L4.3 21l3.9-1.9c1.2.4 2.5.6 3.8.6 5.5 0 10-3.9 10-8.6S17.5 3 12 3Z"/></svg>1.3K</span>
+                                <span class="grid justify-items-center gap-1"><svg class="size-6" viewBox="0 0 24 24" fill="currentColor"><path d="M14 4v4C7 9 4 14 3 20c2.5-3.5 6-5.1 11-5.1V19l7-7.5L14 4Z"/></svg>6.1K</span>
+                            </div>
+
+                            <div class="absolute right-16 bottom-5 left-4 text-xs leading-relaxed text-white">
+                                <p class="font-bold">@yourbrand <span class="font-medium text-white/75">· Sponsored</span></p>
+                                <p class="mt-1.5">Summer drop is live. Free shipping across the US.</p>
+                                <p class="mt-3 rounded-md bg-white py-2 text-center text-[13px] font-bold text-ocean-950">Shop now</p>
+                            </div>
                         </div>
-                        <x-logo-mark class="h-6 w-auto shrink-0 text-white opacity-90" />
+                    </div>
+
+                    {{-- Results around it --}}
+                    <div class="absolute top-[14%] -left-2 rounded-xl border border-ocean-100 bg-white px-3 py-2 shadow-[0_20px_40px_-20px_rgb(7_24_54/.35)] sm:px-4 sm:py-3 sm:-left-6">
+                        <p class="text-[10px] font-semibold tracking-[.16em] text-slate-500 uppercase sm:text-[11px]">ROAS</p>
+                        <p class="mt-1 font-display text-lg font-bold text-ocean-950 sm:text-2xl">3.4x</p>
+                    </div>
+                    <div class="absolute top-[36%] -left-2 rounded-xl border border-ocean-100 bg-white px-3 py-2 shadow-[0_20px_40px_-20px_rgb(7_24_54/.35)] sm:px-4 sm:py-3 sm:-left-8">
+                        <p class="text-[10px] font-semibold tracking-[.16em] text-slate-500 uppercase sm:text-[11px]">CPA</p>
+                        <p class="mt-1 flex items-center gap-2 font-display text-lg font-bold text-ocean-950 sm:text-2xl">$18 <span class="rounded-md bg-emerald-50 px-1.5 py-0.5 font-sans text-xs font-semibold text-emerald-700">−31%</span></p>
+                    </div>
+                    <div class="absolute top-[20%] sm:top-[30%] -right-2 rounded-xl border border-ocean-100 bg-white px-3 py-2 shadow-[0_20px_40px_-20px_rgb(7_24_54/.35)] sm:px-4 sm:py-3 sm:-right-6">
+                        <p class="text-[10px] font-semibold tracking-[.16em] text-slate-500 uppercase sm:text-[11px]">CTR</p>
+                        <p class="mt-1 flex items-center gap-2 font-display text-lg font-bold text-ocean-950 sm:text-2xl">2.9% <span class="rounded-md bg-emerald-50 px-1.5 py-0.5 font-sans text-xs font-semibold text-emerald-700">+64%</span></p>
                     </div>
                 </div>
             </div>
