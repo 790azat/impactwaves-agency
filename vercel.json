@@ -26,7 +26,7 @@
             "dest": "/images/$1"
         },
         {
-            "src": "/(favicon\\.svg|favicon\\.ico|apple-touch-icon\\.png|logo\\.svg|logo\\.png|og-image\\.png|robots\\.txt)",
+            "src": "/(favicon\\.svg|favicon\\.ico|apple-touch-icon\\.png|logo\\.svg|logo\\.png|og-image\\.png)",
             "dest": "/$1"
         },
         {

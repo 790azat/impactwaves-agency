@@ -1,4 +1,14 @@
 <x-layouts.app>
+    @push('schema')
+        {!! \App\Support\Seo::jsonLd([
+            "\x40type" => 'WebSite',
+            "\x40id" => config('agency.site_url').'/#website',
+            'name' => config('agency.legal_name'),
+            'url' => config('agency.site_url').'/',
+            'publisher' => ["\x40id" => config('agency.site_url').'/#organization'],
+            'inLanguage' => 'en',
+        ]) !!}
+    @endpush
     {{-- HERO --}}
     <section class="bg-sea relative isolate overflow-hidden border-b border-ocean-100 pt-36 pb-24 sm:pt-44 lg:pb-32">
         @include('partials.caustics', ['tint' => true, 'fade' => 'radial-gradient(ellipse 60% 70% at 85% 30%, #000 10%, transparent 70%)'])

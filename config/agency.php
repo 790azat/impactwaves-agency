@@ -7,6 +7,10 @@ return [
     'tagline' => "Swift and effective solutions for your company's growth.",
     'description' => 'Performance marketing agency: paid social, PPC, CRO, official TikTok agency accounts and Tier-1 search feed partnerships for the US, EU and Canada.',
 
+    // Public address of the site: canonical URLs, sitemap and robots.txt point
+    // here, and any other host (vercel.app, previews) is marked noindex.
+    'site_url' => rtrim(env('SITE_URL', 'https://impactwaves.agency'), '/'),
+
     // Where contact-form leads are delivered. Override with AGENCY_EMAIL on Vercel.
     'email' => env('AGENCY_EMAIL', 'hello@impactwaves.agency'),
     'linkedin' => 'https://www.linkedin.com/company/impact-waves-agency/',
@@ -41,6 +45,7 @@ return [
 
     'services' => [
         'paid-social' => [
+            'meta_title' => 'Paid Social Advertising Agency: Meta, TikTok and Snapchat Ads',
             'title' => 'Paid Social Ads',
             'eyebrow' => 'Social',
             'icon' => 'megaphone',
@@ -57,6 +62,7 @@ return [
             ],
         ],
         'ppc' => [
+            'meta_title' => 'PPC Management Agency: Google Ads and Microsoft Ads',
             'title' => 'PPC Advertising',
             'eyebrow' => 'Search',
             'icon' => 'cursor',
@@ -73,6 +79,7 @@ return [
             ],
         ],
         'cro' => [
+            'meta_title' => 'Conversion Rate Optimization (CRO) Services',
             'title' => 'Conversion Rate Optimization',
             'eyebrow' => 'CRO',
             'icon' => 'chart',
@@ -89,6 +96,7 @@ return [
             ],
         ],
         'tiktok-agency' => [
+            'meta_title' => 'Official TikTok Agency Ad Accounts for Advertisers',
             'title' => 'TikTok Agency Accounts',
             'eyebrow' => 'Official TikTok agency',
             'icon' => 'bolt',
@@ -105,6 +113,7 @@ return [
             ],
         ],
         'search-feeds' => [
+            'meta_title' => 'Search Feed Monetization: Tier-1 Feed Partners',
             'title' => 'Search Feed Monetization',
             'eyebrow' => 'Tier-1 feeds',
             'icon' => 'layers',

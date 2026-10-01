@@ -1,4 +1,18 @@
-<x-layouts.app title="Services" description="Paid social, PPC, CRO, official TikTok agency accounts and Tier-1 search feed monetization.">
+<x-layouts.app title="Performance Marketing Services: Paid Social, PPC, TikTok" description="Paid social ads, PPC management, conversion rate optimization, official TikTok agency accounts and Tier-1 search feed monetization in one team.">
+    @push('schema')
+        {!! \App\Support\Seo::jsonLd([
+            "\x40type" => 'CollectionPage',
+            'name' => 'Performance marketing services',
+            'url' => \App\Support\Seo::url(route('services.index')),
+            'breadcrumb' => \App\Support\Seo::breadcrumbs([['Services', route('services.index')]]),
+            'mainEntity' => [
+                "\x40type" => 'ItemList',
+                'itemListElement' => collect(config('agency.services'))->keys()->values()->map(fn ($slug, $i) => [
+                    "\x40type" => 'ListItem', 'position' => $i + 1, 'name' => config("agency.services.$slug.title"), 'url' => \App\Support\Seo::url(route('services.show', $slug)),
+                ])->all(),
+            ],
+        ]) !!}
+    @endpush
     @include('partials.page-hero', [
         'eyebrow' => 'Services',
         'title' => 'Everything you need to <span class="text-gradient">grow with paid media</span>',

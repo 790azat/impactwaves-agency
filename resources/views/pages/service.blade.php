@@ -1,4 +1,25 @@
-<x-layouts.app :title="$service['title']" :description="$service['short']">
+<x-layouts.app :title="$service['meta_title'] ?? $service['title']" :description="$service['short']">
+    @push('schema')
+        {!! \App\Support\Seo::jsonLd([
+            "\x40graph" => [
+                [
+                    "\x40type" => 'Service',
+                    'name' => $service['title'],
+                    'serviceType' => $service['title'],
+                    'description' => $service['intro'],
+                    'url' => \App\Support\Seo::url(route('services.show', $slug)),
+                    'provider' => ["\x40id" => config('agency.site_url').'/#organization'],
+                    'areaServed' => ['US', 'EU', 'CA'],
+                    'hasOfferCatalog' => [
+                        "\x40type" => 'OfferCatalog',
+                        'name' => $service['title'],
+                        'itemListElement' => collect($service['features'])->map(fn ($f) => ["\x40type" => 'Offer', 'itemOffered' => ["\x40type" => 'Service', 'name' => $f['title'], 'description' => $f['text']]])->all(),
+                    ],
+                ],
+                \App\Support\Seo::breadcrumbs([['Services', route('services.index')], [$service['title'], route('services.show', $slug)]]),
+            ],
+        ]) !!}
+    @endpush
     @include('partials.page-hero', [
         'eyebrow' => $service['eyebrow'],
         'title' => e($service['headline']),

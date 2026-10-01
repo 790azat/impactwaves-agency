@@ -1,4 +1,12 @@
 <x-layouts.app title="About Us: Performance Marketing Agency" description="About Impact Waves Agency: a performance marketing team and official TikTok agency working with brands, media buyers and traffic providers across the US, EU and Canada.">
+    @push('schema')
+        {!! \App\Support\Seo::jsonLd([
+            "\x40type" => 'AboutPage',
+            'url' => \App\Support\Seo::url(route('about')),
+            'about' => ["\x40id" => config('agency.site_url').'/#organization'],
+            'breadcrumb' => \App\Support\Seo::breadcrumbs([['About', route('about')]]),
+        ]) !!}
+    @endpush
     @include('partials.page-hero', [
         'eyebrow' => 'About us',
         'title' => 'A performance team that treats your budget <span class="text-gradient">like its own</span>',

@@ -1,4 +1,12 @@
-<x-layouts.app title="Contact" description="Tell Impact Waves about your goals and get a growth plan for paid social, PPC, CRO, TikTok or search feeds.">
+<x-layouts.app title="Contact Us: Get a Free Growth Plan" description="Contact Impact Waves Agency: tell us about your goals and get a free audit and growth plan for paid social, PPC, CRO, TikTok ads or search feed monetization.">
+    @push('schema')
+        {!! \App\Support\Seo::jsonLd([
+            "\x40type" => 'ContactPage',
+            'url' => \App\Support\Seo::url(route('contact')),
+            'about' => ["\x40id" => config('agency.site_url').'/#organization'],
+            'breadcrumb' => \App\Support\Seo::breadcrumbs([['Contact', route('contact')]]),
+        ]) !!}
+    @endpush
     <section class="relative isolate overflow-hidden pt-40 pb-24 sm:pt-48">
         @include('partials.caustics', ['tint' => true, 'fade' => 'radial-gradient(ellipse 70% 70% at 70% 10%, #000 15%, transparent 70%)'])
         <div class="absolute -top-48 left-1/3 -z-10 h-[560px] w-[900px] rounded-md bg-[radial-gradient(closest-side,rgb(45_212_191/.22),transparent)] blur-2xl"></div>

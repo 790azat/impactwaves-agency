@@ -6,11 +6,12 @@
                 "\x40type" => 'CollectionPage',
                 'name' => $section['title'],
                 'description' => $section['meta_description'],
-                'url' => route('section', $key),
+                'url' => \App\Support\Seo::url(route('section', $key)),
+                'breadcrumb' => \App\Support\Seo::breadcrumbs([[$section['title'], route('section', $key)]]),
                 'hasPart' => $articles->map(fn ($a) => [
                     "\x40type" => $key === 'news' ? 'NewsArticle' : 'Article',
                     'headline' => $a['title'],
-                    'url' => route('article', [$a['section'], $a['slug']]),
+                    'url' => \App\Support\Seo::url(route('article', [$a['section'], $a['slug']])),
                     'datePublished' => $a['date']->toDateString(),
                 ])->all(),
             ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}

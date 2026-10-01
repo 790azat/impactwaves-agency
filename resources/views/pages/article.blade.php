@@ -1,6 +1,6 @@
 @php
-    $url = route('article', [$article['section'], $article['slug']]);
-    $sectionUrl = route('section', $article['section']);
+    $url = \App\Support\Seo::url(route('article', [$article['section'], $article['slug']]));
+    $sectionUrl = \App\Support\Seo::url(route('section', $article['section']));
 @endphp
 <x-layouts.app :title="$article['title']" :description="$article['description']" type="article" :keywords="$article['keywords']">
     @push('schema')

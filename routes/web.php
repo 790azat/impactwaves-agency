@@ -9,6 +9,7 @@ use App\Http\Controllers\TelegramWebhookController;
 use App\Http\Middleware\EnsureAdmin;
 use App\Models\Vacancy;
 use App\Support\Articles;
+use App\Support\Seo;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.home')->name('home');
@@ -128,15 +129,20 @@ Route::get('/sitemap.xml', function () {
         ->merge(Vacancy::open()->map(fn ($v) => route('careers.show', $v->slug)))
         ->merge(collect(config('agency.services'))->keys()->map(fn ($slug) => route('services.show', $slug)))
         ->merge(collect(config('agency.sections'))->keys()->map(fn ($key) => route('section', $key)))
-        ->map(fn ($url) => ['loc' => $url, 'lastmod' => null])
+        ->map(fn ($url) => ['loc' => $url, 'lastmod' => null, 'priority' => match (true) {
+            $url === route('home') => '1.0',
+            str_contains($url, '/services') => '0.9',
+            default => '0.7',
+        }])
         ->merge(Articles::all()->map(fn ($a) => [
             'loc' => route('article', [$a['section'], $a['slug']]),
             'lastmod' => ($a['updated'] ?? $a['date'])->toDateString(),
+            'priority' => '0.6',
         ]));
 
     $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
     foreach ($urls as $url) {
-        $xml .= '<url><loc>'.e($url['loc']).'</loc>'.($url['lastmod'] ? '<lastmod>'.$url['lastmod'].'</lastmod>' : '').'</url>';
+        $xml .= '<url><loc>'.e(Seo::url($url['loc'])).'</loc>'.($url['lastmod'] ? '<lastmod>'.$url['lastmod'].'</lastmod>' : '').'<priority>'.$url['priority'].'</priority></url>';
     }
     $xml .= '</urlset>';
 
@@ -145,10 +151,10 @@ Route::get('/sitemap.xml', function () {
 
 Route::get('/feed.xml', function () {
     $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<rss version="2.0"><channel>'
-        .'<title>'.e(config('agency.legal_name')).'</title><link>'.e(route('home')).'</link>'
+        .'<title>'.e(config('agency.legal_name')).'</title><link>'.e(config('agency.site_url').'/').'</link>'
         .'<description>'.e(config('agency.description')).'</description>';
     foreach (Articles::all() as $a) {
-        $url = route('article', [$a['section'], $a['slug']]);
+        $url = Seo::url(route('article', [$a['section'], $a['slug']]));
         $xml .= '<item><title>'.e($a['title']).'</title><link>'.e($url).'</link><guid>'.e($url).'</guid>'
             .'<pubDate>'.$a['date']->toRssString().'</pubDate><description>'.e($a['description']).'</description></item>';
     }
@@ -156,3 +162,12 @@ Route::get('/feed.xml', function () {
 
     return response($xml, 200, ['Content-Type' => 'application/rss+xml']);
 })->name('feed');
+
+// Only the public domain is crawlable; vercel.app and preview hosts are not.
+Route::get('/robots.txt', function () {
+    $body = Seo::onPublicHost()
+        ? "User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /account\nDisallow: /login\nDisallow: /register\nDisallow: /forgot-password\nDisallow: /reset-password\nDisallow: /livewire\n\nSitemap: ".config('agency.site_url')."/sitemap.xml\n"
+        : "User-agent: *\nDisallow: /\n";
+
+    return response($body, 200, ['Content-Type' => 'text/plain']);
+})->name('robots');

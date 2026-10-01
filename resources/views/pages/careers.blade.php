@@ -1,4 +1,12 @@
 <x-layouts.app title="Careers: Media Buying, Design and Tech Jobs" description="Join Impact Waves Agency: open positions for media buyers, designers, tracking specialists and developers in a performance marketing team.">
+    @push('schema')
+        {!! \App\Support\Seo::jsonLd([
+            "\x40type" => 'CollectionPage',
+            'name' => 'Careers at '.config('agency.legal_name'),
+            'url' => \App\Support\Seo::url(route('careers')),
+            'breadcrumb' => \App\Support\Seo::breadcrumbs([['Careers', route('careers')]]),
+        ]) !!}
+    @endpush
     @include('partials.page-hero', [
         'eyebrow' => 'Careers',
         'title' => 'Build campaigns that <span class="text-gradient">make waves</span>',

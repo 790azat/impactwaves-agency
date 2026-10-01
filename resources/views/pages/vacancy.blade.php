@@ -14,12 +14,15 @@
                 'description' => $vacancy->html(),
                 'datePosted' => $vacancy->created_at->toDateString(),
                 'employmentType' => $types[$vacancy->employment_type] ?? null,
-                'hiringOrganization' => ["\x40type" => 'Organization', 'name' => config('agency.legal_name'), 'sameAs' => route('home'), 'logo' => url('/logo.png')],
+                'hiringOrganization' => ["\x40type" => 'Organization', 'name' => config('agency.legal_name'), 'sameAs' => config('agency.site_url'), 'logo' => config('agency.site_url').'/logo.png'],
                 'jobLocationType' => $remote ? 'TELECOMMUTE' : null,
                 'jobLocation' => ! $remote && ($vacancy->location || $place) ? ["\x40type" => 'Place', 'address' => ["\x40type" => 'PostalAddress', 'addressLocality' => $vacancy->location ?: $place]] : null,
                 'occupationalCategory' => $vacancy->departmentTitle(),
+                'url' => \App\Support\Seo::url(route('careers.show', $vacancy->slug)),
+                'directApply' => false,
             ]), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
         </script>
+        {!! \App\Support\Seo::jsonLd(\App\Support\Seo::breadcrumbs([['Careers', route('careers')], [$vacancy->title, route('careers.show', $vacancy->slug)]])) !!}
     @endpush
 
     <article>
