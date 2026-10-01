@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\TelegramWebhookController;
 use App\Http\Middleware\EnsureAdmin;
 use App\Support\Articles;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,8 @@ Route::view('/about', 'pages.about')->name('about');
 Route::redirect('/expertise', '/about', 301);
 
 Route::view('/contact', 'pages.contact')->name('contact');
+
+Route::post('/telegram/webhook', TelegramWebhookController::class)->name('telegram.webhook');
 
 Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisterController::class, 'create'])->name('register');
@@ -60,6 +63,12 @@ Route::middleware(['auth', EnsureAdmin::class])->prefix('admin')->name('admin.')
     Route::get('/users', [Admin\UserController::class, 'index'])->name('users.index');
     Route::put('/users/{user}', [Admin\UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [Admin\UserController::class, 'destroy'])->name('users.destroy');
+
+    Route::get('/chats', [Admin\ChatController::class, 'index'])->name('chats.index');
+    Route::post('/chats/telegram', [Admin\ChatController::class, 'connect'])->name('chats.connect');
+    Route::get('/chats/{conversation}', [Admin\ChatController::class, 'show'])->name('chats.show');
+    Route::post('/chats/{conversation}', [Admin\ChatController::class, 'reply'])->name('chats.reply');
+    Route::delete('/chats/{conversation}', [Admin\ChatController::class, 'destroy'])->name('chats.destroy');
 
     Route::get('/articles', [Admin\ArticleController::class, 'index'])->name('articles.index');
     Route::get('/articles/create', [Admin\ArticleController::class, 'create'])->name('articles.create');

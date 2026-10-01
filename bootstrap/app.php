@@ -14,6 +14,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         // Vercel and other edge proxies terminate TLS in front of the app.
         $middleware->trustProxies(at: '*');
+
+        // Telegram posts updates without a CSRF token; the webhook checks its own secret.
+        $middleware->validateCsrfTokens(except: ['telegram/webhook']);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

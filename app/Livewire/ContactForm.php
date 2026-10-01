@@ -3,8 +3,8 @@
 namespace App\Livewire;
 
 use App\Models\Lead;
+use App\Support\Telegram;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
@@ -162,15 +162,7 @@ class ContactForm extends Component
 
     private function notifyTelegram(string $text): void
     {
-        $token = config('services.telegram.bot_token');
-        $chat = config('services.telegram.chat_id');
-
-        if ($token && $chat) {
-            Http::timeout(5)->post("https://api.telegram.org/bot{$token}/sendMessage", [
-                'chat_id' => $chat,
-                'text' => "New lead from impactwaves.agency\n\n".$text,
-            ])->throw();
-        }
+        Telegram::notify("New lead from impactwaves.agency\n\n".$text);
     }
 
     public function render()

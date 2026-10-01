@@ -58,6 +58,9 @@
     </main>
 
     @include('partials.footer')
+    @persist('chat')
+        <livewire:chat-widget defer />
+    @endpersist
     @livewireScripts
 </body>
 </html>

@@ -3,10 +3,14 @@
     $nav = [
         ['label' => 'Dashboard', 'icon' => 'chart', 'route' => 'admin.dashboard', 'match' => 'admin.dashboard'],
         ['label' => 'Leads', 'icon' => 'inbox', 'route' => 'admin.leads.index', 'match' => 'admin.leads.*'],
+        ['label' => 'Chats', 'icon' => 'chat', 'route' => 'admin.chats.index', 'match' => 'admin.chats.*'],
         ['label' => 'Users', 'icon' => 'users', 'route' => 'admin.users.index', 'match' => 'admin.users.*'],
         ['label' => 'Articles', 'icon' => 'newspaper', 'route' => 'admin.articles.index', 'match' => 'admin.articles.*'],
     ];
-    $newLeads = \App\Models\Lead::where('status', 'new')->count();
+    $badges = [
+        'Leads' => \App\Models\Lead::where('status', 'new')->count(),
+        'Chats' => \App\Models\ChatConversation::where(fn ($q) => $q->whereNull('admin_read_at')->orWhereColumn('admin_read_at', '<', 'last_message_at'))->count(),
+    ];
 @endphp
 <!DOCTYPE html>
 <html lang="en" class="bg-white">
@@ -36,8 +40,8 @@
                     ])>
                         <x-icon :name="$item['icon']" class="size-5 text-ocean-500" />
                         {{ $item['label'] }}
-                        @if ($item['label'] === 'Leads' && $newLeads)
-                            <span class="ml-auto rounded-md bg-ocean-600 px-1.5 text-xs font-semibold text-white">{{ $newLeads }}</span>
+                        @if ($badges[$item['label']] ?? 0)
+                            <span class="ml-auto rounded-md bg-ocean-600 px-1.5 text-xs font-semibold text-white">{{ $badges[$item['label']] }}</span>
                         @endif
                     </a>
                 @endforeach
