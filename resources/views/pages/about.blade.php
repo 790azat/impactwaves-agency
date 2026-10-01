@@ -21,6 +21,33 @@
         </div>
     </section>
 
+    <section class="py-24" id="team">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6">
+            <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+                <x-section-heading eyebrow="Our team" title="Specialists for every part of the funnel">
+                    Every campaign is run by an in-house team: media buyers work side by side with designers, tech specialists and developers, so creatives, tracking and landing pages never wait on an outside contractor.
+                </x-section-heading>
+                @if ($place = \App\Support\Company::place())
+                    @php $location = \App\Support\Company::location(); @endphp
+                    <div class="glass shrink-0 rounded-2xl p-6 lg:max-w-xs" data-reveal>
+                        <p class="flex items-center gap-2 text-xs font-semibold tracking-[.12em] text-slate-500 uppercase"><x-icon name="map-pin" class="size-4 text-ocean-600" /> Headquarters</p>
+                        <p class="mt-3 font-display text-2xl font-semibold text-ocean-950">{{ $place }}</p>
+                        @if ($location['address'])<p class="mt-1 text-sm text-slate-600">{{ $location['address'] }}</p>@endif
+                        @if ($location['note'])<p class="mt-3 text-sm leading-relaxed text-slate-600">{{ $location['note'] }}</p>@endif
+                    </div>
+                @endif
+            </div>
+            <div class="mt-14">@include('partials.team')</div>
+            <div class="mt-10 flex flex-col gap-4 rounded-2xl border border-ocean-100 bg-ocean-50 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8" data-reveal>
+                <div>
+                    <h3 class="font-display text-xl font-semibold text-ocean-950">Want to join us?</h3>
+                    <p class="mt-1 text-slate-600">We are growing and looking for media buyers, designers and engineers.</p>
+                </div>
+                <a href="{{ route('careers') }}" wire:navigate class="btn btn-primary shrink-0"><x-icon name="briefcase" class="size-4" /> Open positions</a>
+            </div>
+        </div>
+    </section>
+
     <section class="py-24">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
             <x-section-heading eyebrow="Principles" title="What working with us feels like" />

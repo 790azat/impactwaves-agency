@@ -6,6 +6,8 @@
         ['label' => 'Chats', 'icon' => 'chat', 'route' => 'admin.chats.index', 'match' => 'admin.chats.*'],
         ['label' => 'Users', 'icon' => 'users', 'route' => 'admin.users.index', 'match' => 'admin.users.*'],
         ['label' => 'Articles', 'icon' => 'newspaper', 'route' => 'admin.articles.index', 'match' => 'admin.articles.*'],
+        ['label' => 'Vacancies', 'icon' => 'briefcase', 'route' => 'admin.vacancies.index', 'match' => 'admin.vacancies.*'],
+        ['label' => 'Company', 'icon' => 'map-pin', 'route' => 'admin.company.edit', 'match' => 'admin.company.*'],
     ];
     $badges = [
         'Leads' => \App\Models\Lead::where('status', 'new')->count(),

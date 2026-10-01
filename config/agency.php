@@ -11,6 +11,22 @@ return [
     'email' => env('AGENCY_EMAIL', 'hello@impactwaves.agency'),
     'linkedin' => 'https://www.linkedin.com/company/impact-waves-agency/',
 
+    // Where job applications go. Override with CAREERS_EMAIL on Vercel.
+    'careers_email' => env('CAREERS_EMAIL', env('AGENCY_EMAIL', 'hello@impactwaves.agency')),
+
+    // Teams shown on About and Careers. Head counts and the company location
+    // are edited in Admin → Company (App\Support\Company).
+    'departments' => [
+        'media-buying' => ['title' => 'Media Buying', 'icon' => 'megaphone', 'text' => 'Launches, tests and scales campaigns on TikTok, Meta, Google and native every day.'],
+        'design' => ['title' => 'Design & Creative', 'icon' => 'sparkles', 'text' => 'Ad creatives, video, landing pages and the visual side of every test.'],
+        'tech' => ['title' => 'Tech & Tracking', 'icon' => 'cursor', 'text' => 'Tracking, pixels and CAPI, ad account infrastructure, domains and integrations with feed partners.'],
+        'development' => ['title' => 'Development', 'icon' => 'code', 'text' => 'In-house engineers building landing pages, internal tools, automation and reporting.'],
+        'partnerships' => ['title' => 'Partnerships & Support', 'icon' => 'lifebuoy', 'text' => 'Account managers who onboard clients and traffic providers and stay their single point of contact.'],
+        'recruiting' => ['title' => 'Recruiting & HR', 'icon' => 'users', 'text' => 'Finds and onboards media buyers, designers and engineers as the team grows.'],
+    ],
+
+    'employment_types' => ['Full-time', 'Part-time', 'Contract', 'Internship'],
+
     'markets' => [
         ['code' => 'US', 'name' => 'United States'],
         ['code' => 'EU', 'name' => 'European Union'],

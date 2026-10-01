@@ -4,6 +4,9 @@
             <div class="lg:col-span-5">
                 <x-logo class="h-8 w-auto" />
                 <p class="mt-5 max-w-sm leading-relaxed text-slate-600">{{ config('agency.tagline') }} Data-driven performance marketing for brands and media buyers across the US, EU and Canada.</p>
+                @if ($place = \App\Support\Company::place())
+                    <p class="mt-4 flex items-center gap-2 text-sm text-slate-600"><x-icon name="map-pin" class="size-4 text-ocean-600" /> Headquartered in {{ $place }}</p>
+                @endif
                 <div class="mt-6 flex flex-wrap gap-3">
                     <a href="mailto:{{ config('agency.email') }}" class="btn btn-ghost !px-4 !py-2.5"><x-icon name="mail" class="size-4" /> {{ config('agency.email') }}</a>
                     <a href="{{ config('agency.linkedin') }}" target="_blank" rel="noopener" class="btn btn-ghost !px-4 !py-2.5" aria-label="LinkedIn">
@@ -28,6 +31,7 @@
                         @foreach (config('agency.sections') as $key => $section)
                             <li><a href="{{ route('section', $key) }}" wire:navigate class="text-slate-600 transition hover:text-ocean-950">{{ $section['title'] }}</a></li>
                         @endforeach
+                        <li><a href="{{ route('careers') }}" wire:navigate class="text-slate-600 transition hover:text-ocean-950">Careers</a></li>
                         <li><a href="{{ route('home') }}#partners" class="text-slate-600 transition hover:text-ocean-950">Partners</a></li>
                         <li><a href="{{ route('home') }}#calculator" class="text-slate-600 transition hover:text-ocean-950">ROI calculator</a></li>
                         <li><a href="{{ route('contact') }}" wire:navigate class="text-slate-600 transition hover:text-ocean-950">Contact</a></li>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\TelegramWebhookController;
 use App\Http\Middleware\EnsureAdmin;
+use App\Models\Vacancy;
 use App\Support\Articles;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,18 @@ Route::view('/about', 'pages.about')->name('about');
 Route::redirect('/expertise', '/about', 301);
 
 Route::view('/contact', 'pages.contact')->name('contact');
+
+Route::get('/careers', fn () => view('pages.careers', ['vacancies' => Vacancy::open()]))->name('careers');
+
+Route::get('/careers/{slug}', function (string $slug) {
+    $vacancy = Vacancy::open()->firstWhere('slug', $slug);
+    abort_unless($vacancy, 404);
+
+    return view('pages.vacancy', [
+        'vacancy' => $vacancy,
+        'others' => Vacancy::open()->where('id', '!=', $vacancy->id)->take(3),
+    ]);
+})->where('slug', '[a-z0-9-]+')->name('careers.show');
 
 Route::post('/telegram/webhook', TelegramWebhookController::class)->name('telegram.webhook');
 
@@ -76,6 +89,11 @@ Route::middleware(['auth', EnsureAdmin::class])->prefix('admin')->name('admin.')
     Route::get('/articles/{section}/{slug}', [Admin\ArticleController::class, 'edit'])->name('articles.edit');
     Route::put('/articles/{section}/{slug}', [Admin\ArticleController::class, 'update'])->name('articles.update');
     Route::delete('/articles/{section}/{slug}', [Admin\ArticleController::class, 'destroy'])->name('articles.destroy');
+
+    Route::resource('vacancies', Admin\VacancyController::class)->except('show');
+
+    Route::get('/company', [Admin\CompanyController::class, 'edit'])->name('company.edit');
+    Route::put('/company', [Admin\CompanyController::class, 'update'])->name('company.update');
 });
 
 $sections = array_keys(config('agency.sections'));
@@ -101,7 +119,8 @@ Route::get('/{section}/{slug}', function (string $section, string $slug) {
 })->whereIn('section', $sections)->where('slug', '[a-z0-9-]+')->name('article');
 
 Route::get('/sitemap.xml', function () {
-    $urls = collect([route('home'), route('services.index'), route('about'), route('contact')])
+    $urls = collect([route('home'), route('services.index'), route('about'), route('careers'), route('contact')])
+        ->merge(Vacancy::open()->map(fn ($v) => route('careers.show', $v->slug)))
         ->merge(collect(config('agency.services'))->keys()->map(fn ($slug) => route('services.show', $slug)))
         ->merge(collect(config('agency.sections'))->keys()->map(fn ($key) => route('section', $key)))
         ->map(fn ($url) => ['loc' => $url, 'lastmod' => null])

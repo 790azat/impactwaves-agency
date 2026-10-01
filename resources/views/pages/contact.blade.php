@@ -15,6 +15,10 @@
                 <div class="mt-12 space-y-3 border-t border-ocean-100 pt-8" data-reveal>
                     <a href="mailto:{{ config('agency.email') }}" class="flex items-center gap-3 text-ocean-950 hover:text-ocean-600"><x-icon name="mail" class="size-5 text-slate-600" /> {{ config('agency.email') }}</a>
                     <a href="{{ config('agency.linkedin') }}" target="_blank" rel="noopener" class="flex items-center gap-3 text-ocean-950 hover:text-ocean-600"><x-icon name="arrow-up-right" class="size-5 text-slate-600" /> LinkedIn: Impact Waves Agency</a>
+                    @if ($place = \App\Support\Company::place())
+                        @php $location = \App\Support\Company::location(); @endphp
+                        <p class="flex items-start gap-3 text-ocean-950"><x-icon name="map-pin" class="mt-0.5 size-5 shrink-0 text-slate-600" /> <span>{{ $location['address'] ? $location['address'].', ' : '' }}{{ $place }}@if ($location['note'])<span class="mt-1 block text-sm text-slate-500">{{ $location['note'] }}</span>@endif</span></p>
+                    @endif
                 </div>
             </div>
             <div class="lg:col-span-7" data-reveal style="--reveal-delay:120ms">
