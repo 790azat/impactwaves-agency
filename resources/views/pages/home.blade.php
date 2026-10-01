@@ -6,10 +6,9 @@
         <div class="mx-auto grid max-w-7xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-12">
             <div class="lg:col-span-7">
                 <p class="eyebrow" data-reveal>
-                    <span class="size-1.5 rounded-full bg-ocean-500"></span>
                     Official TikTok agency · US · EU · CA
                 </p>
-                <h1 class="mt-7 font-display text-5xl leading-[1.02] font-semibold tracking-tight text-ocean-950 text-balance sm:text-6xl lg:text-7xl xl:text-[5.4rem]" data-reveal style="--reveal-delay:80ms">
+                <h1 class="mt-7 font-display text-5xl leading-[1.02] font-semibold tracking-tight text-ocean-950 text-balance sm:text-6xl lg:text-7xl xl:text-[4.6rem]" data-reveal style="--reveal-delay:80ms">
                     Make waves.<br><span class="text-gradient">Measure impact.</span>
                 </h1>
                 <p class="mt-7 max-w-xl text-lg leading-relaxed text-slate-600 text-pretty sm:text-xl" data-reveal style="--reveal-delay:160ms">
@@ -28,7 +27,7 @@
 
             {{-- A window into the water: refracted sunlight and rising air. --}}
             <div class="relative mx-auto w-full max-w-[460px] lg:col-span-5" data-reveal style="--reveal-delay:200ms" aria-hidden="true">
-                <div class="water relative isolate aspect-[4/5] overflow-hidden rounded-[2rem] shadow-[0_40px_80px_-40px_rgb(7_42_61/.55)] ring-1 ring-ocean-900/10">
+                <div class="water relative isolate aspect-[4/5] overflow-hidden rounded-2xl shadow-[0_40px_80px_-40px_rgb(7_24_54/.45)] ring-1 ring-ocean-900/10">
                     @include('partials.caustics', ['fade' => 'linear-gradient(180deg, #000 0%, rgb(0 0 0 / .55) 45%, transparent 95%)', 'opacity' => .55])
                     <div class="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-ocean-950/35 to-transparent"></div>
                     @include('partials.bubbles', ['count' => 14, 'rise' => '640px'])
@@ -37,7 +36,7 @@
                             <p class="text-[11px] font-medium tracking-[.2em] text-white/70 uppercase">Official TikTok agency</p>
                             <p class="mt-1.5 font-display text-xl font-semibold">Paid social · PPC · CRO · Feeds</p>
                         </div>
-                        <x-logo-mark id="hero" class="h-7 w-10 shrink-0 opacity-90 [&_path]:stroke-white" />
+                        <x-logo-mark class="h-6 w-auto shrink-0 text-white opacity-90" />
                     </div>
                 </div>
             </div>
@@ -70,22 +69,22 @@
                 @foreach (config('agency.services') as $slug => $service)
                     <a href="{{ route('services.show', $slug) }}" wire:navigate data-reveal style="--reveal-delay: {{ $loop->index * 70 }}ms"
                        @class([
-                           'card-glow group glass relative flex flex-col overflow-hidden rounded-3xl p-8 transition duration-500 hover:-translate-y-1',
+                           'card-glow group glass relative flex flex-col overflow-hidden rounded-2xl p-8 transition duration-500 hover:-translate-y-1',
                            'lg:col-span-3 lg:min-h-80' => $loop->index < 2,
                            'lg:col-span-2' => $loop->index >= 2,
                        ])>
                         <div class="flex items-start justify-between">
-                            <span class="grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-cyan-400/20 to-teal-500/20 text-ocean-600 ring-1 ring-ocean-100">
+                            <span class="grid size-12 place-items-center rounded-xl bg-ocean-50 text-ocean-600 ring-1 ring-ocean-100">
                                 <x-icon :name="$service['icon']" class="size-6" />
                             </span>
                             <x-icon name="arrow-up-right" class="size-5 text-slate-500 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ocean-950" />
                         </div>
-                        <p class="mt-8 text-xs font-medium tracking-[.14em] text-cyan-700 uppercase">{{ $service['eyebrow'] }}</p>
+                        <p class="mt-8 text-xs font-medium tracking-[.14em] text-ocean-600 uppercase">{{ $service['eyebrow'] }}</p>
                         <h3 class="mt-2 font-display text-2xl font-semibold text-ocean-950">{{ $service['title'] }}</h3>
                         <p class="mt-3 leading-relaxed text-slate-600">{{ $service['short'] }}</p>
                         <div class="mt-auto flex flex-wrap gap-2 pt-7">
                             @foreach (array_slice($service['platforms'], 0, 4) as $platform)
-                                <span class="rounded-full border border-ocean-100 px-3 py-1 text-xs text-slate-700">{{ $platform }}</span>
+                                <span class="rounded-md border border-ocean-100 px-3 py-1 text-xs text-slate-700">{{ $platform }}</span>
                             @endforeach
                         </div>
                     </a>
@@ -97,9 +96,7 @@
     {{-- TIKTOK SPOTLIGHT --}}
     <section class="relative py-10">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
-            <div class="relative isolate overflow-hidden rounded-[2.5rem] border border-ocean-100 bg-ocean-50 px-6 py-16 sm:px-14 lg:py-20" data-reveal>
-                <div class="absolute -top-32 -right-24 -z-10 size-[460px] rounded-full bg-teal-500/25 blur-[110px]"></div>
-                <div class="absolute -bottom-40 -left-24 -z-10 size-[420px] rounded-full bg-cyan-400/20 blur-[110px]"></div>
+            <div class="relative isolate overflow-hidden rounded-2xl border border-ocean-100 bg-ocean-50 px-6 py-16 sm:px-14 lg:py-20" data-reveal>
                 <div class="grid items-center gap-14 lg:grid-cols-2">
                     <div>
                         <p class="eyebrow">Official TikTok agency</p>
@@ -118,7 +115,7 @@
                             ['bolt', 'Creative resources', 'Learning center, ad library and hands-on tutorials.'],
                         ] as [$icon, $title, $text])
                             <li class="glass rounded-2xl p-6">
-                                <x-icon :name="$icon" class="size-6 text-teal-600" />
+                                <x-icon :name="$icon" class="size-6 text-ocean-700" />
                                 <h3 class="mt-4 font-semibold text-ocean-950">{{ $title }}</h3>
                                 <p class="mt-1.5 text-sm leading-relaxed text-slate-600">{{ $text }}</p>
                             </li>
@@ -146,10 +143,10 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
             <x-section-heading eyebrow="How we work" title="From audit to scale in four clear steps" />
             <ol class="relative mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                <div class="absolute top-7 right-8 left-8 hidden h-px bg-gradient-to-r from-cyan-400/60 via-ocean-500/60 to-teal-500/60 lg:block"></div>
+                <div class="absolute top-7 right-8 left-8 hidden h-px bg-ocean-200 lg:block"></div>
                 @foreach (config('agency.process') as $step)
                     <li class="relative" data-reveal style="--reveal-delay: {{ $loop->index * 90 }}ms">
-                        <span class="relative grid size-14 place-items-center rounded-2xl border border-ocean-100 bg-white font-display text-lg font-semibold text-ocean-950 shadow-lg shadow-ocean-500/10">
+                        <span class="relative grid size-14 place-items-center rounded-xl border border-ocean-100 bg-white font-display text-lg font-semibold text-ocean-950 shadow-lg shadow-ocean-500/10">
                             0{{ $loop->iteration }}
                         </span>
                         <h3 class="mt-6 font-display text-xl font-semibold text-ocean-950">{{ $step['title'] }}</h3>
@@ -164,10 +161,10 @@
     <section class="relative py-28">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
             <x-section-heading eyebrow="Why Impact Waves" title="Communication, transparency and strategy. <span class='text-slate-500'>Every day.</span>" />
-            <div class="mt-16 grid gap-px overflow-hidden rounded-3xl border border-ocean-100 bg-ocean-100 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="mt-16 grid gap-px overflow-hidden rounded-2xl border border-ocean-100 bg-ocean-100 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach (config('agency.values') as $value)
                     <div class="group bg-white p-8 transition hover:bg-ocean-50" data-reveal style="--reveal-delay: {{ $loop->index * 60 }}ms">
-                        <x-icon :name="$value['icon']" class="size-7 text-cyan-600 transition group-hover:text-teal-600" />
+                        <x-icon :name="$value['icon']" class="size-7 text-ocean-600 transition group-hover:text-ocean-700" />
                         <h3 class="mt-5 font-display text-xl font-semibold text-ocean-950">{{ $value['title'] }}</h3>
                         <p class="mt-2 leading-relaxed text-slate-600">{{ $value['text'] }}</p>
                     </div>
@@ -179,12 +176,12 @@
     {{-- FEED PARTNERS --}}
     <section class="relative py-10">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
-            <div class="grid items-center gap-10 rounded-[2rem] border border-ocean-100 bg-gradient-to-br from-ocean-50/60 to-white p-8 sm:p-12 lg:grid-cols-5" data-reveal>
+            <div class="grid items-center gap-10 rounded-2xl border border-ocean-100 bg-gradient-to-br from-ocean-50/60 to-white p-8 sm:p-12 lg:grid-cols-5" data-reveal>
                 <div class="lg:col-span-2">
                     <p class="eyebrow">Our partners</p>
                     <h2 class="mt-5 font-display text-3xl font-semibold tracking-tight text-ocean-950 sm:text-4xl">Tier-1 feed providers</h2>
                     <p class="mt-4 leading-relaxed text-slate-600">Monetize your traffic through established search feed partners, with our team helping you onboard and grow.</p>
-                    <a href="{{ route('services.show', 'search-feeds') }}" wire:navigate class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-600 hover:text-ocean-950">Search Feed Monetization <x-icon name="arrow" class="size-4" /></a>
+                    <a href="{{ route('services.show', 'search-feeds') }}" wire:navigate class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ocean-600 hover:text-ocean-950">Search Feed Monetization <x-icon name="arrow" class="size-4" /></a>
                 </div>
                 <div class="grid grid-cols-2 gap-4 lg:col-span-3">
                     @foreach (config('agency.feed_partners') as $partner)
@@ -206,8 +203,8 @@
             <div class="mt-12 grid gap-5 md:grid-cols-2">
                 @foreach (['guides', 'traffic-providers'] as $key)
                     @php $s = config('agency.sections')[$key]; @endphp
-                    <a href="{{ route('section', $key) }}" wire:navigate class="card-glow group relative overflow-hidden rounded-[2rem] border border-ocean-100 bg-ocean-50 p-8 transition duration-300 hover:-translate-y-1 sm:p-10" data-reveal style="--reveal-delay: {{ $loop->index * 80 }}ms">
-                        <span class="grid size-12 place-items-center rounded-2xl bg-brand text-white"><x-icon :name="$s['icon']" class="size-6" /></span>
+                    <a href="{{ route('section', $key) }}" wire:navigate class="card-glow group relative overflow-hidden rounded-2xl border border-ocean-100 bg-ocean-50 p-8 transition duration-300 hover:-translate-y-1 sm:p-10" data-reveal style="--reveal-delay: {{ $loop->index * 80 }}ms">
+                        <span class="grid size-12 place-items-center rounded-xl bg-brand text-white"><x-icon :name="$s['icon']" class="size-6" /></span>
                         <p class="mt-6 text-sm font-medium tracking-[.12em] text-ocean-600 uppercase">{{ $s['audience'] }}</p>
                         <h3 class="mt-2 font-display text-3xl font-semibold text-ocean-950">{{ $s['title'] }}</h3>
                         <p class="mt-3 max-w-md leading-relaxed text-slate-600">{{ $s['lead'] }}</p>

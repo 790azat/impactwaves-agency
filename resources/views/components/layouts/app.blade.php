@@ -16,7 +16,7 @@
         <meta name="keywords" content="{{ implode(', ', $keywords) }}">
     @endif
     <link rel="alternate" type="application/rss+xml" title="{{ $siteName }}" href="{{ route('feed') }}">
-    <meta name="theme-color" content="#e3f6fb">
+    <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="{{ url()->current() }}">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -45,7 +45,7 @@
     @livewireStyles
 </head>
 <body class="min-h-dvh overflow-x-clip">
-    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-ocean-950">Skip to content</a>
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-ocean-950">Skip to content</a>
 
     @include('partials.header')
 

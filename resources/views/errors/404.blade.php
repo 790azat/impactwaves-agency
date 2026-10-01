@@ -2,7 +2,7 @@
     <section class="relative isolate grid min-h-[80vh] place-items-center overflow-hidden px-4 pt-32 text-center">
         @include('partials.caustics', ['tint' => true, 'fade' => 'radial-gradient(ellipse 70% 70% at 70% 10%, #000 15%, transparent 70%)'])
         <div>
-            <x-logo-mark id="nf" class="mx-auto size-20" />
+            <x-logo-mark class="mx-auto h-14 w-auto text-[#0B5EB5]" />
             <p class="mt-8 font-display text-8xl font-semibold text-gradient">404</p>
             <h1 class="mt-4 font-display text-3xl font-semibold text-ocean-950">This wave didn't reach the shore</h1>
             <p class="mt-3 text-slate-600">The page you are looking for doesn't exist or has moved.</p>

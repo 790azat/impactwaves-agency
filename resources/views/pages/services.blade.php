@@ -9,14 +9,14 @@
         <div class="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6">
             @foreach (config('agency.services') as $slug => $service)
                 <a href="{{ route('services.show', $slug) }}" wire:navigate data-reveal
-                   class="card-glow group glass grid gap-8 rounded-3xl p-8 transition duration-500 hover:-translate-y-0.5 sm:p-10 lg:grid-cols-12 lg:items-center">
+                   class="card-glow group glass grid gap-8 rounded-2xl p-8 transition duration-500 hover:-translate-y-0.5 sm:p-10 lg:grid-cols-12 lg:items-center">
                     <div class="flex items-center gap-5 lg:col-span-5">
                         <span class="font-display text-sm text-slate-500">0{{ $loop->iteration }}</span>
-                        <span class="grid size-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-cyan-400/20 to-teal-500/20 text-ocean-600 ring-1 ring-ocean-100">
+                        <span class="grid size-14 shrink-0 place-items-center rounded-xl bg-ocean-50 text-ocean-600 ring-1 ring-ocean-100">
                             <x-icon :name="$service['icon']" class="size-7" />
                         </span>
                         <div>
-                            <p class="text-xs font-medium tracking-[.14em] text-cyan-700 uppercase">{{ $service['eyebrow'] }}</p>
+                            <p class="text-xs font-medium tracking-[.14em] text-ocean-600 uppercase">{{ $service['eyebrow'] }}</p>
                             <h2 class="mt-1 font-display text-2xl font-semibold text-ocean-950 sm:text-3xl">{{ $service['title'] }}</h2>
                         </div>
                     </div>

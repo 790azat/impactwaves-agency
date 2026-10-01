@@ -31,8 +31,8 @@
                     ['eye', 'Traffic quality first', 'We review your sources and setup before launch, so your account starts healthy and stays that way.'],
                     ['chart', 'Transparent reporting', 'Clear numbers on searches, clicks and revenue across feeds, so you always know where the margin is.'],
                 ] as [$icon, $title, $text])
-                    <div class="glass rounded-3xl p-7" data-reveal style="--reveal-delay: {{ $loop->index * 80 }}ms">
-                        <x-icon :name="$icon" class="size-7 text-cyan-600" />
+                    <div class="glass rounded-2xl p-7" data-reveal style="--reveal-delay: {{ $loop->index * 80 }}ms">
+                        <x-icon :name="$icon" class="size-7 text-ocean-600" />
                         <h2 class="mt-5 font-display text-xl font-semibold text-ocean-950">{{ $title }}</h2>
                         <p class="mt-2 leading-relaxed text-slate-600">{{ $text }}</p>
                     </div>
@@ -52,7 +52,7 @@
                 <nav class="flex flex-wrap gap-2" aria-label="Sections" data-reveal>
                     @foreach (config('agency.sections') as $k => $s)
                         <a href="{{ route('section', $k) }}" wire:navigate @class([
-                            'inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition',
+                            'inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium transition',
                             'border-ocean-200 bg-ocean-50 text-ocean-700' => $k === $key,
                             'border-ocean-100 text-slate-600 hover:border-ocean-200 hover:text-ocean-950' => $k !== $key,
                         ])><x-icon :name="$s['icon']" class="size-4" /> {{ $s['nav'] }}</a>

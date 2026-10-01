@@ -2,7 +2,7 @@
     <div class="mx-auto max-w-7xl px-4 pt-10 pb-14 sm:px-6">
         <div class="grid gap-12 lg:grid-cols-12">
             <div class="lg:col-span-5">
-                <x-logo id="ftr" />
+                <x-logo class="h-8 w-auto" />
                 <p class="mt-5 max-w-sm leading-relaxed text-slate-600">{{ config('agency.tagline') }} Data-driven performance marketing for brands and media buyers across the US, EU and Canada.</p>
                 <div class="mt-6 flex flex-wrap gap-3">
                     <a href="mailto:{{ config('agency.email') }}" class="btn btn-ghost !px-4 !py-2.5"><x-icon name="mail" class="size-4" /> {{ config('agency.email') }}</a>
@@ -37,7 +37,7 @@
                     <h3 class="text-sm font-semibold text-ocean-950">Markets</h3>
                     <ul class="mt-4 space-y-3 text-sm">
                         @foreach (config('agency.markets') as $market)
-                            <li class="flex items-center gap-2 text-slate-600"><span class="rounded-md bg-ocean-50 px-1.5 py-0.5 font-mono text-[11px] text-cyan-600">{{ $market['code'] }}</span>{{ $market['name'] }}</li>
+                            <li class="flex items-center gap-2 text-slate-600"><span class="rounded-md bg-ocean-50 px-1.5 py-0.5 font-mono text-[11px] text-ocean-600">{{ $market['code'] }}</span>{{ $market['name'] }}</li>
                         @endforeach
                     </ul>
                 </div>

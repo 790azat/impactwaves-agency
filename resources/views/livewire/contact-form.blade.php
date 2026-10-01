@@ -1,9 +1,9 @@
-<div class="glass relative overflow-hidden rounded-[2rem] p-6 shadow-2xl shadow-ocean-900/10 sm:p-10">
+<div class="glass relative overflow-hidden rounded-2xl p-6 shadow-2xl shadow-ocean-900/10 sm:p-10">
     <div class="absolute -top-24 -right-24 size-64 rounded-full bg-ocean-500/20 blur-3xl"></div>
 
     @if ($sent)
         <div class="relative py-16 text-center" x-data x-init="$el.scrollIntoView({ behavior: 'smooth', block: 'center' })">
-            <div class="mx-auto grid size-20 place-items-center rounded-full bg-brand shadow-[0_20px_60px_-10px_rgb(8_150_181/.8)]">
+            <div class="mx-auto grid size-20 place-items-center rounded-full bg-brand shadow-lg">
                 <x-icon name="check" class="size-10 text-white" />
             </div>
             <h2 class="mt-8 font-display text-3xl font-semibold text-ocean-950">Thanks, message received</h2>
@@ -51,7 +51,7 @@
                     @foreach ($serviceOptions as $slug => $service)
                         <label wire:key="svc-{{ $slug }}" class="cursor-pointer">
                             <input type="checkbox" value="{{ $slug }}" wire:model.live="services" class="peer sr-only">
-                            <span class="inline-flex items-center gap-2 rounded-full border border-ocean-100 px-4 py-2.5 text-sm text-slate-700 transition select-none hover:border-ocean-200 peer-checked:border-transparent peer-checked:bg-brand peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-cyan-300">
+                            <span class="inline-flex items-center gap-2 rounded-md border border-ocean-100 px-4 py-2.5 text-sm text-slate-700 transition select-none hover:border-ocean-200 peer-checked:border-transparent peer-checked:bg-brand peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-ocean-300">
                                 <x-icon :name="$service['icon']" class="size-4" /> {{ $service['title'] }}
                             </span>
                         </label>

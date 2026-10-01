@@ -27,20 +27,40 @@
     "file": "assets/inter-vietnamese-wght-normal-CBcvBZtf.woff2",
     "src": "node_modules/@fontsource-variable/inter/files/inter-vietnamese-wght-normal.woff2"
   },
-  "node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-ext-wght-normal.woff2": {
-    "file": "assets/space-grotesk-latin-ext-wght-normal-D9tNdqV9.woff2",
-    "src": "node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-ext-wght-normal.woff2"
+  "node_modules/@fontsource/montserrat/files/montserrat-latin-300-normal.woff": {
+    "file": "assets/montserrat-latin-300-normal-sTRdVzlf.woff",
+    "src": "node_modules/@fontsource/montserrat/files/montserrat-latin-300-normal.woff"
   },
-  "node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2": {
-    "file": "assets/space-grotesk-latin-wght-normal-BhU9QXUp.woff2",
-    "src": "node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2"
+  "node_modules/@fontsource/montserrat/files/montserrat-latin-300-normal.woff2": {
+    "file": "assets/montserrat-latin-300-normal-BgP24wlQ.woff2",
+    "src": "node_modules/@fontsource/montserrat/files/montserrat-latin-300-normal.woff2"
   },
-  "node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-vietnamese-wght-normal.woff2": {
-    "file": "assets/space-grotesk-vietnamese-wght-normal-D0rl6rjA.woff2",
-    "src": "node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-vietnamese-wght-normal.woff2"
+  "node_modules/@fontsource/montserrat/files/montserrat-latin-600-normal.woff": {
+    "file": "assets/montserrat-latin-600-normal-CdhFl4lI.woff",
+    "src": "node_modules/@fontsource/montserrat/files/montserrat-latin-600-normal.woff"
+  },
+  "node_modules/@fontsource/montserrat/files/montserrat-latin-600-normal.woff2": {
+    "file": "assets/montserrat-latin-600-normal-UVxSCcoG.woff2",
+    "src": "node_modules/@fontsource/montserrat/files/montserrat-latin-600-normal.woff2"
+  },
+  "node_modules/@fontsource/montserrat/files/montserrat-latin-700-normal.woff": {
+    "file": "assets/montserrat-latin-700-normal-BWkrl476.woff",
+    "src": "node_modules/@fontsource/montserrat/files/montserrat-latin-700-normal.woff"
+  },
+  "node_modules/@fontsource/montserrat/files/montserrat-latin-700-normal.woff2": {
+    "file": "assets/montserrat-latin-700-normal-BdjcYUrC.woff2",
+    "src": "node_modules/@fontsource/montserrat/files/montserrat-latin-700-normal.woff2"
+  },
+  "node_modules/@fontsource/montserrat/files/montserrat-latin-800-normal.woff": {
+    "file": "assets/montserrat-latin-800-normal-C3dfDxXV.woff",
+    "src": "node_modules/@fontsource/montserrat/files/montserrat-latin-800-normal.woff"
+  },
+  "node_modules/@fontsource/montserrat/files/montserrat-latin-800-normal.woff2": {
+    "file": "assets/montserrat-latin-800-normal-axpkC1rd.woff2",
+    "src": "node_modules/@fontsource/montserrat/files/montserrat-latin-800-normal.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-DjRH4IVc.css",
+    "file": "assets/app-VgK8MJ3N.css",
     "name": "app",
     "names": [
       "app.css"
@@ -55,9 +75,14 @@
       "assets/inter-vietnamese-wght-normal-CBcvBZtf.woff2",
       "assets/inter-latin-ext-wght-normal-DO1Apj_S.woff2",
       "assets/inter-latin-wght-normal-Dx4kXJAl.woff2",
-      "assets/space-grotesk-vietnamese-wght-normal-D0rl6rjA.woff2",
-      "assets/space-grotesk-latin-ext-wght-normal-D9tNdqV9.woff2",
-      "assets/space-grotesk-latin-wght-normal-BhU9QXUp.woff2"
+      "assets/montserrat-latin-300-normal-BgP24wlQ.woff2",
+      "assets/montserrat-latin-300-normal-sTRdVzlf.woff",
+      "assets/montserrat-latin-600-normal-UVxSCcoG.woff2",
+      "assets/montserrat-latin-600-normal-CdhFl4lI.woff",
+      "assets/montserrat-latin-700-normal-BdjcYUrC.woff2",
+      "assets/montserrat-latin-700-normal-BWkrl476.woff",
+      "assets/montserrat-latin-800-normal-axpkC1rd.woff2",
+      "assets/montserrat-latin-800-normal-C3dfDxXV.woff"
     ]
   },
   "resources/js/app.js": {

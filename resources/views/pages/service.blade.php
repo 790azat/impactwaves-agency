@@ -9,7 +9,7 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
             <div class="flex flex-wrap items-center gap-3" data-reveal>
                 @foreach ($service['platforms'] as $platform)
-                    <span class="glass rounded-full px-4 py-2 text-sm text-ocean-950">{{ $platform }}</span>
+                    <span class="glass rounded-md px-4 py-2 text-sm text-ocean-950">{{ $platform }}</span>
                 @endforeach
             </div>
             <div class="mt-10 flex flex-wrap gap-4" data-reveal>
@@ -24,16 +24,16 @@
             <x-section-heading eyebrow="What's included" title="Built for results, <span class='text-gradient'>not reports</span>" />
             <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($service['features'] as $feature)
-                    <div class="card-glow glass rounded-3xl p-8" data-reveal style="--reveal-delay: {{ $loop->index * 70 }}ms">
+                    <div class="card-glow glass rounded-2xl p-8" data-reveal style="--reveal-delay: {{ $loop->index * 70 }}ms">
                         <span class="grid size-10 place-items-center rounded-xl bg-brand text-white"><x-icon name="check" class="size-5" /></span>
                         <h3 class="mt-6 font-display text-xl font-semibold text-ocean-950">{{ $feature['title'] }}</h3>
                         <p class="mt-2 leading-relaxed text-slate-600">{{ $feature['text'] }}</p>
                     </div>
                 @endforeach
-                <div class="flex flex-col justify-between rounded-3xl border border-dashed border-ocean-100 p-8" data-reveal>
+                <div class="flex flex-col justify-between rounded-2xl border border-dashed border-ocean-100 p-8" data-reveal>
                     <p class="font-display text-xl font-semibold text-ocean-950">Need something custom?</p>
                     <p class="mt-2 leading-relaxed text-slate-600">Tell us about your goals and we will shape the scope around them.</p>
-                    <a href="{{ route('contact') }}?service={{ $slug }}" wire:navigate class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-600 hover:text-ocean-950">Get in touch <x-icon name="arrow" class="size-4" /></a>
+                    <a href="{{ route('contact') }}?service={{ $slug }}" wire:navigate class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ocean-600 hover:text-ocean-950">Get in touch <x-icon name="arrow" class="size-4" /></a>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
             <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 @foreach ($others as $otherSlug => $other)
                     <a href="{{ route('services.show', $otherSlug) }}" wire:navigate class="card-glow group glass rounded-2xl p-6 transition hover:-translate-y-0.5" data-reveal>
-                        <x-icon :name="$other['icon']" class="size-6 text-cyan-600" />
+                        <x-icon :name="$other['icon']" class="size-6 text-ocean-600" />
                         <p class="mt-4 font-semibold text-ocean-950">{{ $other['title'] }}</p>
                         <span class="mt-3 inline-flex items-center gap-1 text-sm text-slate-600 group-hover:text-ocean-950">Learn more <x-icon name="arrow" class="size-3.5" /></span>
                     </a>

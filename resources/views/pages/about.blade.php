@@ -12,8 +12,8 @@
                 ['Convert', 'CRO and landing pages that turn more of that traffic into customers.', 'chart'],
                 ['Monetize', 'Tier-1 feed partnerships that turn traffic itself into revenue.', 'layers'],
             ] as [$title, $text, $icon])
-                <div class="glass rounded-3xl p-8" data-reveal style="--reveal-delay: {{ $loop->index * 80 }}ms">
-                    <x-icon :name="$icon" class="size-8 text-cyan-600" />
+                <div class="glass rounded-2xl p-8" data-reveal style="--reveal-delay: {{ $loop->index * 80 }}ms">
+                    <x-icon :name="$icon" class="size-8 text-ocean-600" />
                     <h2 class="mt-6 font-display text-3xl font-semibold text-ocean-950">{{ $title }}</h2>
                     <p class="mt-3 leading-relaxed text-slate-600">{{ $text }}</p>
                 </div>
@@ -27,7 +27,7 @@
             <div class="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach (config('agency.values') as $value)
                     <div data-reveal style="--reveal-delay: {{ $loop->index * 60 }}ms">
-                        <span class="grid size-12 place-items-center rounded-2xl border border-ocean-100 bg-ocean-50"><x-icon :name="$value['icon']" class="size-6 text-teal-600" /></span>
+                        <span class="grid size-12 place-items-center rounded-xl border border-ocean-100 bg-ocean-50"><x-icon :name="$value['icon']" class="size-6 text-ocean-700" /></span>
                         <h3 class="mt-5 font-display text-xl font-semibold text-ocean-950">{{ $value['title'] }}</h3>
                         <p class="mt-2 leading-relaxed text-slate-600">{{ $value['text'] }}</p>
                     </div>
@@ -38,7 +38,7 @@
 
     <section class="py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
-            <div class="grid gap-10 rounded-[2rem] border border-ocean-100 bg-ocean-50 p-8 sm:p-12 lg:grid-cols-2" data-reveal>
+            <div class="grid gap-10 rounded-2xl border border-ocean-100 bg-ocean-50 p-8 sm:p-12 lg:grid-cols-2" data-reveal>
                 <div>
                     <p class="eyebrow">Channels</p>
                     <h2 class="mt-5 font-display text-3xl font-semibold text-ocean-950 sm:text-4xl">Where we run campaigns</h2>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="flex flex-wrap content-center gap-3">
                     @foreach (array_merge(config('agency.platforms'), config('agency.feed_partners')) as $platform)
-                        <span class="glass rounded-full px-5 py-2.5 font-display text-ocean-950">{{ $platform }}</span>
+                        <span class="glass rounded-md px-5 py-2.5 font-display text-ocean-950">{{ $platform }}</span>
                     @endforeach
                 </div>
             </div>

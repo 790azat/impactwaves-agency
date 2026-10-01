@@ -1,7 +1,7 @@
 @props(['article'])
 @php $section = config('agency.sections')[$article['section']]; @endphp
 <a href="{{ route('article', [$article['section'], $article['slug']]) }}" wire:navigate
-   {{ $attributes->class('card-glow glass group flex h-full flex-col rounded-3xl p-7 transition duration-300 hover:-translate-y-1') }}>
+   {{ $attributes->class('card-glow glass group flex h-full flex-col rounded-2xl p-7 transition duration-300 hover:-translate-y-1') }}>
     <div class="flex items-center gap-2 text-xs font-medium tracking-[.12em] text-ocean-600 uppercase">
         <x-icon :name="$section['icon']" class="size-4" /> {{ $article['tag'] ?? $section['title'] }}
     </div>

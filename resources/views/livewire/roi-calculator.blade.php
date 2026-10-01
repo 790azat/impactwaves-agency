@@ -12,7 +12,7 @@
     ];
 @endphp
 <div class="grid gap-5 lg:grid-cols-12">
-    <div class="glass rounded-[2rem] p-6 sm:p-10 lg:col-span-7">
+    <div class="glass rounded-2xl p-6 sm:p-10 lg:col-span-7">
         <div class="grid gap-8">
             @foreach ($sliders as [$prop, $label, $min, $max, $step, $display])
                 <label class="grid gap-3" wire:key="slider-{{ $prop }}">
@@ -28,13 +28,11 @@
         <p class="mt-8 text-xs leading-relaxed text-slate-500">Estimates for illustration only. Real results depend on your market, offer, creative and tracking.</p>
     </div>
 
-    <div class="relative isolate overflow-hidden rounded-[2rem] border border-ocean-100 bg-ocean-50 p-6 sm:p-10 lg:col-span-5">
-        <div class="absolute -top-20 -right-20 -z-10 size-72 rounded-full bg-teal-500/25 blur-3xl"></div>
-        <div class="absolute -bottom-20 -left-20 -z-10 size-72 rounded-full bg-cyan-400/20 blur-3xl"></div>
+    <div class="relative isolate overflow-hidden rounded-2xl border border-ocean-100 bg-ocean-50 p-6 sm:p-10 lg:col-span-5">
 
         <div class="flex items-center justify-between">
             <p class="text-sm font-medium text-slate-600">Extra monthly revenue with CRO</p>
-            <span wire:loading.delay class="size-2 animate-pulse rounded-full bg-cyan-300"></span>
+            <span wire:loading.delay class="size-2 animate-pulse rounded-full bg-ocean-300"></span>
         </div>
         <p class="mt-2 font-display text-5xl font-semibold tracking-tight text-gradient tabular-nums sm:text-6xl">+{{ RoiCalculator::money($extra) }}</p>
 
@@ -56,7 +54,7 @@
         <div class="mt-8 space-y-4">
             @foreach ([
                 ['Ad spend', $budget, 'bg-slate-300'],
-                ['Revenue today', $cur['revenue'], 'bg-gradient-to-r from-cyan-400 to-ocean-500'],
+                ['Revenue today', $cur['revenue'], 'bg-ocean-400'],
                 ['Revenue with CRO', $opt['revenue'], 'bg-brand'],
             ] as [$label, $value, $color])
                 <div>

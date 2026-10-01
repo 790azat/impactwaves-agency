@@ -1,6 +1,6 @@
 <section class="relative pb-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
-        <div class="water relative isolate overflow-hidden rounded-[2.5rem] px-6 py-24 text-center sm:px-16" data-reveal>
+        <div class="water relative isolate overflow-hidden rounded-2xl px-6 py-24 text-center sm:px-16" data-reveal>
             @include('partials.caustics', ['fade' => 'linear-gradient(180deg, #000 0%, rgb(0 0 0 / .4) 50%, transparent 100%)', 'opacity' => .5])
             <div class="absolute inset-x-0 bottom-0 -z-10 h-2/3 bg-gradient-to-t from-ocean-950/40 to-transparent"></div>
             @include('partials.bubbles', ['count' => 14, 'rise' => '560px'])

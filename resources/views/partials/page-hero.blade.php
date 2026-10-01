@@ -1,7 +1,6 @@
 {{-- Expects: $eyebrow, $title, $lead --}}
 <section class="bg-sea relative isolate overflow-hidden border-b border-ocean-100 pt-40 pb-20 sm:pt-48 sm:pb-24">
     @include('partials.caustics', ['tint' => true, 'fade' => 'radial-gradient(ellipse 70% 80% at 80% 10%, #000 15%, transparent 70%)'])
-    <div class="absolute -top-48 left-1/2 -z-10 h-[560px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(8_150_181/.3),transparent)] blur-2xl"></div>
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
         <p class="eyebrow" data-reveal>{{ $eyebrow }}</p>
         <h1 class="mt-6 max-w-4xl font-display text-5xl leading-[1.05] font-semibold tracking-tight text-ocean-950 text-balance sm:text-6xl lg:text-7xl" data-reveal style="--reveal-delay:80ms">{!! $title !!}</h1>
