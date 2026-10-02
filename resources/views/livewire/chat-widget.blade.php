@@ -7,7 +7,7 @@
                          role="dialog" aria-label="Chat with Impact Waves">
                     <header class="flex items-center justify-between gap-3 bg-ocean-950 px-5 py-4 text-white">
                         <div class="flex items-center gap-3">
-                            <span class="grid size-9 place-items-center rounded-lg bg-white/10"><x-logo-mark class="h-4 w-auto text-[#4AA3F0]" /></span>
+                            <span class="grid size-9 place-items-center rounded-lg bg-white/10"><x-logo-mark class="h-4 w-auto text-[#3D97FF]" /></span>
                             <div>
                                 <p class="font-display text-sm font-semibold">Impact Waves team</p>
                                 <p class="flex items-center gap-1.5 text-xs text-ocean-200"><span class="size-1.5 rounded-full bg-emerald-400"></span> We usually reply within an hour</p>

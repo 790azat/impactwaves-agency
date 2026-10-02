@@ -27,7 +27,7 @@
 
     <article>
         <header class="bg-sea relative isolate overflow-hidden border-b border-ocean-100 pt-36 pb-16 sm:pt-44 sm:pb-20">
-            @include('partials.caustics', ['tint' => true, 'fade' => 'radial-gradient(ellipse 70% 80% at 80% 10%, #000 15%, transparent 70%)'])
+            @include('partials.silk')
             <div class="mx-auto max-w-6xl px-4 sm:px-6">
                 <nav aria-label="Breadcrumb" class="text-sm text-slate-500" data-reveal>
                     <ol class="flex flex-wrap items-center gap-2">

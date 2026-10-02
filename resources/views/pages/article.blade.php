@@ -42,7 +42,7 @@
 
     <article>
         <header class="bg-sea relative isolate overflow-hidden border-b border-ocean-100 pt-36 pb-16 sm:pt-44 sm:pb-20">
-            @include('partials.caustics', ['tint' => true, 'fade' => 'radial-gradient(ellipse 70% 80% at 80% 10%, #000 15%, transparent 70%)'])
+            @include('partials.silk')
             <div class="mx-auto max-w-4xl px-4 sm:px-6">
                 <nav aria-label="Breadcrumb" class="text-sm text-slate-500" data-reveal>
                     <ol class="flex flex-wrap items-center gap-2">
@@ -55,7 +55,7 @@
                 <h1 class="mt-6 font-display text-4xl leading-[1.1] font-semibold tracking-tight text-ocean-950 text-balance sm:text-5xl lg:text-6xl" data-reveal style="--reveal-delay:80ms">{{ $article['title'] }}</h1>
                 <p class="mt-6 text-lg leading-relaxed text-slate-600 text-pretty sm:text-xl" data-reveal style="--reveal-delay:140ms">{{ $article['description'] }}</p>
                 <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-500" data-reveal style="--reveal-delay:200ms">
-                    <span class="inline-flex items-center gap-2"><x-logo-mark class="h-3.5 w-auto text-[#0B5EB5]" /> {{ $article['author'] }}</span>
+                    <span class="inline-flex items-center gap-2"><x-logo-mark class="h-3.5 w-auto text-[#007BFF]" /> {{ $article['author'] }}</span>
                     <time datetime="{{ $article['date']->toDateString() }}">{{ $article['date']->format('F j, Y') }}</time>
                     <span class="inline-flex items-center gap-2"><x-icon name="clock" class="size-4" /> {{ $article['minutes'] }} min read</span>
                 </div>

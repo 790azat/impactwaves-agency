@@ -1,6 +1,6 @@
 <x-layouts.app title="My account" :noindex="true">
     <section class="bg-sea relative isolate overflow-hidden border-b border-ocean-100 pt-36 pb-14 sm:pt-44">
-        @include('partials.caustics', ['tint' => true, 'fade' => 'radial-gradient(ellipse 70% 80% at 80% 10%, #000 15%, transparent 70%)'])
+        @include('partials.silk')
         <div class="mx-auto flex max-w-5xl flex-wrap items-end justify-between gap-6 px-4 sm:px-6">
             <div>
                 <p class="eyebrow">My account</p>

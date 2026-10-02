@@ -9,154 +9,131 @@
             'inLanguage' => 'en',
         ]) !!}
     @endpush
-    {{-- HERO --}}
-    <section class="bg-sea relative isolate overflow-hidden border-b border-ocean-100 pt-36 pb-24 sm:pt-44 lg:pb-32">
-        @include('partials.caustics', ['tint' => true, 'fade' => 'radial-gradient(ellipse 60% 70% at 85% 30%, #000 10%, transparent 70%)'])
+    {{-- HERO: deep navy with one large silk wave as the light source. --}}
+    <section class="bg-sea relative isolate overflow-hidden pt-36 pb-24 text-white sm:pt-44 lg:pb-36">
+        <div class="silk silk-hero silk-drift inset-y-0 right-[-30%] left-[10%] opacity-95 [mask-image:linear-gradient(90deg,transparent,#000_30%)] lg:left-[30%] lg:right-[-12%]"></div>
+        <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_80%_55%,rgb(0_123_255/.18),transparent_70%)]"></div>
 
-        <div class="mx-auto grid max-w-7xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-12">
-            <div class="lg:col-span-7">
-                <p class="eyebrow" data-reveal>
-                    Official TikTok agency · US · EU · CA
-                </p>
-                <h1 class="mt-7 font-display text-5xl leading-[1.02] font-semibold tracking-tight text-ocean-950 text-balance sm:text-6xl lg:text-7xl xl:text-[4.6rem]" data-reveal style="--reveal-delay:80ms">
-                    Make waves.<br><span class="text-gradient">Measure impact.</span>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
+            <div class="max-w-2xl">
+                <p class="eyebrow eyebrow-dark" data-reveal>Performance marketing agency</p>
+                <h1 class="mt-7 font-display text-5xl leading-[1.02] font-semibold tracking-tight text-balance sm:text-6xl lg:text-7xl xl:text-[4.8rem]" data-reveal style="--reveal-delay:80ms">
+                    Make waves.<br><span class="text-ocean-500">Measure impact.</span>
                 </h1>
-                <p class="mt-7 max-w-xl text-lg leading-relaxed text-slate-600 text-pretty sm:text-xl" data-reveal style="--reveal-delay:160ms">
-                    Swift and effective growth for your company. We run paid social, PPC and conversion optimization with a data-driven approach built on communication, transparency and strategy.
+                <p class="mt-7 max-w-xl text-lg leading-relaxed text-slate-300 text-pretty sm:text-xl" data-reveal style="--reveal-delay:160ms">
+                    We help brands, media buyers and traffic partners acquire, optimize and scale traffic across TikTok, Meta and search with a data-driven approach.
                 </p>
                 <div class="mt-10 flex flex-wrap items-center gap-4" data-reveal style="--reveal-delay:240ms">
-                    <x-button href="{{ route('contact') }}" icon="sparkles" wire:navigate>Get a free growth audit</x-button>
-                    <x-button href="#calculator" variant="ghost" icon="chart">Estimate your ROI</x-button>
-                </div>
-                <dl class="mt-14 grid max-w-xl grid-cols-3 gap-4 border-t border-ocean-100 pt-8" data-reveal style="--reveal-delay:320ms">
-                    <div><dt class="text-xs tracking-wider text-slate-500 uppercase">Markets</dt><dd class="mt-1 font-display text-lg font-semibold text-ocean-950 sm:text-2xl">US · EU · CA</dd></div>
-                    <div><dt class="text-xs tracking-wider text-slate-500 uppercase">Feed partners</dt><dd class="mt-1 font-display text-lg font-semibold text-ocean-950 sm:text-2xl">Tier-1</dd></div>
-                    <div><dt class="text-xs tracking-wider text-slate-500 uppercase">Services</dt><dd class="mt-1 font-display text-lg font-semibold text-ocean-950 sm:text-2xl">{{ count(config('agency.services')) }} in one team</dd></div>
-                </dl>
-            </div>
-
-            {{-- An ad in the feed and what it earned: the work the agency does, shown as a phone with live-looking metrics. --}}
-            <div class="relative mx-auto w-full max-w-[460px] lg:col-span-5" data-reveal style="--reveal-delay:200ms" aria-hidden="true">
-                <div class="relative mx-auto aspect-[4/5] max-w-full">
-                    {{-- Phone --}}
-                    <div class="absolute top-1/2 left-1/2 h-[min(540px,100%)] aspect-[1/2] -translate-x-1/2 -translate-y-1/2 rounded-[2.5rem] bg-ocean-950 p-2.5 shadow-[0_40px_80px_-30px_rgb(7_24_54/.55)]">
-                        <div class="water relative isolate h-full overflow-hidden rounded-[2rem]">
-                            @include('partials.caustics', ['fade' => 'linear-gradient(180deg, #000 10%, transparent 75%)', 'opacity' => .5])
-                            <div class="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-ocean-950/50 to-transparent"></div>
-                            @include('partials.bubbles', ['count' => 9, 'rise' => '520px'])
-                            <p class="absolute inset-x-0 top-4 text-center text-xs font-semibold text-white/80">Following <span class="mx-1">·</span> <span class="text-white">For You</span></p>
-
-                            <div class="absolute right-3 bottom-28 grid justify-items-center gap-4 text-[10px] font-semibold text-white">
-                                <span class="grid justify-items-center gap-1"><svg class="size-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.6 1.2 4.4 2.5h1.8c.8-1.3 2.2-2.5 4.4-2.5 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21Z"/></svg>48.2K</span>
-                                <span class="grid justify-items-center gap-1"><svg class="size-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.9 2 11.6c0 2.4 1.2 4.6 3.1 6.1L4.3 21l3.9-1.9c1.2.4 2.5.6 3.8.6 5.5 0 10-3.9 10-8.6S17.5 3 12 3Z"/></svg>1.3K</span>
-                                <span class="grid justify-items-center gap-1"><svg class="size-6" viewBox="0 0 24 24" fill="currentColor"><path d="M14 4v4C7 9 4 14 3 20c2.5-3.5 6-5.1 11-5.1V19l7-7.5L14 4Z"/></svg>6.1K</span>
-                            </div>
-
-                            <div class="absolute right-16 bottom-5 left-4 text-xs leading-relaxed text-white">
-                                <p class="font-bold">@yourbrand <span class="font-medium text-white/75">· Sponsored</span></p>
-                                <p class="mt-1.5">Summer drop is live. Free shipping across the US.</p>
-                                <p class="mt-3 rounded-md bg-white py-2 text-center text-[13px] font-bold text-ocean-950">Shop now</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- Results around it --}}
-                    <div class="absolute top-[14%] -left-2 rounded-xl border border-ocean-100 bg-white px-3 py-2 shadow-[0_20px_40px_-20px_rgb(7_24_54/.35)] sm:px-4 sm:py-3 sm:-left-6">
-                        <p class="text-[10px] font-semibold tracking-[.16em] text-slate-500 uppercase sm:text-[11px]">ROAS</p>
-                        <p class="mt-1 font-display text-lg font-bold text-ocean-950 sm:text-2xl">3.4x</p>
-                    </div>
-                    <div class="absolute top-[36%] -left-2 rounded-xl border border-ocean-100 bg-white px-3 py-2 shadow-[0_20px_40px_-20px_rgb(7_24_54/.35)] sm:px-4 sm:py-3 sm:-left-8">
-                        <p class="text-[10px] font-semibold tracking-[.16em] text-slate-500 uppercase sm:text-[11px]">CPA</p>
-                        <p class="mt-1 flex items-center gap-2 font-display text-lg font-bold text-ocean-950 sm:text-2xl">$18 <span class="rounded-md bg-emerald-50 px-1.5 py-0.5 font-sans text-xs font-semibold text-emerald-700">−31%</span></p>
-                    </div>
-                    <div class="absolute top-[20%] sm:top-[30%] -right-2 rounded-xl border border-ocean-100 bg-white px-3 py-2 shadow-[0_20px_40px_-20px_rgb(7_24_54/.35)] sm:px-4 sm:py-3 sm:-right-6">
-                        <p class="text-[10px] font-semibold tracking-[.16em] text-slate-500 uppercase sm:text-[11px]">CTR</p>
-                        <p class="mt-1 flex items-center gap-2 font-display text-lg font-bold text-ocean-950 sm:text-2xl">2.9% <span class="rounded-md bg-emerald-50 px-1.5 py-0.5 font-sans text-xs font-semibold text-emerald-700">+64%</span></p>
-                    </div>
+                    <a href="{{ route('contact') }}" wire:navigate class="btn btn-primary">Start a project <x-icon name="arrow" class="size-4" /></a>
+                    <a href="{{ route('services.index') }}" wire:navigate class="btn btn-outline-light">Our services</a>
                 </div>
             </div>
+
+            <ul class="absolute top-2 right-6 hidden border-l border-white/25 pl-5 text-[11px] leading-6 font-medium tracking-[.22em] text-slate-300 uppercase lg:block" aria-hidden="true">
+                <li>Paid media</li><li>Creative</li><li>Optimization</li><li>Scaling</li>
+            </ul>
+            <ul class="absolute right-6 bottom-[-4rem] hidden border-l border-white/25 pl-5 text-[11px] leading-6 font-medium tracking-[.22em] text-slate-300 uppercase lg:block" aria-hidden="true">
+                <li>More traffic</li><li>More opportunities</li><li>More impact</li>
+            </ul>
         </div>
     </section>
 
-    {{-- PARTNERS MARQUEE --}}
-    <section id="partners" class="relative border-b border-ocean-100 bg-ocean-50 py-10">
-        <p class="text-center text-xs font-medium tracking-[.2em] text-slate-500 uppercase">Platforms and Tier-1 partners we work with</p>
-        <div class="relative mt-7 overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
-            <div class="animate-marquee flex w-max gap-14 pr-14">
-                @foreach (array_merge(config('agency.partners'), config('agency.partners')) as $partner)
-                    <span class="font-display text-2xl font-semibold whitespace-nowrap text-slate-500 transition hover:text-ocean-950">{{ $partner }}</span>
-                @endforeach
+    {{-- PLATFORMS --}}
+    <section id="partners" class="relative border-t border-white/10 bg-black py-7 text-white">
+        <div class="mx-auto flex max-w-7xl items-center gap-10 px-4 sm:px-6">
+            <p class="hidden shrink-0 text-[11px] font-semibold tracking-[.2em] text-slate-400 uppercase md:block">Platforms we work with</p>
+            <div class="relative min-w-0 flex-1 overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
+                <div class="animate-marquee flex w-max gap-14 pr-14">
+                    @foreach (array_merge(config('agency.partners'), config('agency.partners')) as $partner)
+                        <span class="font-display text-lg font-semibold whitespace-nowrap text-white/85">{{ $partner }}</span>
+                    @endforeach
+                </div>
             </div>
         </div>
     </section>
 
     {{-- SERVICES --}}
-    <section class="relative py-28 sm:py-36">
+    <section class="relative py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
-            <div class="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-                <x-section-heading eyebrow="What we do" title="Complete solutions for your most <span class='text-gradient'>critical growth</span> requirements">
-                    We find the best tools and resources to optimize your revenue opportunities, then execute across every channel that matters.
-                </x-section-heading>
-                <x-button href="{{ route('services.index') }}" variant="ghost" icon="layers" wire:navigate data-reveal>All services</x-button>
+            <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
+                <div class="lg:col-span-7">
+                    <p class="eyebrow" data-reveal>Services</p>
+                    <h2 class="mt-4 font-display text-4xl font-semibold tracking-tight text-ocean-950 text-balance sm:text-5xl" data-reveal>End-to-end performance marketing.</h2>
+                </div>
+                <div class="lg:col-span-5" data-reveal>
+                    <p class="text-lg leading-relaxed text-slate-600">From strategy and creative to acquisition and optimization, we help you turn paid traffic into measurable growth.</p>
+                    <a href="{{ route('services.index') }}" wire:navigate class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-ocean-600 hover:text-ocean-950">View all services <x-icon name="arrow" class="size-4" /></a>
+                </div>
             </div>
 
-            <div class="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-6">
+            <div class="mt-16 grid border-t border-slate-200 sm:grid-cols-2 lg:grid-cols-5">
                 @foreach (config('agency.services') as $slug => $service)
-                    <a href="{{ route('services.show', $slug) }}" wire:navigate data-reveal style="--reveal-delay: {{ $loop->index * 70 }}ms"
-                       @class([
-                           'card-glow group glass relative flex flex-col overflow-hidden rounded-2xl p-8 transition duration-500 hover:-translate-y-1',
-                           'lg:col-span-3 lg:min-h-80' => $loop->index < 2,
-                           'lg:col-span-2' => $loop->index >= 2,
-                       ])>
-                        <div class="flex items-start justify-between">
-                            <span class="grid size-12 place-items-center rounded-xl bg-ocean-50 text-ocean-600 ring-1 ring-ocean-100">
-                                <x-icon :name="$service['icon']" class="size-6" />
-                            </span>
-                            <x-icon name="arrow-up-right" class="size-5 text-slate-500 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ocean-950" />
-                        </div>
-                        <p class="mt-8 text-xs font-medium tracking-[.14em] text-ocean-600 uppercase">{{ $service['eyebrow'] }}</p>
-                        <h3 class="mt-2 font-display text-2xl font-semibold text-ocean-950">{{ $service['title'] }}</h3>
-                        <p class="mt-3 leading-relaxed text-slate-600">{{ $service['short'] }}</p>
-                        <div class="mt-auto flex flex-wrap gap-2 pt-7">
-                            @foreach (array_slice($service['platforms'], 0, 4) as $platform)
-                                <span class="rounded-md border border-ocean-100 px-3 py-1 text-xs text-slate-700">{{ $platform }}</span>
-                            @endforeach
-                        </div>
+                    <a href="{{ route('services.show', $slug) }}" wire:navigate data-reveal style="--reveal-delay: {{ $loop->index * 60 }}ms"
+                       class="group flex flex-col border-b border-slate-200 py-8 sm:px-6 sm:[&:nth-child(odd)]:pl-0 lg:border-b-0 lg:border-l lg:px-6 lg:first:border-l-0 lg:first:pl-0 lg:[&:nth-child(odd)]:pl-6 lg:first:!pl-0">
+                        <span class="text-xs font-medium text-slate-400 tabular-nums">0{{ $loop->iteration }}</span>
+                        <h3 class="mt-3 font-display text-xl font-semibold text-ocean-950">{{ $service['title'] }}</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-slate-500">{{ implode(' · ', array_slice($service['platforms'], 0, 3)) }}</p>
+                        <span class="mt-auto pt-8"><span class="grid size-9 place-items-center rounded-full border border-slate-300 text-ocean-950 transition group-hover:border-ocean-600 group-hover:bg-ocean-600 group-hover:text-white"><x-icon name="arrow" class="size-4" /></span></span>
                     </a>
                 @endforeach
             </div>
         </div>
     </section>
 
-    {{-- TIKTOK SPOTLIGHT --}}
-    <section class="relative py-10">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6">
-            <div class="relative isolate overflow-hidden rounded-2xl border border-ocean-100 bg-ocean-50 px-6 py-16 sm:px-14 lg:py-20" data-reveal>
-                <div class="grid items-center gap-14 lg:grid-cols-2">
-                    <div>
-                        <p class="eyebrow">Official TikTok agency</p>
-                        <h2 class="mt-5 font-display text-4xl font-semibold tracking-tight text-ocean-950 sm:text-5xl">Attract audiences and drive revenue on <span class="text-gradient">TikTok</span></h2>
-                        <p class="mt-5 text-lg leading-relaxed text-slate-600">Agency ad accounts, a dedicated official TikTok support team and creative resources that keep your ads ahead of the feed.</p>
-                        <div class="mt-9 flex flex-wrap gap-4">
-                            <x-button href="{{ route('services.show', 'tiktok-agency') }}" icon="bolt" wire:navigate>Explore TikTok Agency</x-button>
-                            <x-button href="{{ route('contact') }}?service=tiktok-agency" variant="ghost" icon="plus" wire:navigate>Request an account</x-button>
-                        </div>
+    {{-- APPROACH: the wave runs off the left edge, no frame around it. --}}
+    <section class="relative isolate overflow-hidden bg-ocean-50/60">
+        <div class="grid lg:grid-cols-2">
+            <div class="relative isolate min-h-72 overflow-hidden bg-navy lg:min-h-[26rem]">
+                <div class="silk silk-tile silk-drift inset-0"></div>
+            </div>
+            <div class="px-4 py-16 sm:px-12 lg:py-24 lg:pl-16" data-reveal>
+                <p class="eyebrow">Our approach</p>
+                <h2 class="mt-4 font-display text-4xl font-semibold tracking-tight text-ocean-950 text-balance sm:text-5xl">We don't just buy traffic. <span class="text-ocean-600">We understand it.</span></h2>
+                <p class="mt-5 max-w-md text-lg leading-relaxed text-slate-600">Data-driven strategy, creative testing and continuous optimization to scale what works.</p>
+                <a href="{{ route('about') }}" wire:navigate class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ocean-600 hover:text-ocean-950">Learn more <x-icon name="arrow" class="size-4" /></a>
+            </div>
+        </div>
+    </section>
+
+    {{-- RESULTS --}}
+    <section class="relative py-20 sm:py-24">
+        <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:items-center">
+            <div class="lg:col-span-4" data-reveal>
+                <p class="eyebrow">Real results</p>
+                <h2 class="mt-4 font-display text-4xl font-semibold tracking-tight text-ocean-950 text-balance">Performance drives everything.</h2>
+            </div>
+            <dl class="grid grid-cols-3 lg:col-span-8">
+                @foreach ([['3.4x', 'Average ROAS'], ['−31%', 'Lower CPA'], ['+64%', 'Higher CTR']] as [$value, $label])
+                    <div class="border-l border-slate-200 px-4 sm:px-8" data-reveal style="--reveal-delay: {{ $loop->index * 80 }}ms">
+                        <dd class="font-display text-4xl font-semibold text-ocean-950 tabular-nums sm:text-6xl">{{ $value }}</dd>
+                        <dt class="mt-2 text-sm text-slate-500">{{ $label }}</dt>
                     </div>
-                    <ul class="grid gap-4 sm:grid-cols-2">
-                        @foreach ([
-                            ['globe', 'Target markets', 'Reach audiences in the US, EU and Canada.'],
-                            ['sparkles', 'Tailored strategies', 'Boost your online presence with strategies built for you.'],
-                            ['lifebuoy', 'Comprehensive support', 'Tutorials, technical help and personalized assessments.'],
-                            ['bolt', 'Creative resources', 'Learning center, ad library and hands-on tutorials.'],
-                        ] as [$icon, $title, $text])
-                            <li class="glass rounded-2xl p-6">
-                                <x-icon :name="$icon" class="size-6 text-ocean-700" />
-                                <h3 class="mt-4 font-semibold text-ocean-950">{{ $title }}</h3>
-                                <p class="mt-1.5 text-sm leading-relaxed text-slate-600">{{ $text }}</p>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
+                @endforeach
+            </dl>
+        </div>
+    </section>
+
+    {{-- GUIDES --}}
+    <section class="relative bg-ocean-50/60 py-24 sm:py-28">
+        <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-12">
+            <div class="lg:col-span-4" data-reveal>
+                <p class="eyebrow">Media buying guides</p>
+                <h2 class="mt-4 font-display text-4xl font-semibold tracking-tight text-ocean-950 text-balance">Practical knowledge for real media buyers.</h2>
+                <p class="mt-5 leading-relaxed text-slate-600">In-depth guides, strategies and insights from people working with paid traffic every day.</p>
+                <a href="{{ route('section', 'guides') }}" wire:navigate class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-ocean-600 hover:text-ocean-950">Explore guides <x-icon name="arrow" class="size-4" /></a>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-3 lg:col-span-8">
+                @foreach (\App\Support\Articles::inSection('guides')->take(3) as $article)
+                    <a href="{{ route('article', ['guides', $article['slug']]) }}" wire:navigate class="group flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-white transition hover:-translate-y-1 hover:shadow-xl hover:shadow-ocean-950/10" data-reveal style="--reveal-delay: {{ $loop->index * 70 }}ms">
+                        <span class="relative isolate block aspect-[16/10] overflow-hidden bg-navy">
+                            <span class="silk silk-tile inset-0 transition duration-700 group-hover:scale-105" style="background-position: {{ ['20% 40%', '70% 60%', '45% 20%'][$loop->index] }}; transform-origin: center"></span>
+                        </span>
+                        <span class="flex flex-1 flex-col p-5">
+                            <span class="text-xs text-slate-500">{{ \Illuminate\Support\Carbon::parse($article['date'])->format('M j, Y') }}</span>
+                            <span class="mt-2 font-display font-semibold leading-snug text-ocean-950 text-balance">{{ $article['title'] }}</span>
+                        </span>
+                    </a>
+                @endforeach
             </div>
         </div>
     </section>
@@ -173,85 +150,16 @@
         </div>
     </section>
 
-    {{-- PROCESS --}}
-    <section class="relative py-20">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6">
-            <x-section-heading eyebrow="How we work" title="From audit to scale in four clear steps" />
-            <ol class="relative mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                <div class="absolute top-7 right-8 left-8 hidden h-px bg-ocean-200 lg:block"></div>
-                @foreach (config('agency.process') as $step)
-                    <li class="relative" data-reveal style="--reveal-delay: {{ $loop->index * 90 }}ms">
-                        <span class="relative grid size-14 place-items-center rounded-xl border border-ocean-100 bg-white font-display text-lg font-semibold text-ocean-950 shadow-lg shadow-ocean-500/10">
-                            0{{ $loop->iteration }}
-                        </span>
-                        <h3 class="mt-6 font-display text-xl font-semibold text-ocean-950">{{ $step['title'] }}</h3>
-                        <p class="mt-2 leading-relaxed text-slate-600">{{ $step['text'] }}</p>
-                    </li>
-                @endforeach
-            </ol>
-        </div>
-    </section>
-
-    {{-- WHY US --}}
-    <section class="relative py-28">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6">
-            <x-section-heading eyebrow="Why Impact Waves" title="Communication, transparency and strategy. <span class='text-slate-500'>Every day.</span>" />
-            <div class="mt-16 grid gap-px overflow-hidden rounded-2xl border border-ocean-100 bg-ocean-100 sm:grid-cols-2 lg:grid-cols-3">
-                @foreach (config('agency.values') as $value)
-                    <div class="group bg-white p-8 transition hover:bg-ocean-50" data-reveal style="--reveal-delay: {{ $loop->index * 60 }}ms">
-                        <x-icon :name="$value['icon']" class="size-7 text-ocean-600 transition group-hover:text-ocean-700" />
-                        <h3 class="mt-5 font-display text-xl font-semibold text-ocean-950">{{ $value['title'] }}</h3>
-                        <p class="mt-2 leading-relaxed text-slate-600">{{ $value['text'] }}</p>
-                    </div>
-                @endforeach
+    {{-- TRAFFIC PROVIDERS: a soft wave behind the copy, edge to edge. --}}
+    <section class="relative isolate overflow-hidden py-24 sm:py-28">
+        <div class="silk silk-band inset-x-0 top-0 bottom-0 opacity-90 [background-position:center_40%]"></div>
+        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
+            <div data-reveal>
+                <p class="eyebrow">For traffic providers</p>
+                <h2 class="mt-4 max-w-2xl font-display text-4xl font-semibold tracking-tight text-ocean-950 text-balance sm:text-5xl">Have traffic? Let's build something together.</h2>
+                <p class="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">We work with traffic providers, publishers and partners looking for performance-driven opportunities and long-term relationships.</p>
             </div>
-        </div>
-    </section>
-
-    {{-- FEED PARTNERS --}}
-    <section class="relative py-10">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6">
-            <div class="grid items-center gap-10 rounded-2xl border border-ocean-100 bg-gradient-to-br from-ocean-50/60 to-white p-8 sm:p-12 lg:grid-cols-5" data-reveal>
-                <div class="lg:col-span-2">
-                    <p class="eyebrow">Our partners</p>
-                    <h2 class="mt-5 font-display text-3xl font-semibold tracking-tight text-ocean-950 sm:text-4xl">Tier-1 feed providers</h2>
-                    <p class="mt-4 leading-relaxed text-slate-600">Monetize your traffic through established search feed partners, with our team helping you onboard and grow.</p>
-                    <a href="{{ route('services.show', 'search-feeds') }}" wire:navigate class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ocean-600 hover:text-ocean-950">Search Feed Monetization <x-icon name="arrow" class="size-4" /></a>
-                </div>
-                <div class="grid grid-cols-2 gap-4 lg:col-span-3">
-                    @foreach (config('agency.feed_partners') as $partner)
-                        <div class="card-glow glass grid h-28 place-items-center rounded-2xl">
-                            <span class="font-display text-2xl font-semibold text-ocean-950">{{ $partner }}</span>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- Audiences and latest articles --}}
-    <section class="relative py-28">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6">
-            <x-section-heading eyebrow="Resources" title="Guides for <span class='text-gradient'>media buyers</span> and <span class='text-gradient'>traffic providers</span>">
-                Practical playbooks from a team that buys and monetizes traffic every day.
-            </x-section-heading>
-            <div class="mt-12 grid gap-5 md:grid-cols-2">
-                @foreach (['guides', 'traffic-providers'] as $key)
-                    @php $s = config('agency.sections')[$key]; @endphp
-                    <a href="{{ route('section', $key) }}" wire:navigate class="card-glow group relative overflow-hidden rounded-2xl border border-ocean-100 bg-ocean-50 p-8 transition duration-300 hover:-translate-y-1 sm:p-10" data-reveal style="--reveal-delay: {{ $loop->index * 80 }}ms">
-                        <span class="grid size-12 place-items-center rounded-xl bg-brand text-white"><x-icon :name="$s['icon']" class="size-6" /></span>
-                        <p class="mt-6 text-sm font-medium tracking-[.12em] text-ocean-600 uppercase">{{ $s['audience'] }}</p>
-                        <h3 class="mt-2 font-display text-3xl font-semibold text-ocean-950">{{ $s['title'] }}</h3>
-                        <p class="mt-3 max-w-md leading-relaxed text-slate-600">{{ $s['lead'] }}</p>
-                        <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ocean-950"><x-icon name="arrow" class="size-4 transition group-hover:translate-x-0.5" /> Explore</span>
-                    </a>
-                @endforeach
-            </div>
-            <div class="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-                @foreach (\App\Support\Articles::latest(3) as $article)
-                    <x-article-card :article="$article" data-reveal style="--reveal-delay: {{ $loop->index * 60 }}ms" />
-                @endforeach
-            </div>
+            <a href="{{ route('section', 'traffic-providers') }}" wire:navigate class="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-ocean-600 hover:text-ocean-950" data-reveal>Become a partner <x-icon name="arrow" class="size-4" /></a>
         </div>
     </section>
 

@@ -7,9 +7,9 @@
             'breadcrumb' => \App\Support\Seo::breadcrumbs([['Contact', route('contact')]]),
         ]) !!}
     @endpush
-    <section class="relative isolate overflow-hidden pt-40 pb-24 sm:pt-48">
-        @include('partials.caustics', ['tint' => true, 'fade' => 'radial-gradient(ellipse 70% 70% at 70% 10%, #000 15%, transparent 70%)'])
-        <div class="absolute -top-48 left-1/3 -z-10 h-[560px] w-[900px] rounded-md bg-[radial-gradient(closest-side,rgb(45_212_191/.22),transparent)] blur-2xl"></div>
+    <section class="bg-sea relative isolate overflow-hidden pt-40 pb-24 sm:pt-48">
+        @include('partials.silk')
+        <div class="absolute -top-48 left-1/3 -z-10 h-[560px] w-[900px] rounded-md bg-[radial-gradient(closest-side,rgb(0_123_255/.18),transparent)] blur-2xl"></div>
         <div class="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-12">
             <div class="lg:col-span-5">
                 <p class="eyebrow" data-reveal>Contact</p>

@@ -21,18 +21,22 @@
     --color-wave-indigo: #6366f1;
     --color-wave-fuchsia: #e879f9;
 
-    /* Ocean palette, anchored on the logo: wave blue #0B5EB5 (600) and deep navy #071836 (950). */
-    --color-ocean-50: #f0f6fc;
-    --color-ocean-100: #dceaf8;
-    --color-ocean-200: #bad5f1;
-    --color-ocean-300: #86b6e6;
-    --color-ocean-400: #4a93d9;
-    --color-ocean-500: #1d74c6;
-    --color-ocean-600: #0b5eb5;
-    --color-ocean-700: #0a4d95;
-    --color-ocean-800: #0c3f78;
-    --color-ocean-900: #0b2c55;
-    --color-ocean-950: #071836;
+    /* Blue scale anchored on the brand: 600 = Blue #007BFF, 950 = Navy #0A1B2D. */
+    --color-ocean-50: #eef6ff;
+    --color-ocean-100: #d9eaff;
+    --color-ocean-200: #b3d5ff;
+    --color-ocean-300: #7db8ff;
+    --color-ocean-400: #3d97ff;
+    --color-ocean-500: #1a87ff;
+    --color-ocean-600: #007bff;
+    --color-ocean-700: #0064d1;
+    --color-ocean-800: #0a4f9e;
+    --color-ocean-900: #0d2f55;
+    --color-ocean-950: #0a1b2d;
+    /* Brand palette (client, 2026-10-02): Navy #0A1B2D, Blue #007BFF, White, Black #0B0B0B. */
+    --color-navy: #0a1b2d;
+    --color-navy-800: #0f2740;
+    --color-black: #0b0b0b;
     --color-sand-50: #fdfaf3;
     --color-sand-100: #f8f0e0;
     --color-sand-200: #efdfc0;
@@ -59,28 +63,28 @@
 @layer base {
     html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
     body { @apply bg-white font-sans text-slate-600 antialiased; }
-    ::selection { background: rgb(11 94 181 / .18); color: #071836; }
+    ::selection { background: rgb(0 123 255 / .2); color: #0a1b2d; }
     [x-cloak] { display: none !important; }
 }
 
 @utility text-gradient {
-    color: #0b5eb5;
+    color: #007bff;
 }
 
 @utility bg-brand {
-    background-color: #0b5eb5;
+    background-color: #007bff;
 }
 
 @utility glass {
     background: rgb(255 255 255 / .82);
-    border: 1px solid rgb(7 24 54 / .08);
-    box-shadow: 0 1px 2px rgb(7 24 54 / .04), 0 12px 28px -16px rgb(7 24 54 / .22);
+    border: 1px solid rgb(10 27 45 / .08);
+    box-shadow: 0 1px 2px rgb(10 27 45 / .04), 0 12px 28px -16px rgb(10 27 45 / .22);
     backdrop-filter: blur(14px);
 }
 
-/* Light surface water: sky at the top fading into foam. */
+/* Deep navy surface for page tops, the CTA and the footer. */
 @utility bg-sea {
-    background: linear-gradient(180deg, #eaf3fb 0%, #f5f9fd 45%, #ffffff 100%);
+    background: #0a1b2d;
 }
 
 
@@ -96,6 +100,14 @@
     @apply bg-ocean-600 text-white shadow-sm hover:bg-ocean-700;
 }
 
+@utility btn-outline-light {
+    @apply border border-white/35 bg-transparent text-white hover:border-white hover:bg-white/10;
+}
+
+@utility eyebrow-dark {
+    @apply text-ocean-400 before:bg-ocean-400;
+}
+
 @utility btn-ghost {
     @apply border border-slate-300 bg-white text-ocean-950 hover:border-ocean-950;
 }
@@ -109,7 +121,7 @@
         inset: 0;
         border-radius: inherit;
         padding: 1px;
-        background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgb(11 94 181 / .6), rgb(11 94 181 / .25) 40%, transparent 70%);
+        background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgb(0 123 255 / .6), rgb(0 123 255 / .25) 40%, transparent 70%);
         -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
         -webkit-mask-composite: xor;
         mask-composite: exclude;
@@ -143,19 +155,19 @@ input[type='range'].range {
     appearance: none;
     height: 6px;
     border-radius: 999px;
-    background: linear-gradient(90deg, #0b5eb5 var(--fill, 50%), #dceaf8 var(--fill, 50%));
+    background: linear-gradient(90deg, #007bff var(--fill, 50%), #d9eaff var(--fill, 50%));
     outline: none;
     cursor: pointer;
 }
 input[type='range'].range::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 20px; height: 20px; border-radius: 999px;
-    background: #fff; border: 4px solid #0b5eb5;
-    box-shadow: 0 0 0 6px rgb(11 94 181 / .15);
+    background: #fff; border: 4px solid #007bff;
+    box-shadow: 0 0 0 6px rgb(0 123 255 / .15);
 }
 input[type='range'].range::-moz-range-thumb {
     width: 14px; height: 14px; border-radius: 999px;
-    background: #fff; border: 4px solid #0b5eb5;
+    background: #fff; border: 4px solid #007bff;
 }
 
 /* Long-form article typography (Markdown output). */
@@ -170,7 +182,7 @@ input[type='range'].range::-moz-range-thumb {
     & ul { list-style: disc; }
     & ol { list-style: decimal; }
     & li + li { margin-top: .5em; }
-    & li::marker { color: #0b5eb5; }
+    & li::marker { color: #007bff; }
     & blockquote { @apply rounded-r-lg border-l-4 border-ocean-400 bg-ocean-50/60 px-6 py-4 text-ocean-900; }
     & code { @apply rounded-md bg-ocean-50 px-1.5 py-0.5 font-mono text-[.9em] text-ocean-700; }
     & hr { @apply my-12 border-ocean-100; }
@@ -181,75 +193,42 @@ input[type='range'].range::-moz-range-thumb {
 
 
 /* ---------------------------------------------------------------
-   Water. Caustics are tileable textures of sunlight refracted by the
-   surface (generated by resources/tools/caustics.py); two layers drift
-   in different directions so the light never repeats visibly.
+   Silk waves: one large, smooth ribbon of fine lines (resources/tools/silk.py).
+   Used big and cropped, never boxed, so it reads as background light.
 ---------------------------------------------------------------- */
-@utility water {
-    background:
-        radial-gradient(120% 60% at 50% -12%, rgb(255 255 255 / .32), transparent 62%),
-        linear-gradient(180deg, #3d9be0 0%, #1a78cc 28%, #0b5eb5 58%, #0a3a78 100%);
-}
-
-.caustics {
+.silk {
     position: absolute;
-    inset: 0;
     pointer-events: none;
-    background-image: url('/images/caustics-a.webp'), url('/images/caustics-b.webp');
-    background-size: 560px 560px, 820px 820px;
-    animation: caustics-drift 80s linear infinite;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
 }
-/* On light backgrounds the texture becomes a mask, so the light shows as a faint blue shimmer. */
-.caustics-tint {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: rgb(11 94 181 / .08);
-    mask-image: url('/images/caustics-a.webp'), url('/images/caustics-b.webp');
-    mask-size: 560px 560px, 820px 820px;
-    mask-composite: add;
-    animation: caustics-mask-drift 80s linear infinite;
-}
-@keyframes caustics-drift {
-    from { background-position: 0 0, 0 0; }
-    to { background-position: 560px 1120px, -1640px 820px; }
-}
-@keyframes caustics-mask-drift {
-    from { mask-position: 0 0, 0 0; }
-    to { mask-position: 560px 1120px, -1640px 820px; }
-}
-
-/* Air bubbles: a bright highlight, a thin refracting rim and a transparent body.
-   The outer span rises and speeds up, the inner one wobbles from side to side. */
-.bubble-rise {
-    position: absolute;
-    bottom: -24px;
-    animation: bubble-rise var(--d, 10s) cubic-bezier(.5, .1, .85, .55) infinite;
-    animation-delay: var(--delay, 0s);
-    will-change: transform, opacity;
-}
-.bubble {
-    display: block;
-    border-radius: 999px;
-    background: radial-gradient(circle at 32% 28%, rgb(255 255 255 / .95) 0 9%, rgb(255 255 255 / .35) 15%, rgb(255 255 255 / .06) 40%, rgb(255 255 255 / .04) 62%, rgb(255 255 255 / .4) 90%, rgb(255 255 255 / .75) 100%);
-    box-shadow: 0 0 6px rgb(255 255 255 / .18);
-    animation: bubble-wobble var(--w, 2.4s) ease-in-out infinite alternate;
-}
-.bubbles-light .bubble {
-    background: radial-gradient(circle at 32% 28%, #fff 0 10%, rgb(255 255 255 / .7) 16%, rgb(11 94 181 / .04) 44%, rgb(11 94 181 / .08) 72%, rgb(11 94 181 / .45) 100%);
-    box-shadow: 0 1px 3px rgb(11 94 181 / .1);
-}
-@keyframes bubble-rise {
-    0% { transform: translateY(0); opacity: 0; }
-    8% { opacity: 1; }
-    80% { opacity: 1; }
-    100% { transform: translateY(calc(-1 * var(--rise, 520px))); opacity: 0; }
-}
-@keyframes bubble-wobble {
-    from { transform: translateX(-3px) scale(1, .94); }
-    to { transform: translateX(3px) scale(.95, 1); }
+.silk-hero { background-image: url('/images/silk-hero.webp'); }
+.silk-band { background-image: url('/images/silk-band.webp'); }
+.silk-tile { background-image: url('/images/silk-tile.webp'); }
+.silk-drift { animation: silk-drift 26s ease-in-out infinite alternate; }
+@keyframes silk-drift {
+    from { transform: translate3d(0, 0, 0) scale(1.04); }
+    to { transform: translate3d(-2.5%, 1.5%, 0) scale(1.08); }
 }
 @media (prefers-reduced-motion: reduce) {
-    .caustics, .caustics-tint { animation: none; }
-    .bubble-rise { display: none; }
+    .silk-drift { animation: none; }
 }
+
+/* ---------------------------------------------------------------
+   Dark surfaces (.bg-sea = Navy). Page tops reuse the light-page markup,
+   so text colors flip here; white cards and form fields inside keep theirs.
+   Unlayered on purpose: it must beat the utility classes it remaps.
+---------------------------------------------------------------- */
+.bg-sea { color: #fff; }
+.bg-sea :is(.text-ocean-950, .text-ocean-900, .text-black):not(.bg-sea :is(.bg-white, .glass, .field) *) { color: #fff; }
+.bg-sea :is(.text-slate-600, .text-slate-700):not(.bg-sea :is(.bg-white, .glass, .field) *) { color: #c3cedd; }
+.bg-sea .text-slate-500:not(.bg-sea :is(.bg-white, .glass, .field) *) { color: #94a3b8; }
+.bg-sea :is(.text-gradient, .text-ocean-600):not(.bg-sea :is(.bg-white, .glass, .field) *) { color: #3d97ff; }
+.bg-sea .eyebrow:not(.bg-sea :is(.bg-white, .glass) *) { color: #3d97ff; }
+.bg-sea .eyebrow:not(.bg-sea :is(.bg-white, .glass) *)::before { background: #3d97ff; }
+.bg-sea :is(.border-ocean-100, .border-ocean-200, .border-slate-200):not(.bg-sea :is(.bg-white, .glass) *) { border-color: rgb(255 255 255 / .12); }
+.bg-sea .btn-ghost:not(.bg-sea :is(.bg-white, .glass) *) { background: transparent; color: #fff; border-color: rgb(255 255 255 / .35); }
+.bg-sea .btn-ghost:not(.bg-sea :is(.bg-white, .glass) *):hover { background: rgb(255 255 255 / .08); border-color: #fff; }
+/* Frosted cards read grey on navy: make them solid white there. */
+.bg-sea .glass { background: #fff; border-color: transparent; box-shadow: 0 40px 80px -40px rgb(0 0 0 / .6); color: #0a1b2d; }

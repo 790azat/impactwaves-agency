@@ -1,7 +1,7 @@
 @props(['title', 'lead' => null, 'pageTitle' => null])
 <x-layouts.app :title="$pageTitle ?? $title" :noindex="true">
     <section class="bg-sea relative isolate min-h-dvh overflow-hidden pt-36 pb-24 sm:pt-44">
-        @include('partials.caustics', ['tint' => true, 'fade' => 'radial-gradient(ellipse 70% 70% at 50% 0%, #000 15%, transparent 70%)'])
+        @include('partials.silk')
         <div class="mx-auto max-w-md px-4 sm:px-6">
             <div class="glass rounded-xl p-6 sm:p-9">
                 <h1 class="font-display text-3xl font-semibold tracking-tight text-ocean-950">{{ $title }}</h1>
@@ -21,6 +21,5 @@
                 <p class="mt-6 text-center text-sm text-slate-600">{{ $footer }}</p>
             @endisset
         </div>
-        @include('partials.bubbles', ['count' => 5, 'light' => true, 'rise' => '420px'])
     </section>
 </x-layouts.app>
