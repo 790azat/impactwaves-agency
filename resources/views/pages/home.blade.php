@@ -44,7 +44,8 @@
             <p class="hidden shrink-0 text-[11px] font-semibold tracking-[.2em] text-slate-400 uppercase md:block">Platforms we work with</p>
             <div class="relative min-w-0 flex-1 overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
                 <div class="animate-marquee flex w-max gap-14 pr-14">
-                    @foreach (array_merge(config('agency.partners'), config('agency.partners')) as $partner)
+                    @php $platforms = ['TikTok', 'Meta', 'Google Ads', 'Microsoft Advertising', 'Bodis', 'Tonic', 'Ads.com', 'DomainActive']; @endphp
+                    @foreach (array_merge($platforms, $platforms) as $partner)
                         <span class="font-display text-lg font-semibold whitespace-nowrap text-white/85">{{ $partner }}</span>
                     @endforeach
                 </div>
@@ -58,7 +59,7 @@
             <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
                 <div class="lg:col-span-7">
                     <p class="eyebrow" data-reveal>Services</p>
-                    <h2 class="mt-4 font-display text-4xl font-semibold tracking-tight text-ocean-950 text-balance sm:text-5xl" data-reveal>End-to-end performance marketing.</h2>
+                    <h2 class="mt-4 font-display text-4xl font-semibold tracking-tight text-ocean-950 text-balance sm:text-5xl" data-reveal>End-to-end<br class="hidden sm:block"> performance marketing.</h2>
                 </div>
                 <div class="lg:col-span-5" data-reveal>
                     <p class="text-lg leading-relaxed text-slate-600">From strategy and creative to acquisition and optimization, we help you turn paid traffic into measurable growth.</p>
@@ -66,13 +67,22 @@
                 </div>
             </div>
 
-            <div class="mt-16 grid border-t border-slate-200 sm:grid-cols-2 lg:grid-cols-5">
-                @foreach (config('agency.services') as $slug => $service)
+            @php
+                // Names and platform lines as in the client's mockup.
+                $columns = [
+                    'paid-social' => ['Paid-Social', ['TikTok · Meta · Snapchat', 'Pinterest']],
+                    'ppc' => ['PPC', ['Google Ads', 'Microsoft Ads']],
+                    'cro' => ['Conversion Rate Optimization', ['Landing pages', 'A/B testing · Analytics']],
+                    'tiktok-agency' => ['TikTok Agency Accounts', ['Official agency accounts', 'Dedicated support']],
+                ];
+            @endphp
+            <div class="mt-16 grid border-t border-slate-200 sm:grid-cols-2 lg:grid-cols-4">
+                @foreach ($columns as $slug => [$name, $lines])
                     <a href="{{ route('services.show', $slug) }}" wire:navigate data-reveal style="--reveal-delay: {{ $loop->index * 60 }}ms"
                        class="group flex flex-col border-b border-slate-200 py-8 sm:px-6 sm:[&:nth-child(odd)]:pl-0 lg:border-b-0 lg:border-l lg:px-6 lg:first:border-l-0 lg:first:pl-0 lg:[&:nth-child(odd)]:pl-6 lg:first:!pl-0">
                         <span class="text-xs font-medium text-slate-400 tabular-nums">0{{ $loop->iteration }}</span>
-                        <h3 class="mt-3 font-display text-xl font-semibold text-ocean-950">{{ $service['title'] }}</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-slate-500">{{ implode(' · ', array_slice($service['platforms'], 0, 3)) }}</p>
+                        <h3 class="mt-3 max-w-[14rem] font-display text-xl font-semibold text-ocean-950">{{ $name }}</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-slate-500">{!! implode('<br>', array_map('e', $lines)) !!}</p>
                         <span class="mt-auto pt-8"><span class="grid size-9 place-items-center rounded-full border border-slate-300 text-ocean-950 transition group-hover:border-ocean-600 group-hover:bg-ocean-600 group-hover:text-white"><x-icon name="arrow" class="size-4" /></span></span>
                     </a>
                 @endforeach
@@ -88,7 +98,7 @@
             </div>
             <div class="px-4 py-16 sm:px-12 lg:py-24 lg:pl-16" data-reveal>
                 <p class="eyebrow">Our approach</p>
-                <h2 class="mt-4 font-display text-4xl font-semibold tracking-tight text-ocean-950 text-balance sm:text-5xl">We don't just buy traffic. <span class="text-ocean-600">We understand it.</span></h2>
+                <h2 class="mt-4 font-display text-4xl font-semibold tracking-tight text-ocean-950 text-balance sm:text-5xl">We don’t just buy traffic.<br> <span class="text-ocean-600">We understand it.</span></h2>
                 <p class="mt-5 max-w-md text-lg leading-relaxed text-slate-600">Data-driven strategy, creative testing and continuous optimization to scale what works.</p>
                 <a href="{{ route('about') }}" wire:navigate class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ocean-600 hover:text-ocean-950">Learn more <x-icon name="arrow" class="size-4" /></a>
             </div>
@@ -100,7 +110,7 @@
         <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:items-center">
             <div class="lg:col-span-4" data-reveal>
                 <p class="eyebrow">Real results</p>
-                <h2 class="mt-4 font-display text-4xl font-semibold tracking-tight text-ocean-950 text-balance">Performance drives everything.</h2>
+                <h2 class="mt-4 font-display text-4xl font-semibold tracking-tight text-ocean-950 text-balance">Performance<br> drives everything.</h2>
             </div>
             <dl class="grid grid-cols-3 lg:col-span-8">
                 @foreach ([['3.4x', 'Average ROAS'], ['−31%', 'Lower CPA'], ['+64%', 'Higher CTR']] as [$value, $label])
@@ -118,7 +128,7 @@
         <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-12">
             <div class="lg:col-span-4" data-reveal>
                 <p class="eyebrow">Media buying guides</p>
-                <h2 class="mt-4 font-display text-4xl font-semibold tracking-tight text-ocean-950 text-balance">Practical knowledge for real media buyers.</h2>
+                <h2 class="mt-4 font-display text-3xl font-semibold tracking-tight text-ocean-950 sm:text-4xl lg:text-[1.6rem] xl:text-[2rem]">Practical knowledge<br class="hidden sm:block"> for real media buyers.</h2>
                 <p class="mt-5 leading-relaxed text-slate-600">In-depth guides, strategies and insights from people working with paid traffic every day.</p>
                 <a href="{{ route('section', 'guides') }}" wire:navigate class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-ocean-600 hover:text-ocean-950">Explore guides <x-icon name="arrow" class="size-4" /></a>
             </div>
@@ -154,7 +164,7 @@
         <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
             <div data-reveal>
                 <p class="eyebrow">For traffic providers</p>
-                <h2 class="mt-4 max-w-2xl font-display text-4xl font-semibold tracking-tight text-ocean-950 text-balance sm:text-5xl">Have traffic? Let's build something together.</h2>
+                <h2 class="mt-4 max-w-4xl font-display text-4xl font-semibold tracking-tight text-ocean-950 sm:text-5xl">Have traffic?<br> Let’s build something together.</h2>
                 <p class="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">We work with traffic providers, publishers and partners looking for performance-driven opportunities and long-term relationships.</p>
             </div>
             <a href="{{ route('section', 'traffic-providers') }}" wire:navigate class="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-ocean-600 hover:text-ocean-950" data-reveal>Become a partner <x-icon name="arrow" class="size-4" /></a>

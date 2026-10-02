@@ -1,9 +1,10 @@
 @php
     $nav = [
         ['label' => 'Services', 'icon' => 'layers', 'href' => route('services.index'), 'active' => request()->routeIs('services.*')],
-        ['label' => 'Guides', 'icon' => 'book', 'href' => route('section', 'guides'), 'active' => request()->is('guides*')],
-        ['label' => 'Traffic Providers', 'icon' => 'globe', 'href' => route('section', 'traffic-providers'), 'active' => request()->is('traffic-providers*')],
+        ['label' => 'Media Buying Guides', 'icon' => 'book', 'href' => route('section', 'guides'), 'active' => request()->is('guides*')],
+        ['label' => 'For Traffic Providers', 'icon' => 'globe', 'href' => route('section', 'traffic-providers'), 'active' => request()->is('traffic-providers*')],
         ['label' => 'News', 'icon' => 'newspaper', 'href' => route('section', 'news'), 'active' => request()->is('news*')],
+        ['label' => 'Careers', 'icon' => 'briefcase', 'href' => route('careers'), 'active' => request()->routeIs('careers*')],
         ['label' => 'About', 'icon' => 'users', 'href' => route('about'), 'active' => request()->routeIs('about')],
     ];
 @endphp
@@ -24,10 +25,10 @@
                     <li>
                         <a href="{{ $item['href'] }}" wire:navigate
                            @class([
-                               'inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm xl:px-4 font-medium transition',
+                               'inline-flex items-center rounded-md px-2 py-2 text-[13px] font-medium whitespace-nowrap transition xl:px-3.5 xl:text-sm',
                                'bg-white/10 text-white' => $item['active'],
                                'text-slate-300 hover:bg-white/5 hover:text-white' => ! $item['active'],
-                           ])><x-icon :name="$item['icon']" class="size-4 text-ocean-400" />{{ $item['label'] }}</a>
+                           ])>{{ $item['label'] }}</a>
                     </li>
                 @endforeach
             </ul>
@@ -44,8 +45,8 @@
                         <x-icon name="user" class="size-4 text-ocean-400" /><span class="hidden xl:inline">Sign in</span>
                     </a>
                 @endauth
-                <a href="{{ route('contact') }}" wire:navigate class="btn btn-primary hidden !py-2.5 sm:inline-flex">
-                    <x-icon name="rocket" class="size-4" /> Start a project
+                <a href="{{ route('contact') }}" wire:navigate class="btn btn-primary hidden !py-2.5 whitespace-nowrap sm:inline-flex lg:!px-4 xl:!px-5">
+                    Start a project <x-icon name="arrow" class="size-4" />
                 </a>
                 <button type="button" class="grid size-10 place-items-center rounded-md text-white hover:bg-white/10 lg:hidden"
                         @click="open = !open" :aria-expanded="open" aria-controls="mobile-nav" aria-label="Toggle menu">

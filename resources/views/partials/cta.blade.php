@@ -4,7 +4,7 @@
         <div>
             <p class="eyebrow">Let's talk</p>
             <h2 class="mt-4 font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">Ready to make waves?</h2>
-            <p class="mt-4 max-w-xl text-lg text-slate-300">Let's discuss how we can help you scale your traffic and grow your business.</p>
+            <p class="mt-4 max-w-2xl text-lg text-slate-300">Let's discuss how we can help you scale your traffic and grow your business.</p>
         </div>
         <div class="flex flex-wrap gap-4">
             <a href="{{ route('contact') }}" wire:navigate class="btn btn-primary">Start a project <x-icon name="arrow" class="size-4" /></a>
