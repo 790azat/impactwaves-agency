@@ -25,7 +25,7 @@
     ])
 
     @if ($key === 'traffic-providers')
-        <section class="pb-8">
+        <section class="pt-14 pb-8 sm:pt-16">
             <div class="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6 md:grid-cols-3">
                 @foreach ([
                     ['layers', 'Tier-1 feed access', 'Onboarding with established search feed partners such as '.implode(', ', config('agency.feed_partners')).'.'],

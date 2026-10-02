@@ -4,6 +4,7 @@ description: What search feed partners mean by traffic quality, which signals th
 keywords: traffic quality, search feed traffic quality, invalid traffic, clawbacks, search feed partner requirements, monetize traffic
 date: 2026-09-25
 tag: Traffic quality
+cover: /images/covers/traffic-quality-search-feeds.webp
 ---
 
 In search feed monetization, **traffic quality** decides everything. It affects your revenue per click, whether revenue is paid out in full and whether you keep your account at all. This guide explains what feed partners look for and how to keep your traffic on the right side of the line.

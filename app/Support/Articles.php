@@ -38,6 +38,8 @@ class Articles
         foreach (static::fromDatabase() as $article) {
             $key = $article['section'].'/'.$article['slug'];
             $article['overrides_file'] = $articles->has($key) && $articles[$key]['source'] === 'file';
+            // Covers live in the Markdown front matter; an edited copy keeps the file's cover.
+            $article['cover'] ??= $articles[$key]['cover'] ?? null;
             $articles[$key] = $article;
         }
 
@@ -154,6 +156,7 @@ class Articles
             'updated' => ! empty($meta['updated']) ? Carbon::parse($meta['updated']) : null,
             'author' => ($meta['author'] ?? null) ?: 'Impact Waves Team',
             'tag' => ($meta['tag'] ?? null) ?: null,
+            'cover' => ($meta['cover'] ?? null) ?: null,
             'markdown' => $markdown,
             'html' => $html,
             'toc' => $toc,

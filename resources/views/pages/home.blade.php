@@ -125,9 +125,7 @@
             <div class="grid gap-5 sm:grid-cols-3 lg:col-span-8">
                 @foreach (\App\Support\Articles::inSection('guides')->take(3) as $article)
                     <a href="{{ route('article', ['guides', $article['slug']]) }}" wire:navigate class="group flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-white transition hover:-translate-y-1 hover:shadow-xl hover:shadow-ocean-950/10" data-reveal style="--reveal-delay: {{ $loop->index * 70 }}ms">
-                        <span class="relative isolate block aspect-[16/10] overflow-hidden bg-navy">
-                            <span class="silk silk-tile inset-0 transition duration-700 group-hover:scale-105" style="background-position: {{ ['20% 40%', '70% 60%', '45% 20%'][$loop->index] }}; transform-origin: center"></span>
-                        </span>
+                        @include('partials.article-cover', ['article' => $article, 'class' => 'aspect-[16/10]'])
                         <span class="flex flex-1 flex-col p-5">
                             <span class="text-xs text-slate-500">{{ \Illuminate\Support\Carbon::parse($article['date'])->format('M j, Y') }}</span>
                             <span class="mt-2 font-display font-semibold leading-snug text-ocean-950 text-balance">{{ $article['title'] }}</span>

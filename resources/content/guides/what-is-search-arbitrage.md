@@ -4,6 +4,7 @@ description: How search arbitrage and RSOC work, where the margin comes from, wh
 keywords: search arbitrage, search feed arbitrage, RSOC, RSOC arbitrage, media buying, search feed
 date: 2026-09-28
 tag: Search arbitrage
+cover: /images/covers/what-is-search-arbitrage.webp
 ---
 
 **Search arbitrage** is a media buying model where you buy traffic on one platform, send it to a page that shows search results or search-style ads from a feed provider, and earn a share of the revenue when users click those ads. Your profit is the gap between what you pay for a visitor and what that visitor earns you.

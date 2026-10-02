@@ -4,6 +4,7 @@ description: The media buying metrics that decide profit in search arbitrage and
 keywords: media buying metrics, RPC, RPM, ROI, ROAS, revenue per click, search arbitrage metrics
 date: 2026-09-26
 tag: Metrics
+cover: /images/covers/media-buying-metrics-rpc-rpm-roi.webp
 ---
 
 Media buying is a numbers game. Creative and targeting get the attention, but the teams that scale are the ones that read their metrics correctly and act on them every day. This guide covers the core metrics, how to calculate them and what each one tells you.

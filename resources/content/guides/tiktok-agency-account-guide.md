@@ -4,6 +4,7 @@ description: What a TikTok agency ad account is, how it differs from a self-serv
 keywords: TikTok agency account, TikTok agency ad account, TikTok ads for media buyers, TikTok ads account, official TikTok agency
 date: 2026-09-27
 tag: TikTok ads
+cover: /images/covers/tiktok-agency-account-guide.webp
 ---
 
 Anyone can open a self-serve TikTok Ads Manager account in a few minutes. So why do so many media buyers and brands run their spend through a **TikTok agency account** instead? This guide explains what agency accounts are, what they change in practice and how to decide whether you need one.

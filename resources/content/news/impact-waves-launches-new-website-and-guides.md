@@ -4,6 +4,7 @@ description: Impact Waves Agency has launched a new website with dedicated secti
 keywords: Impact Waves Agency, media buying agency, TikTok agency, search feed monetization, performance marketing agency
 date: 2026-09-28
 tag: Agency news
+cover: /images/covers/impact-waves-launches-new-website-and-guides.webp
 ---
 
 Impact Waves Agency has launched a new website. It brings together everything we do for brands, media buyers and traffic providers, and adds a growing library of free guides written by the people who run campaigns every day.

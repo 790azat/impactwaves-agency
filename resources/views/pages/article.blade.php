@@ -22,7 +22,7 @@
                         'dateModified' => ($article['updated'] ?? $article['date'])->toIso8601String(),
                         'author' => ["\x40type" => 'Organization', 'name' => $article['author'], 'url' => route('about')],
                         'publisher' => ["\x40type" => 'Organization', 'name' => config('agency.legal_name'), 'logo' => ["\x40type" => 'ImageObject', 'url' => url('/logo.png')]],
-                        'image' => url('/og-image.png'),
+                        'image' => url(($article['cover'] ?? null) ?: '/og-image.png'),
                         'mainEntityOfPage' => $url,
                         'articleSection' => $section['title'],
                         'wordCount' => str_word_count(strip_tags($article['html'])),
@@ -63,7 +63,12 @@
         </header>
 
         <div class="mx-auto grid max-w-6xl gap-12 px-4 pt-14 pb-16 sm:px-6 sm:pt-16 lg:grid-cols-[1fr_240px]">
-            <div class="prose-article min-w-0">{!! $article['html'] !!}</div>
+            <div class="min-w-0">
+                @if ($article['cover'] ?? null)
+                    <img src="{{ $article['cover'] }}" alt="" width="1600" height="1000" class="mb-12 w-full rounded-2xl shadow-xl shadow-ocean-950/15" fetchpriority="high">
+                @endif
+                <div class="prose-article">{!! $article['html'] !!}</div>
+            </div>
 
             @if (count($article['toc']) > 2)
                 <aside class="hidden lg:block">
