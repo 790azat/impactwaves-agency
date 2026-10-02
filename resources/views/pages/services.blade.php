@@ -19,7 +19,7 @@
         'lead' => 'One data-driven team for acquisition, conversion and monetization. Pick a single service or combine them into a full-funnel program.',
     ])
 
-    <section class="pb-24">
+    <section class="pt-14 pb-24 sm:pt-16">
         <div class="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6">
             @foreach (config('agency.services') as $slug => $service)
                 <a href="{{ route('services.show', $slug) }}" wire:navigate data-reveal

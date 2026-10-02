@@ -62,7 +62,7 @@
             </div>
         </header>
 
-        <div class="mx-auto grid max-w-6xl gap-12 px-4 pb-16 sm:px-6 lg:grid-cols-[1fr_240px]">
+        <div class="mx-auto grid max-w-6xl gap-12 px-4 pt-14 pb-16 sm:px-6 sm:pt-16 lg:grid-cols-[1fr_240px]">
             <div class="prose-article min-w-0">{!! $article['html'] !!}</div>
 
             @if (count($article['toc']) > 2)

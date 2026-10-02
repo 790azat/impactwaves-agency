@@ -26,7 +26,7 @@
         'lead' => $service['intro'],
     ])
 
-    <section class="-mt-6 pb-10">
+    <section class="pt-12 pb-10 sm:pt-14">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
             <div class="flex flex-wrap items-center gap-3" data-reveal>
                 @foreach ($service['platforms'] as $platform)
