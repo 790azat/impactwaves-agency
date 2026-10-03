@@ -1,4 +1,4 @@
-<x-layouts.app title="About Us: Performance Marketing Agency" description="About Impact Waves Agency: a performance marketing team and official TikTok agency working with brands, media buyers and traffic providers across the US, EU and Canada.">
+<x-layouts.app title="About Us: We Build, Test, and Scale What Works" description="Impact Waves is a performance-driven growth company focused on traffic acquisition, monetization, and scalable digital businesses. Test. Learn. Scale.">
     @push('schema')
         {!! \App\Support\Seo::jsonLd([
             "\x40type" => 'AboutPage',
@@ -9,23 +9,18 @@
     @endpush
     @include('partials.page-hero', [
         'eyebrow' => 'About us',
-        'title' => 'A performance team that treats your budget <span class="text-gradient">like its own</span>',
-        'lead' => 'Impact Waves is a performance marketing agency. We identify the best tools and resources for optimizing your revenue opportunities and provide complete solutions for your most critical growth requirements.',
+        'title' => 'We build, test, and <span class="text-gradient">scale what works.</span>',
+        'lead' => 'Impact Waves is a performance-driven growth company focused on traffic acquisition, monetization, and scalable digital businesses.',
     ])
 
-    <section class="py-16">
-        <div class="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6 md:grid-cols-3">
-            @foreach ([
-                ['Acquire', 'Paid social and PPC campaigns that find the right people at the right cost.', 'megaphone'],
-                ['Convert', 'CRO and landing pages that turn more of that traffic into customers.', 'chart'],
-                ['Monetize', 'Tier-1 feed partnerships that turn traffic itself into revenue.', 'layers'],
-            ] as [$title, $text, $icon])
-                <div class="glass rounded-2xl p-8" data-reveal style="--reveal-delay: {{ $loop->index * 80 }}ms">
-                    <x-icon :name="$icon" class="size-8 text-ocean-600" />
-                    <h2 class="mt-6 font-display text-3xl font-semibold text-ocean-950">{{ $title }}</h2>
-                    <p class="mt-3 leading-relaxed text-slate-600">{{ $text }}</p>
-                </div>
-            @endforeach
+    <section class="py-16 sm:py-24">
+        <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:items-center">
+            <div class="space-y-5 text-lg leading-relaxed text-slate-600 lg:col-span-7" data-reveal>
+                <p>We operate at the intersection of media buying, technology, data, and monetization - constantly testing new channels, strategies, and opportunities to find what delivers real results.</p>
+                <p>Our approach is simple: <strong class="font-semibold text-ocean-950">test fast, learn from the data, and scale what works.</strong></p>
+                <p>We work with partners, platforms, and traffic sources to create sustainable growth opportunities while treating every dollar of budget as if it were our own.</p>
+            </div>
+            <p class="font-display text-5xl leading-[1.05] font-semibold tracking-tight text-ocean-950 sm:text-6xl lg:col-span-5 lg:text-right" data-reveal>Test.<br>Learn.<br><span class="text-ocean-600">Scale.</span></p>
         </div>
     </section>
 
