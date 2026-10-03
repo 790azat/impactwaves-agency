@@ -7,7 +7,7 @@
             <p class="mt-4 max-w-2xl text-lg text-slate-300">Let's discuss how we can help you scale your traffic and grow your business.</p>
         </div>
         <div class="flex flex-wrap gap-4">
-            <a href="{{ route('contact') }}" wire:navigate class="btn btn-primary">Start a project <x-icon name="arrow" class="size-4" /></a>
+            <a href="{{ route('contact') }}" wire:navigate class="btn btn-primary">Start a Partnership <x-icon name="arrow" class="size-4" /></a>
             <a href="mailto:{{ config('agency.email') }}" class="btn btn-outline-light"><x-icon name="mail" class="size-4" /> Contact us</a>
         </div>
     </div>

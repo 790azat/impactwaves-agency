@@ -46,7 +46,7 @@
                     </a>
                 @endauth
                 <a href="{{ route('contact') }}" wire:navigate class="btn btn-primary hidden !py-2.5 whitespace-nowrap sm:inline-flex lg:!px-4 xl:!px-5">
-                    Start a project <x-icon name="arrow" class="size-4" />
+                    Start a Partnership <x-icon name="arrow" class="size-4" />
                 </a>
                 <button type="button" class="grid size-10 place-items-center rounded-md text-white hover:bg-white/10 lg:hidden"
                         @click="open = !open" :aria-expanded="open" aria-controls="mobile-nav" aria-label="Toggle menu">
@@ -71,7 +71,7 @@
                         <a href="{{ route('login') }}" class="flex items-center gap-3 rounded-md px-4 py-3 text-base font-medium text-white hover:bg-white/5"><x-icon name="user" class="size-5 text-ocean-400" />Sign in</a>
                     @endauth
                 </li>
-                <li class="pt-2"><a href="{{ route('contact') }}" wire:navigate class="btn btn-primary w-full"><x-icon name="rocket" class="size-4" /> Start a project</a></li>
+                <li class="pt-2"><a href="{{ route('contact') }}" wire:navigate class="btn btn-primary w-full">Start a Partnership <x-icon name="arrow" class="size-4" /></a></li>
             </ul>
         </div>
     </div>
