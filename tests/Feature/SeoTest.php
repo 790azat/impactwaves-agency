@@ -10,8 +10,8 @@ class SeoTest extends TestCase
     {
         config(['agency.site_url' => 'https://impactwaves.agency']);
 
-        $this->get('https://impactwaves.agency/services/ppc')
-            ->assertSee('<link rel="canonical" href="https://impactwaves.agency/services/ppc">', false)
+        $this->get('https://impactwaves.agency/services/performance-media-buying')
+            ->assertSee('<link rel="canonical" href="https://impactwaves.agency/services/performance-media-buying">', false)
             ->assertSee('index, follow', false)
             ->assertSee('"@type":"Service"', false)
             ->assertSee('BreadcrumbList');

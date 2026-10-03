@@ -14,8 +14,8 @@ class ServiceTextsTest extends TestCase
     {
         $admin = tap(User::factory()->create(), fn ($u) => $u->forceFill(['is_admin' => true])->save());
 
-        $this->actingAs($admin)->get('/admin/services/ppc')->assertOk();
-        $this->actingAs($admin)->put('/admin/services/ppc', [
+        $this->actingAs($admin)->get('/admin/services/performance-media-buying')->assertOk();
+        $this->actingAs($admin)->put('/admin/services/performance-media-buying', [
             'title' => 'PPC Advertising',
             'eyebrow' => 'Search',
             'short' => 'New short text.',
@@ -23,13 +23,14 @@ class ServiceTextsTest extends TestCase
             'intro' => 'New intro.',
             'platforms' => 'Google Ads, Bing',
             'features' => [['title' => 'Point one', 'text' => 'Text one'], ['title' => '', 'text' => 'dropped']],
-        ])->assertRedirect('/admin/services/ppc');
+        ])->assertRedirect('/admin/services/performance-media-buying');
 
-        $this->get('/services/ppc')->assertSee('A brand new PPC headline')->assertSee('Point one')->assertDontSee('dropped')->assertSee('Bing');
+        $this->get('/services/performance-media-buying')->assertSee('A brand new PPC headline')->assertSee('Point one')->assertDontSee('dropped')->assertSee('Bing');
         $this->get('/services')->assertSee('New short text.');
         $this->actingAs($admin)->get('/admin/services')->assertOk()->assertSee('Edited');
 
-        $this->actingAs($admin)->delete('/admin/services/ppc');
-        $this->get('/services/ppc')->assertDontSee('A brand new PPC headline')->assertSee('Query hygiene');
+        $this->actingAs($admin)->delete('/admin/services/performance-media-buying');
+        $this->get('/services/performance-media-buying')->assertDontSee('A brand new PPC headline')->assertSee('Continuous testing');
+        $this->get('/services/ppc')->assertRedirect('/services/performance-media-buying');
     }
 }

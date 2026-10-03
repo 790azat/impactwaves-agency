@@ -40,8 +40,8 @@
                 @endforeach
             </div>
             <div class="mx-auto mt-8 flex max-w-7xl flex-wrap gap-3 px-4 sm:px-6" data-reveal>
-                <x-button href="{{ route('contact') }}?service=search-feeds" icon="rocket" wire:navigate>Monetize my traffic</x-button>
-                <x-button href="{{ route('services.show', 'search-feeds') }}" variant="ghost" icon="layers" wire:navigate>Search feed service</x-button>
+                <x-button href="{{ route('contact') }}?service=rsoc-adx-monetization" icon="rocket" wire:navigate>Monetize my traffic</x-button>
+                <x-button href="{{ route('services.show', 'rsoc-adx-monetization') }}" variant="ghost" icon="layers" wire:navigate>RSOC & AdX monetization</x-button>
             </div>
         </section>
     @endif

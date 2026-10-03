@@ -34,7 +34,12 @@
                             <h2 class="mt-1 font-display text-2xl font-semibold text-ocean-950 sm:text-3xl">{{ $service['title'] }}</h2>
                         </div>
                     </div>
-                    <p class="max-w-xl leading-relaxed text-slate-600 lg:col-span-7">{{ $service['short'] }}</p>
+                    <div class="max-w-xl lg:col-span-7">
+                        <p class="leading-relaxed text-slate-600">{{ $service['short'] }}</p>
+                        @isset($service['cta'])
+                            <p class="mt-3 font-semibold text-ocean-600">{{ $service['cta'] }}</p>
+                        @endisset
+                    </div>
                 </a>
             @endforeach
         </div>

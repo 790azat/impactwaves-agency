@@ -16,7 +16,7 @@ Impact Waves Agency has launched a new website. It brings together everything we
 - [Guides for media buyers](/guides) cover search arbitrage and RSOC, TikTok agency accounts and the metrics that decide profit.
 - [For Traffic Providers](/traffic-providers) explains how publishers, domain owners and networks can monetize their traffic with Tier-1 search feeds, and what feed partners expect.
 
-**A clearer view of our services.** Each service now has its own page: [Paid Social Ads](/services/paid-social), [PPC Advertising](/services/ppc), [Conversion Rate Optimization](/services/cro), [TikTok Agency Accounts](/services/tiktok-agency) and [Search Feed Monetization](/services/search-feeds).
+**A clearer view of our services.** Each service now has its own page: [Performance Media Buying](/services/performance-media-buying), [Creative Engineering & Automation](/services/creative-engineering), [Traffic Acquisition & Partnerships](/services/traffic-partnerships), [RSOC & AdX Monetization](/services/rsoc-adx-monetization) and [Official TikTok Agency Partner](/services/tiktok-agency).
 
 **An ROI calculator.** The [calculator](/#calculator) on the home page shows how improvements in conversion rate change your revenue and return on ad spend.
 

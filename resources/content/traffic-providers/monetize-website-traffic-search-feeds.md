@@ -60,4 +60,4 @@ Tier-1 feed providers are selective, and onboarding can be slow for a single pub
 - Monitor traffic quality before it affects revenue
 - Consolidate reporting across feeds and sources
 
-Have traffic to monetize? Tell us about it through the [contact form](/contact?service=search-feeds) or read about our [search feed monetization service](/services/search-feeds).
+Have traffic to monetize? Tell us about it through the [contact form](/contact?service=rsoc-adx-monetization) or read about our [RSOC & AdX monetization service](/services/rsoc-adx-monetization).

@@ -67,22 +67,13 @@
                 </div>
             </div>
 
-            @php
-                // Names and platform lines as in the client's mockup.
-                $columns = [
-                    'paid-social' => ['Paid-Social', ['TikTok · Meta · Snapchat', 'Pinterest']],
-                    'ppc' => ['PPC', ['Google Ads', 'Microsoft Ads']],
-                    'cro' => ['Conversion Rate Optimization', ['Landing pages', 'A/B testing · Analytics']],
-                    'tiktok-agency' => ['TikTok Agency Accounts', ['Official agency accounts', 'Dedicated support']],
-                ];
-            @endphp
-            <div class="mt-16 grid border-t border-slate-200 sm:grid-cols-2 lg:grid-cols-4">
-                @foreach ($columns as $slug => [$name, $lines])
+            <div class="mt-16 grid border-t border-slate-200 sm:grid-cols-2 lg:grid-cols-5">
+                @foreach (config('agency.services') as $slug => $service)
                     <a href="{{ route('services.show', $slug) }}" wire:navigate data-reveal style="--reveal-delay: {{ $loop->index * 60 }}ms"
                        class="group flex flex-col border-b border-slate-200 py-8 sm:px-6 sm:[&:nth-child(odd)]:pl-0 lg:border-b-0 lg:border-l lg:px-6 lg:first:border-l-0 lg:first:pl-0 lg:[&:nth-child(odd)]:pl-6 lg:first:!pl-0">
                         <span class="text-xs font-medium text-slate-400 tabular-nums">0{{ $loop->iteration }}</span>
-                        <h3 class="mt-3 max-w-[14rem] font-display text-xl font-semibold text-ocean-950">{{ $name }}</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-slate-500">{!! implode('<br>', array_map('e', $lines)) !!}</p>
+                        <h3 class="mt-3 max-w-[14rem] font-display text-xl font-semibold text-ocean-950">{{ $service['title'] }}</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-slate-500">{{ implode(' · ', $service['platforms']) }}</p>
                         <span class="mt-auto pt-8"><span class="grid size-9 place-items-center rounded-full border border-slate-300 text-ocean-950 transition group-hover:border-ocean-600 group-hover:bg-ocean-600 group-hover:text-white"><x-icon name="arrow" class="size-4" /></span></span>
                     </a>
                 @endforeach

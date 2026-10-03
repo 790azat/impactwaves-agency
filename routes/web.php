@@ -17,6 +17,10 @@ Route::view('/', 'pages.home')->name('home');
 Route::view('/services', 'pages.services')->name('services.index');
 
 Route::get('/services/{slug}', function (string $slug) {
+    if ($to = config("agency.service_redirects.$slug")) {
+        return redirect()->route('services.show', $to, 301);
+    }
+
     $services = config('agency.services');
     abort_unless(isset($services[$slug]), 404);
 
