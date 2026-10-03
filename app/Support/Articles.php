@@ -24,7 +24,7 @@ class Articles
     public static function all(): Collection
     {
         return static::$cache ??= static::merged()
-            ->filter(fn (array $article) => $article['published'])
+            ->filter(fn (array $article) => $article['published'] && Sections::enabled($article['section']))
             ->values();
     }
 

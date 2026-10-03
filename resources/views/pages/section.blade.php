@@ -38,7 +38,7 @@
             <div class="flex flex-wrap items-end justify-between gap-4">
                 <h2 class="font-display text-3xl font-semibold text-ocean-950" data-reveal>{{ $key === 'news' ? 'Latest news' : 'Articles' }}</h2>
                 <nav class="flex flex-wrap gap-2" aria-label="Sections" data-reveal>
-                    @foreach (config('agency.sections') as $k => $s)
+                    @foreach (\App\Support\Sections::visible() as $k => $s)
                         <a href="{{ route('section', $k) }}" wire:navigate @class([
                             'inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium transition',
                             'border-ocean-200 bg-ocean-50 text-ocean-700' => $k === $key,

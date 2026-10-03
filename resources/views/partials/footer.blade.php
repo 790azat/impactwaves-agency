@@ -28,7 +28,7 @@
                     <h3 class="text-sm font-semibold text-ocean-950">Company</h3>
                     <ul class="mt-4 space-y-3 text-sm">
                         <li><a href="{{ route('about') }}" wire:navigate class="text-slate-600 transition hover:text-ocean-950">About</a></li>
-                        @foreach (config('agency.sections') as $key => $section)
+                        @foreach (\App\Support\Sections::visible() as $key => $section)
                             <li><a href="{{ route('section', $key) }}" wire:navigate class="text-slate-600 transition hover:text-ocean-950">{{ $section['title'] }}</a></li>
                         @endforeach
                         <li><a href="{{ route('careers') }}" wire:navigate class="text-slate-600 transition hover:text-ocean-950">Careers</a></li>

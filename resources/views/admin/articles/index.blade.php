@@ -4,6 +4,25 @@
         <a href="{{ route('admin.articles.create', array_filter(['section' => $section])) }}" class="btn btn-primary"><x-icon name="plus" class="size-4" /> New article</a>
     </x-slot:header>
 
+    @foreach (\App\Support\Sections::TOGGLEABLE as $key => $default)
+        @php $on = \App\Support\Sections::enabled($key); @endphp
+        <form method="POST" action="{{ route('admin.sections.toggle', $key) }}" class="mb-5 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-ocean-100 bg-white px-5 py-4">
+            @csrf
+            @method('PUT')
+            <input type="hidden" name="enabled" value="{{ $on ? 0 : 1 }}">
+            <div>
+                <p class="font-semibold text-ocean-950">{{ config("agency.sections.$key.title") }} section</p>
+                <p class="text-sm text-slate-500">{{ $on ? 'Shown on the site: menu, footer, sitemap and its pages.' : 'Hidden from the site. Articles stay here and can be edited.' }}</p>
+            </div>
+            <button type="submit" role="switch" aria-checked="{{ $on ? 'true' : 'false' }}" aria-label="Show {{ config("agency.sections.$key.title") }} on the site" class="flex items-center gap-3 text-sm font-medium text-slate-600">
+                <span @class(['relative inline-flex h-6 w-11 shrink-0 rounded-full transition', 'bg-ocean-600' => $on, 'bg-slate-300' => ! $on])>
+                    <span @class(['absolute top-0.5 size-5 rounded-full bg-white shadow transition-all', 'left-[1.375rem]' => $on, 'left-0.5' => ! $on])></span>
+                </span>
+                {{ $on ? 'On' : 'Off' }}
+            </button>
+        </form>
+    @endforeach
+
     <div class="mb-5 flex flex-wrap gap-2">
         <a href="{{ route('admin.articles.index') }}" @class(['rounded-md px-3 py-1.5 text-sm font-medium', 'bg-ocean-950 text-white' => ! $section, 'border border-ocean-100 bg-white text-slate-600 hover:border-ocean-300' => $section])>All</a>
         @foreach (config('agency.sections') as $key => $s)

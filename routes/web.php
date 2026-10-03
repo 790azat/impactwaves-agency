@@ -9,6 +9,7 @@ use App\Http\Controllers\TelegramWebhookController;
 use App\Http\Middleware\EnsureAdmin;
 use App\Models\Vacancy;
 use App\Support\Articles;
+use App\Support\Sections;
 use App\Support\Seo;
 use Illuminate\Support\Facades\Route;
 
@@ -102,6 +103,13 @@ Route::middleware(['auth', EnsureAdmin::class])->prefix('admin')->name('admin.')
 
     Route::resource('vacancies', Admin\VacancyController::class)->except('show');
 
+    Route::put('/sections/{section}', function (Illuminate\Http\Request $request, string $section) {
+        abort_unless(array_key_exists($section, Sections::TOGGLEABLE), 404);
+        Sections::set($section, $request->boolean('enabled'));
+
+        return back()->with('status', config("agency.sections.$section.title").($request->boolean('enabled') ? ' is now shown on the site.' : ' is now hidden from the site.'));
+    })->name('sections.toggle');
+
     Route::get('/company', [Admin\CompanyController::class, 'edit'])->name('company.edit');
     Route::put('/company', [Admin\CompanyController::class, 'update'])->name('company.update');
 });
@@ -109,6 +117,8 @@ Route::middleware(['auth', EnsureAdmin::class])->prefix('admin')->name('admin.')
 $sections = array_keys(config('agency.sections'));
 
 Route::get('/{section}', function (string $section) {
+    abort_unless(Sections::enabled($section), 404);
+
     return view('pages.section', [
         'key' => $section,
         'section' => config('agency.sections')[$section],
@@ -132,7 +142,7 @@ Route::get('/sitemap.xml', function () {
     $urls = collect([route('home'), route('services.index'), route('about'), route('careers'), route('contact')])
         ->merge(Vacancy::open()->map(fn ($v) => route('careers.show', $v->slug)))
         ->merge(collect(config('agency.services'))->keys()->map(fn ($slug) => route('services.show', $slug)))
-        ->merge(collect(config('agency.sections'))->keys()->map(fn ($key) => route('section', $key)))
+        ->merge(collect(Sections::visible())->keys()->map(fn ($key) => route('section', $key)))
         ->map(fn ($url) => ['loc' => $url, 'lastmod' => null, 'priority' => match (true) {
             $url === route('home') => '1.0',
             str_contains($url, '/services') => '0.9',
