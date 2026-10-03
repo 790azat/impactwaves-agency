@@ -34,12 +34,7 @@
                             <h2 class="mt-1 font-display text-2xl font-semibold text-ocean-950 sm:text-3xl">{{ $service['title'] }}</h2>
                         </div>
                     </div>
-                    <p class="leading-relaxed text-slate-600 lg:col-span-5">{{ $service['short'] }}</p>
-                    <div class="flex justify-end lg:col-span-2">
-                        <span class="grid size-12 place-items-center rounded-full border border-ocean-100 text-ocean-950 transition duration-300 group-hover:text-white group-hover:bg-brand group-hover:border-transparent">
-                            <x-icon name="arrow-up-right" class="size-5" />
-                        </span>
-                    </div>
+                    <p class="max-w-xl leading-relaxed text-slate-600 lg:col-span-7">{{ $service['short'] }}</p>
                 </a>
             @endforeach
         </div>
