@@ -15,13 +15,13 @@
         <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_80%_55%,rgb(0_123_255/.18),transparent_70%)]"></div>
 
         <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
-            <div class="max-w-2xl">
+            <div class="max-w-2xl lg:max-w-3xl">
                 <p class="eyebrow eyebrow-dark" data-reveal>Performance marketing agency</p>
                 <h1 class="mt-7 font-display text-5xl leading-[1.02] font-semibold tracking-tight text-balance sm:text-6xl lg:text-7xl xl:text-[4.8rem]" data-reveal style="--reveal-delay:80ms">
-                    Make waves.<br><span class="text-ocean-500">Measure impact.</span>
+                    Make waves.<br><span class="text-ocean-500">Scale what works.</span>
                 </h1>
-                <p class="mt-7 max-w-xl text-lg leading-relaxed text-slate-300 text-pretty sm:text-xl" data-reveal style="--reveal-delay:160ms">
-                    We help brands, media buyers and traffic partners acquire, optimize and scale traffic across TikTok, Meta and search with a data-driven approach.
+                <p class="mt-7 max-w-2xl text-lg leading-relaxed text-slate-300 text-pretty sm:text-xl" data-reveal style="--reveal-delay:160ms">
+                    We acquire, monetize, and scale high-performance traffic across TikTok, Meta, Search, RSOC, and AdX - combining media buying, creative engineering, data, and technology to turn traffic into measurable revenue.
                 </p>
                 <div class="mt-10 flex flex-wrap items-center gap-4" data-reveal style="--reveal-delay:240ms">
                     <a href="{{ route('contact') }}" wire:navigate class="btn btn-primary">Start a Partnership <x-icon name="arrow" class="size-4" /></a>
