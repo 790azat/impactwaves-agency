@@ -24,8 +24,8 @@
                     We help brands, media buyers and traffic partners acquire, optimize and scale traffic across TikTok, Meta and search with a data-driven approach.
                 </p>
                 <div class="mt-10 flex flex-wrap items-center gap-4" data-reveal style="--reveal-delay:240ms">
-                    <a href="{{ route('contact') }}" wire:navigate class="btn btn-primary">Start a project <x-icon name="arrow" class="size-4" /></a>
-                    <a href="{{ route('services.index') }}" wire:navigate class="btn btn-outline-light">Our services</a>
+                    <a href="{{ route('contact') }}" wire:navigate class="btn btn-primary">Start a Partnership <x-icon name="arrow" class="size-4" /></a>
+                    <a href="{{ route('services.index') }}" wire:navigate class="btn btn-outline-light">Explore What We Do</a>
                 </div>
             </div>
 
