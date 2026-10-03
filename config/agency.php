@@ -149,9 +149,9 @@ return [
             'audience' => 'For media buyers',
             'icon' => 'book',
             'headline' => 'Media buying guides for <span class="text-gradient">search arbitrage</span>, TikTok and paid social',
-            'lead' => 'Practical playbooks from a team that buys traffic every day: search arbitrage and RSOC, TikTok agency accounts, tracking, metrics and scaling.',
+            'lead' => 'Actionable playbooks built from daily media buying. No generic theory, just field-tested strategies covering search arbitrage, RSOC compliance, TikTok and Meta optimization, traffic quality evaluation and creative automation systems.',
             'meta_title' => 'Media Buying Guides: Search Arbitrage, RSOC and TikTok Ads',
-            'meta_description' => 'Free media buying guides for arbitrage teams: how search arbitrage and RSOC work, TikTok agency accounts, RPC, RPM and ROI metrics, and how to scale.',
+            'meta_description' => 'Field-tested media buying playbooks: search arbitrage and RSOC compliance, TikTok and Meta optimization, traffic quality evaluation and creative automation.',
         ],
         'traffic-providers' => [
             'nav' => 'Feed Partners',

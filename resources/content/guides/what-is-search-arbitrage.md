@@ -67,7 +67,7 @@ Each traffic source has its own strengths:
 - **Thin pages.** Pages with little content and a wall of search terms rarely pass policy review for long.
 - **No tracking.** Without click IDs passed from source to feed report, you cannot see which ad sets make money.
 - **Scaling too fast.** Doubling budgets overnight on a winning ad set often resets learning and pushes CPC up.
-- **Ignoring traffic quality.** Feed partners watch quality closely. Bot traffic or accidental clicks can lead to clawbacks or a closed account. See [what feed partners look for](/traffic-providers/traffic-quality-search-feeds).
+- **Ignoring traffic quality.** Feed partners watch quality closely. Bot traffic or accidental clicks can lead to clawbacks or a closed account. See [why we reject traffic even when the volume looks good](/traffic-providers/why-we-reject-traffic-even-when-the-volume-looks-good).
 
 ## How to get started
 
