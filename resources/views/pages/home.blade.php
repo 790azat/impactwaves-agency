@@ -149,16 +149,18 @@
         </div>
     </section>
 
-    {{-- TRAFFIC PROVIDERS: a soft wave behind the copy, edge to edge. --}}
+    {{-- FEED PARTNERS: a soft wave behind the copy, edge to edge. --}}
     <section class="relative isolate overflow-hidden py-24 sm:py-28">
         <div class="silk silk-band inset-x-0 top-0 bottom-0 opacity-90 [background-position:center_40%]"></div>
         <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
             <div data-reveal>
-                <p class="eyebrow">For traffic providers</p>
-                <h2 class="mt-4 max-w-4xl font-display text-4xl font-semibold tracking-tight text-ocean-950 sm:text-5xl">Have traffic?<br> Let’s build something together.</h2>
-                <p class="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">We work with traffic providers, publishers and partners looking for performance-driven opportunities and long-term relationships.</p>
+                <p class="eyebrow">Partnerships</p>
+                <h2 class="mt-4 max-w-4xl font-display text-4xl font-semibold tracking-tight text-ocean-950 sm:text-5xl">For Feed Partners</h2>
+                <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">We’re always looking to build long-term partnerships with reliable feed providers and monetization partners.</p>
+                <p class="mt-3 max-w-2xl text-lg leading-relaxed text-slate-600">If you have a high-quality search, content, or other monetizable feed, we’d love to explore how we can work together, scale traffic, and maximize revenue.</p>
+                <p class="mt-5 max-w-2xl text-lg font-semibold text-ocean-950">Let’s build a partnership that works for both sides.</p>
             </div>
-            <a href="{{ route('section', 'traffic-providers') }}" wire:navigate class="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-ocean-600 hover:text-ocean-950" data-reveal>Become a partner <x-icon name="arrow" class="size-4" /></a>
+            <a href="{{ route('contact') }}?service=traffic-partnerships" wire:navigate class="btn btn-primary shrink-0" data-reveal>Become a Feed Partner <x-icon name="arrow" class="size-4" /></a>
         </div>
     </section>
 

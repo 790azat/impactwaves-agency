@@ -2,7 +2,7 @@
     $nav = [
         ['label' => 'Services', 'icon' => 'layers', 'href' => route('services.index'), 'active' => request()->routeIs('services.*')],
         ['label' => 'Media Buying Guides', 'icon' => 'book', 'href' => route('section', 'guides'), 'active' => request()->is('guides*')],
-        ['label' => 'For Traffic Providers', 'icon' => 'globe', 'href' => route('section', 'traffic-providers'), 'active' => request()->is('traffic-providers*')],
+        ['label' => 'For Feed Partners', 'icon' => 'globe', 'href' => route('section', 'traffic-providers'), 'active' => request()->is('traffic-providers*')],
         ['label' => 'News', 'icon' => 'newspaper', 'href' => route('section', 'news'), 'active' => request()->is('news*')],
         ['label' => 'Careers', 'icon' => 'briefcase', 'href' => route('careers'), 'active' => request()->routeIs('careers*')],
         ['label' => 'About', 'icon' => 'users', 'href' => route('about'), 'active' => request()->routeIs('about')],

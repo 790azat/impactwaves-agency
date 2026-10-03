@@ -25,23 +25,10 @@
     ])
 
     @if ($key === 'traffic-providers')
-        <section class="pt-14 pb-8 sm:pt-16">
-            <div class="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6 md:grid-cols-3">
-                @foreach ([
-                    ['layers', 'Tier-1 feed access', 'Onboarding with established search feed partners such as '.implode(', ', config('agency.feed_partners')).'.'],
-                    ['eye', 'Traffic quality first', 'We review your sources and setup before launch, so your account starts healthy and stays that way.'],
-                    ['chart', 'Transparent reporting', 'Clear numbers on searches, clicks and revenue across feeds, so you always know where the margin is.'],
-                ] as [$icon, $title, $text])
-                    <div class="glass rounded-2xl p-7" data-reveal style="--reveal-delay: {{ $loop->index * 80 }}ms">
-                        <x-icon :name="$icon" class="size-7 text-ocean-600" />
-                        <h2 class="mt-5 font-display text-xl font-semibold text-ocean-950">{{ $title }}</h2>
-                        <p class="mt-2 leading-relaxed text-slate-600">{{ $text }}</p>
-                    </div>
-                @endforeach
-            </div>
-            <div class="mx-auto mt-8 flex max-w-7xl flex-wrap gap-3 px-4 sm:px-6" data-reveal>
-                <x-button href="{{ route('contact') }}?service=rsoc-adx-monetization" icon="rocket" wire:navigate>Monetize my traffic</x-button>
-                <x-button href="{{ route('services.show', 'rsoc-adx-monetization') }}" variant="ghost" icon="layers" wire:navigate>RSOC & AdX monetization</x-button>
+        <section class="pt-14 pb-4 sm:pt-16">
+            <div class="mx-auto flex max-w-7xl flex-wrap gap-3 px-4 sm:px-6" data-reveal>
+                <a href="{{ route('contact') }}?service=traffic-partnerships" wire:navigate class="btn btn-primary">Become a Feed Partner <x-icon name="arrow" class="size-4" /></a>
+                <x-button href="{{ route('services.show', 'traffic-partnerships') }}" variant="ghost" icon="layers" wire:navigate>Traffic Acquisition & Partnerships</x-button>
             </div>
         </section>
     @endif
