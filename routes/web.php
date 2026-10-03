@@ -116,6 +116,10 @@ Route::middleware(['auth', EnsureAdmin::class])->prefix('admin')->name('admin.')
 
 $sections = array_keys(config('agency.sections'));
 
+// Feed Partners articles that were replaced keep their links working.
+Route::redirect('/traffic-providers/monetize-website-traffic-search-feeds', '/traffic-providers/what-we-look-for-in-a-traffic-partner-and-how-we-evaluate-a-new-feed', 301);
+Route::redirect('/traffic-providers/traffic-quality-search-feeds', '/traffic-providers/why-we-reject-traffic-even-when-the-volume-looks-good', 301);
+
 Route::get('/{section}', function (string $section) {
     abort_unless(Sections::enabled($section), 404);
 

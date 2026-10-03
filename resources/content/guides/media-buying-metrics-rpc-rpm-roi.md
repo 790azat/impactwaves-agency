@@ -66,6 +66,6 @@ The campaign works because each visitor earns $0.126 while costing $0.10. If CPC
 - **Wait for enough data.** Judging an ad after 50 clicks leads to random decisions. Set minimum spend or click thresholds.
 - **Watch for delays.** Feed revenue is often reported with a delay and can be adjusted later. Compare final numbers, not only same-day estimates.
 - **Scale in steps.** Raise budgets gradually and check that CPC and RPV hold.
-- **Track quality.** Sudden jumps in page CTR with falling RPC can signal low-quality traffic. Read more in [traffic quality for search feeds](/traffic-providers/traffic-quality-search-feeds).
+- **Track quality.** Sudden jumps in page CTR with falling RPC can signal low-quality traffic. Read more in [why we reject traffic even when the volume looks good](/traffic-providers/why-we-reject-traffic-even-when-the-volume-looks-good).
 
 Want to see what better conversion is worth to your numbers? Try the [ROI calculator](/#calculator) on our home page, or read the [search arbitrage guide](/guides/what-is-search-arbitrage) for the full model.
