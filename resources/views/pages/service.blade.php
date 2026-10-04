@@ -46,8 +46,7 @@
             <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($service['features'] as $feature)
                     <div class="card-glow glass rounded-2xl p-8" data-reveal style="--reveal-delay: {{ $loop->index * 70 }}ms">
-                        <span class="grid size-10 place-items-center rounded-xl bg-brand text-white"><x-icon name="check" class="size-5" /></span>
-                        <h3 class="mt-6 font-display text-xl font-semibold text-ocean-950">{{ $feature['title'] }}</h3>
+                        <h3 class="font-display text-xl font-semibold text-ocean-950">{{ $feature['title'] }}</h3>
                         <p class="mt-2 leading-relaxed text-slate-600">{{ $feature['text'] }}</p>
                     </div>
                 @endforeach
@@ -81,8 +80,7 @@
             <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 @foreach ($others as $otherSlug => $other)
                     <a href="{{ route('services.show', $otherSlug) }}" wire:navigate class="card-glow group glass rounded-2xl p-6 transition hover:-translate-y-0.5" data-reveal>
-                        <x-icon :name="$other['icon']" class="size-6 text-ocean-600" />
-                        <p class="mt-4 font-semibold text-ocean-950">{{ $other['title'] }}</p>
+                        <p class="font-semibold text-ocean-950">{{ $other['title'] }}</p>
                         <span class="mt-3 inline-flex items-center gap-1 text-sm text-slate-600 group-hover:text-ocean-950">Learn more <x-icon name="arrow" class="size-3.5" /></span>
                     </a>
                 @endforeach

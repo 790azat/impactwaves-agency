@@ -68,8 +68,7 @@
                     ['rocket', 'Growth', 'Results are visible and rewarded. Clear path from junior to team lead.'],
                 ] as [$icon, $title, $text])
                     <div data-reveal style="--reveal-delay: {{ $loop->index * 60 }}ms">
-                        <span class="grid size-12 place-items-center rounded-xl border border-ocean-100 bg-ocean-50"><x-icon :name="$icon" class="size-6 text-ocean-700" /></span>
-                        <h3 class="mt-5 font-display text-xl font-semibold text-ocean-950">{{ $title }}</h3>
+                        <h3 class="font-display text-xl font-semibold text-ocean-950">{{ $title }}</h3>
                         <p class="mt-2 leading-relaxed text-slate-600">{{ $text }}</p>
                     </div>
                 @endforeach

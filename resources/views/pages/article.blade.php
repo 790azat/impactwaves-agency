@@ -51,7 +51,7 @@
                         <li><a href="{{ $sectionUrl }}" wire:navigate class="hover:text-ocean-950">{{ $section['title'] }}</a></li>
                     </ol>
                 </nav>
-                <p class="eyebrow mt-6" data-reveal><x-icon :name="$section['icon']" class="size-4" /> {{ $article['tag'] ?? $section['title'] }}</p>
+                <p class="eyebrow mt-6" data-reveal>{{ $article['tag'] ?? $section['title'] }}</p>
                 <h1 class="mt-6 font-display text-4xl leading-[1.1] font-semibold tracking-tight text-ocean-950 text-balance sm:text-5xl lg:text-6xl" data-reveal style="--reveal-delay:80ms">{{ $article['title'] }}</h1>
                 <p class="mt-6 text-lg leading-relaxed text-slate-600 text-pretty sm:text-xl" data-reveal style="--reveal-delay:140ms">{{ $article['description'] }}</p>
                 <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-500" data-reveal style="--reveal-delay:200ms">
