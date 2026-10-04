@@ -119,7 +119,7 @@
         <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-12">
             <div class="lg:col-span-4" data-reveal>
                 <p class="eyebrow">Media buying guides</p>
-                <h2 class="mt-4 font-display text-3xl font-semibold tracking-tight text-ocean-950 sm:text-4xl lg:text-[1.6rem] xl:text-[2rem]">Practical knowledge<br class="hidden sm:block"> for real media buyers.</h2>
+                <h2 class="mt-4 font-display text-3xl font-semibold tracking-tight text-ocean-950 sm:text-4xl lg:text-[1.6rem] xl:text-[2rem]">Practical knowledge<br class="hidden sm:block"> for media buyers.</h2>
                 <p class="mt-5 leading-relaxed text-slate-600">In-depth guides, strategies and insights from people working with paid traffic every day.</p>
                 <a href="{{ route('section', 'guides') }}" wire:navigate class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-ocean-600 hover:text-ocean-950">Explore guides <x-icon name="arrow" class="size-4" /></a>
             </div>
