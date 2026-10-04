@@ -148,7 +148,7 @@ return [
             'title' => 'Media Buying Guides',
             'audience' => 'For media buyers',
             'icon' => 'book',
-            'headline' => 'Media buying guides for <span class="text-gradient">search arbitrage</span>, TikTok and paid social',
+            'headline' => 'Media buying guides for <span class="text-gradient">search arbitrage</span>',
             'lead' => 'Actionable playbooks built from daily media buying. No generic theory, just field-tested strategies covering search arbitrage, RSOC compliance, TikTok and Meta optimization, traffic quality evaluation and creative automation systems.',
             'meta_title' => 'Media Buying Guides: Search Arbitrage, RSOC and TikTok Ads',
             'meta_description' => 'Field-tested media buying playbooks: search arbitrage and RSOC compliance, TikTok and Meta optimization, traffic quality evaluation and creative automation.',
