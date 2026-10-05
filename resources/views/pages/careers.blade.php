@@ -50,15 +50,6 @@
 
     <section class="py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
-            <x-section-heading eyebrow="Teams" title="Where you could work">
-                Media buyers, creatives, tech and development work as one team on the same campaigns.
-            </x-section-heading>
-            <div class="mt-12">@include('partials.team')</div>
-        </div>
-    </section>
-
-    <section class="py-20">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6">
             <x-section-heading eyebrow="Why Impact Waves" title="What you get with us" />
             <div class="mt-12 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
                 @foreach ([
