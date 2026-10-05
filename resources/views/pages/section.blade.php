@@ -33,6 +33,7 @@
         </section>
     @endif
 
+    @if ($key === 'news')
     <section class="py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
             <div class="flex flex-wrap items-end justify-between gap-4">
@@ -59,6 +60,7 @@
             @endif
         </div>
     </section>
+    @endif
 
     @include('partials.cta')
 </x-layouts.app>
