@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-#[Fillable(['slug', 'title', 'department', 'location', 'employment_type', 'salary', 'summary', 'body', 'published'])]
+#[Fillable(['slug', 'title', 'department', 'location', 'employment_type', 'salary', 'apply_url', 'summary', 'body', 'published'])]
 class Vacancy extends Model
 {
     protected function casts(): array

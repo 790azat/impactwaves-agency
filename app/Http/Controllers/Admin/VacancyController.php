@@ -64,6 +64,7 @@ class VacancyController extends Controller
             'location' => ['nullable', 'string', 'max:120'],
             'employment_type' => ['required', Rule::in(config('agency.employment_types'))],
             'salary' => ['nullable', 'string', 'max:120'],
+            'apply_url' => ['nullable', 'url:https', 'max:300'],
             'summary' => ['nullable', 'string', 'max:500'],
             'body' => ['required', 'string'],
         ], ['slug.unique' => 'A vacancy with this URL already exists.']);

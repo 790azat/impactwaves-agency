@@ -13,6 +13,16 @@
         'lead' => 'We are a performance marketing team of media buyers, designers, tech specialists and developers. If you like clear numbers, fast tests and owning your results, there is a place for you here.',
     ])
 
+    <section class="pt-20" id="team">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6">
+            <x-section-heading eyebrow="Our team" title="A team built around performance">
+                At the core are 15 media buyers, including 5 top performers, backed by dedicated departments that keep every campaign moving.
+            </x-section-heading>
+            <div class="mt-12">@include('partials.team')</div>
+            <p class="mt-6 text-slate-600" data-reveal>We keep processes simple and reward results.</p>
+        </div>
+    </section>
+
     <section class="py-20" id="positions">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
             <x-section-heading eyebrow="Open positions" :title="$vacancies->isEmpty() ? 'No open roles right now' : $vacancies->count().' open '.str('role')->plural($vacancies->count())" />
@@ -41,28 +51,33 @@
             <div class="mt-8 flex flex-col gap-4 rounded-2xl border border-ocean-100 bg-ocean-50 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8" data-reveal>
                 <div>
                     <h3 class="font-display text-xl font-semibold text-ocean-950">{{ $vacancies->isEmpty() ? 'Send us an open application' : 'Did not find your role?' }}</h3>
-                    <p class="mt-1 text-slate-600">Tell us what you do best and attach your CV or portfolio. We read every application.</p>
+                    <p class="mt-1 text-slate-600">Send us your CV on Telegram and tell us what you do best.</p>
                 </div>
-                <a href="mailto:{{ config('agency.careers_email') }}?subject={{ rawurlencode('Open application') }}" class="btn btn-primary shrink-0"><x-icon name="mail" class="size-4" /> {{ config('agency.careers_email') }}</a>
+                <a href="{{ config('agency.careers_telegram') }}" target="_blank" rel="noopener" class="btn btn-primary shrink-0">Talk to HR <x-icon name="arrow-up-right" class="size-4" /></a>
             </div>
         </div>
     </section>
 
-    <section class="py-20">
+    <section class="pb-24" id="hiring">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
-            <x-section-heading eyebrow="Why Impact Waves" title="What you get with us" />
-            <div class="mt-12 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+            <x-section-heading eyebrow="How we hire" title="Hiring process" />
+            <ol class="mt-12 grid gap-px overflow-hidden rounded-2xl border border-ocean-100 bg-ocean-100 sm:grid-cols-2 lg:grid-cols-5">
                 @foreach ([
-                    ['chart', 'Real budgets', 'Work with serious spend on TikTok, Meta, Google and Tier-1 search feeds, not test money.'],
-                    ['bolt', 'Fast decisions', 'Short chain from idea to launch. Tests go live the same day, not after three approvals.'],
-                    ['layers', 'Team behind you', 'Designers, tech and developers in-house: creatives, tracking and landings on request.'],
-                    ['rocket', 'Growth', 'Results are visible and rewarded. Clear path from junior to team lead.'],
-                ] as [$icon, $title, $text])
-                    <div data-reveal style="--reveal-delay: {{ $loop->index * 60 }}ms">
-                        <h3 class="font-display text-xl font-semibold text-ocean-950">{{ $title }}</h3>
-                        <p class="mt-2 leading-relaxed text-slate-600">{{ $text }}</p>
-                    </div>
+                    ['Apply', 'Send us your CV on Telegram.'],
+                    ['HR interview', 'A conversation with HR to understand your goals and experience.'],
+                    ['Experience check', 'We verify your experience, and a recommendation may be requested.'],
+                    ['Team interview', 'Meet the team you will actually be working with.'],
+                    ['Offer', 'A clear decision and a transparent profit-share structure.'],
+                ] as [$step, $text])
+                    <li class="bg-white p-7" data-reveal style="--reveal-delay: {{ $loop->index * 60 }}ms">
+                        <span class="font-display text-sm font-semibold text-ocean-600">{{ sprintf('%02d', $loop->iteration) }}</span>
+                        <h3 class="mt-3 font-display text-lg font-semibold text-ocean-950">{{ $step }}</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-slate-600">{{ $text }}</p>
+                    </li>
                 @endforeach
+            </ol>
+            <div class="mt-8" data-reveal>
+                <a href="{{ config('agency.careers_telegram') }}" target="_blank" rel="noopener" class="btn btn-primary">Talk to HR <x-icon name="arrow-up-right" class="size-4" /></a>
             </div>
         </div>
     </section>

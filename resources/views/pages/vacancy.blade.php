@@ -1,7 +1,6 @@
 @php
     $place = \App\Support\Company::place();
     $remote = $vacancy->location && str_contains(strtolower($vacancy->location), 'remote');
-    $apply = 'mailto:'.config('agency.careers_email').'?subject='.rawurlencode('Application: '.$vacancy->title);
     $types = ['Full-time' => 'FULL_TIME', 'Part-time' => 'PART_TIME', 'Contract' => 'CONTRACTOR', 'Internship' => 'INTERN'];
 @endphp
 <x-layouts.app :title="$vacancy->title.' · Careers'" :description="$vacancy->summary ?: $vacancy->title.' at '.config('agency.legal_name').'.'">
@@ -42,9 +41,9 @@
                     <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 text-pretty sm:text-xl" data-reveal style="--reveal-delay:140ms">{{ $vacancy->summary }}</p>
                 @endif
                 <div class="mt-8 flex flex-wrap items-center gap-2 text-sm text-slate-600" data-reveal style="--reveal-delay:200ms">
-                    @if ($vacancy->location)<span class="inline-flex items-center gap-1.5 rounded-md border border-ocean-100 bg-white px-2.5 py-1"><x-icon name="map-pin" class="size-4 text-ocean-500" /> {{ $vacancy->location }}</span>@endif
-                    <span class="inline-flex items-center gap-1.5 rounded-md border border-ocean-100 bg-white px-2.5 py-1"><x-icon name="clock" class="size-4 text-ocean-500" /> {{ $vacancy->employment_type }}</span>
-                    @if ($vacancy->salary)<span class="inline-flex items-center gap-1.5 rounded-md border border-ocean-100 bg-white px-2.5 py-1"><x-icon name="chart" class="size-4 text-ocean-500" /> {{ $vacancy->salary }}</span>@endif
+                    @if ($vacancy->location)<span class="inline-flex items-center gap-1.5 rounded-md border border-white/15 bg-white/5 px-2.5 py-1 text-white/85"><x-icon name="map-pin" class="size-4 text-ocean-300" /> {{ $vacancy->location }}</span>@endif
+                    <span class="inline-flex items-center gap-1.5 rounded-md border border-white/15 bg-white/5 px-2.5 py-1 text-white/85"><x-icon name="clock" class="size-4 text-ocean-300" /> {{ $vacancy->employment_type }}</span>
+                    @if ($vacancy->salary)<span class="inline-flex items-center gap-1.5 rounded-md border border-white/15 bg-white/5 px-2.5 py-1 text-white/85"><x-icon name="chart" class="size-4 text-ocean-300" /> {{ $vacancy->salary }}</span>@endif
                 </div>
             </div>
         </header>
@@ -54,9 +53,11 @@
             <aside>
                 <div class="sticky top-28 rounded-2xl border border-ocean-100 bg-ocean-50 p-6">
                     <h2 class="font-display text-lg font-semibold text-ocean-950">Interested?</h2>
-                    <p class="mt-2 text-sm leading-relaxed text-slate-600">Send your CV or portfolio and a few lines about your experience.</p>
-                    <a href="{{ $apply }}" class="btn btn-primary mt-5 w-full"><x-icon name="send" class="size-4" /> Apply</a>
-                    <p class="mt-3 text-center text-xs text-slate-500">{{ config('agency.careers_email') }}</p>
+                    <p class="mt-2 text-sm leading-relaxed text-slate-600">Send us your CV on Telegram and our HR team will get back to you.</p>
+                    <a href="{{ config('agency.careers_telegram') }}" target="_blank" rel="noopener" class="btn btn-primary mt-5 w-full">Talk to HR <x-icon name="arrow-up-right" class="size-4" /></a>
+                    @if ($vacancy->apply_url)
+                        <a href="{{ $vacancy->apply_url }}" target="_blank" rel="noopener" class="btn btn-ghost mt-3 w-full">{{ str_contains($vacancy->apply_url, 'linkedin.') ? 'View on LinkedIn' : 'View the posting' }} <x-icon name="arrow-up-right" class="size-4" /></a>
+                    @endif
                 </div>
             </aside>
         </div>

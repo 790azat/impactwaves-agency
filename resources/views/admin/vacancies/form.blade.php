@@ -49,6 +49,7 @@
                 </label>
                 <x-auth.input name="location" label="Location" :value="$vacancy->location" placeholder="Remote, or a city" />
                 <x-auth.input name="salary" label="Salary" :value="$vacancy->salary" placeholder="Optional, e.g. $2,000–3,500 + bonus" />
+                <x-auth.input name="apply_url" type="url" label="External posting" :value="$vacancy->apply_url" placeholder="https://www.linkedin.com/jobs/view/…" hint="Optional. Shown as a second button next to Talk to HR." />
                 <x-auth.input name="slug" label="URL slug" :value="$vacancy->slug" placeholder="Generated from the title" :hint="'Shown as /careers/'.($vacancy->slug ?: 'your-slug')" />
                 <label class="flex items-center gap-2.5 text-sm font-medium text-slate-700">
                     <input type="hidden" name="published" value="0">

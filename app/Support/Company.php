@@ -35,7 +35,8 @@ class Company
         $departments = [];
         foreach (config('agency.departments') as $key => $department) {
             $departments[$key] = $department + [
-                'size' => $team[$key]['size'] ?? null,
+                'size' => $team[$key]['size'] ?? $department['size'] ?? null,
+                'note' => $department['note'] ?? null,
                 'visible' => $team[$key]['visible'] ?? true,
             ];
         }

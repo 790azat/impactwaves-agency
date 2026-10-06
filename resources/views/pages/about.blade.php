@@ -27,8 +27,8 @@
     <section class="py-24" id="team">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
             <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-                <x-section-heading eyebrow="Our team" title="Specialists for every part of the funnel">
-                    Every campaign is run by an in-house team: media buyers work side by side with designers, tech specialists and developers, so creatives, tracking and landing pages never wait on an outside contractor.
+                <x-section-heading eyebrow="Our team" title="A team built around performance">
+                    At the core are 15 media buyers, including 5 top performers, backed by dedicated departments that keep every campaign moving.
                 </x-section-heading>
                 @if ($place = \App\Support\Company::place())
                     @php $location = \App\Support\Company::location(); @endphp
@@ -41,10 +41,11 @@
                 @endif
             </div>
             <div class="mt-14">@include('partials.team')</div>
+            <p class="mt-6 text-slate-600" data-reveal>We keep processes simple and reward results.</p>
             <div class="mt-10 flex flex-col gap-4 rounded-2xl border border-ocean-100 bg-ocean-50 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8" data-reveal>
                 <div>
                     <h3 class="font-display text-xl font-semibold text-ocean-950">Want to join us?</h3>
-                    <p class="mt-1 text-slate-600">We are growing and looking for media buyers, designers and engineers.</p>
+                    <p class="mt-1 text-slate-600">We are hiring media buyers. See the open roles and how hiring works.</p>
                 </div>
                 <a href="{{ route('careers') }}" wire:navigate class="btn btn-primary shrink-0"><x-icon name="briefcase" class="size-4" /> Open positions</a>
             </div>

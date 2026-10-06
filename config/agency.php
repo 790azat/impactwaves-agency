@@ -16,17 +16,20 @@ return [
     'linkedin' => 'https://www.linkedin.com/company/impact-waves-agency/',
 
     // Where job applications go. Override with CAREERS_EMAIL on Vercel.
+    // "Talk to HR" button on Careers and vacancy pages.
+    'careers_telegram' => 'https://t.me/HRD_ImpactWaves',
+
     'careers_email' => env('CAREERS_EMAIL', env('AGENCY_EMAIL', 'hello@impactwaves.agency')),
 
     // Teams shown on About and Careers. Head counts and the company location
     // are edited in Admin → Company (App\Support\Company).
     'departments' => [
-        'media-buying' => ['title' => 'Media Buying', 'icon' => 'megaphone', 'text' => 'Launches, tests and scales campaigns on TikTok, Meta, Google and native every day.'],
-        'design' => ['title' => 'Design & Creative', 'icon' => 'sparkles', 'text' => 'Ad creatives, video, landing pages and the visual side of every test.'],
-        'tech' => ['title' => 'Tech & Tracking', 'icon' => 'cursor', 'text' => 'Tracking, pixels and CAPI, ad account infrastructure, domains and integrations with feed partners.'],
-        'development' => ['title' => 'Development', 'icon' => 'code', 'text' => 'In-house engineers building landing pages, internal tools, automation and reporting.'],
-        'partnerships' => ['title' => 'Partnerships & Support', 'icon' => 'lifebuoy', 'text' => 'Account managers who onboard clients and traffic providers and stay their single point of contact.'],
-        'recruiting' => ['title' => 'Recruiting & HR', 'icon' => 'users', 'text' => 'Finds and onboards media buyers, designers and engineers as the team grows.'],
+        'media-buying' => ['title' => 'Media Buyers', 'icon' => 'megaphone', 'size' => 15, 'note' => 'including 5 top performers', 'text' => 'The core of the team: campaigns launched, tested and scaled every day.'],
+        'assistants' => ['title' => 'Media Buyer Assistants', 'icon' => 'users', 'text' => 'A separate team supporting buyers day to day.'],
+        'design' => ['title' => 'Design', 'icon' => 'sparkles', 'text' => 'Creatives built to convert.'],
+        'development' => ['title' => 'Development', 'icon' => 'code', 'text' => 'In-house engineers building our tools.'],
+        'tech' => ['title' => 'Tech Administration', 'icon' => 'cursor', 'text' => 'Tracking, accounts and infrastructure.'],
+        'recruiting' => ['title' => 'Recruiting & HR', 'icon' => 'users', 'text' => 'People and processes that help the team grow.'],
     ],
 
     'employment_types' => ['Full-time', 'Part-time', 'Contract', 'Internship'],

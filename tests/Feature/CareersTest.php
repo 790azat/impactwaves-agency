@@ -16,9 +16,13 @@ class CareersTest extends TestCase
         return tap(User::factory()->create(), fn ($u) => $u->forceFill(['is_admin' => true])->save());
     }
 
-    public function test_careers_page_shows_open_application_when_empty(): void
+    public function test_careers_page_shows_team_first_role_and_hiring_process(): void
     {
-        $this->get('/careers')->assertOk()->assertSee('No open roles right now')->assertSee('Media Buying');
+        $this->get('/careers')->assertOk()
+            ->assertSee('A team built around performance')->assertSee('including 5 top performers')
+            ->assertSee('Senior Media Buyer')->assertSee('Hiring process')->assertSee('https://t.me/HRD_ImpactWaves');
+
+        $this->get('/careers/senior-media-buyer')->assertOk()->assertSee('Talk to HR')->assertSee('View on LinkedIn');
     }
 
     public function test_admin_creates_vacancy_and_it_appears_on_the_site(): void
@@ -33,7 +37,7 @@ class CareersTest extends TestCase
             'published' => '1',
         ])->assertRedirect('/admin/vacancies/senior-media-buyer-tiktok/edit');
 
-        $this->get('/careers')->assertSee('Senior Media Buyer (TikTok)')->assertSee('1 open role');
+        $this->get('/careers')->assertSee('Senior Media Buyer (TikTok)')->assertSee('2 open roles');
         $this->get('/careers/senior-media-buyer-tiktok')->assertOk()->assertSee('Launch campaigns', false)->assertSee('JobPosting');
         $this->get('/sitemap.xml')->assertSee('/careers/senior-media-buyer-tiktok');
     }
