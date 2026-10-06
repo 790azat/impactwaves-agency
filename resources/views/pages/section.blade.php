@@ -28,6 +28,7 @@
         <section class="pt-14 pb-4 sm:pt-16">
             <div class="mx-auto flex max-w-7xl flex-wrap gap-3 px-4 sm:px-6" data-reveal>
                 <a href="{{ route('contact') }}?service=traffic-partnerships" wire:navigate class="btn btn-primary">Become a Feed Partner <x-icon name="arrow" class="size-4" /></a>
+                <a href="{{ config('agency.partners_telegram') }}" target="_blank" rel="noopener" class="btn btn-ghost"><x-icon name="send" class="size-4" /> Message us on Telegram</a>
                 <x-button href="{{ route('services.show', 'traffic-partnerships') }}" variant="ghost" icon="layers" wire:navigate>Traffic Acquisition & Partnerships</x-button>
             </div>
         </section>

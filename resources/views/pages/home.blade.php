@@ -160,7 +160,10 @@
                 <p class="mt-3 max-w-2xl text-lg leading-relaxed text-slate-600">If you have a high-quality search, content, or other monetizable feed, we’d love to explore how we can work together, scale traffic, and maximize revenue.</p>
                 <p class="mt-5 max-w-2xl text-lg font-semibold text-ocean-950">Let’s build a partnership that works for both sides.</p>
             </div>
-            <a href="{{ route('contact') }}?service=traffic-partnerships" wire:navigate class="btn btn-primary shrink-0" data-reveal>Become a Feed Partner <x-icon name="arrow" class="size-4" /></a>
+            <div class="flex shrink-0 flex-wrap gap-3" data-reveal>
+                <a href="{{ route('contact') }}?service=traffic-partnerships" wire:navigate class="btn btn-primary">Become a Feed Partner <x-icon name="arrow" class="size-4" /></a>
+                <a href="{{ config('agency.partners_telegram') }}" target="_blank" rel="noopener" class="btn btn-ghost"><x-icon name="send" class="size-4" /> Telegram</a>
+            </div>
         </div>
     </section>
 

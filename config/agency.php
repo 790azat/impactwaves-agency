@@ -16,6 +16,9 @@ return [
     'linkedin' => 'https://www.linkedin.com/company/impact-waves-agency/',
 
     // Where job applications go. Override with CAREERS_EMAIL on Vercel.
+    // Telegram for partners (partnership CTAs, Contact, footer).
+    'partners_telegram' => 'https://t.me/partners_ImpactWaves',
+
     // "Talk to HR" button on Careers and vacancy pages.
     'careers_telegram' => 'https://t.me/HRD_ImpactWaves',
 

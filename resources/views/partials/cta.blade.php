@@ -8,6 +8,7 @@
         </div>
         <div class="flex flex-wrap gap-4">
             <a href="{{ route('contact') }}" wire:navigate class="btn btn-primary">Start a Partnership <x-icon name="arrow" class="size-4" /></a>
+            <a href="{{ config('agency.partners_telegram') }}" target="_blank" rel="noopener" class="btn btn-outline-light"><x-icon name="send" class="size-4" /> Telegram</a>
             <a href="mailto:{{ config('agency.email') }}" class="btn btn-outline-light"><x-icon name="mail" class="size-4" /> Contact us</a>
         </div>
     </div>
