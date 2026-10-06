@@ -69,6 +69,19 @@ $defaults = [
     'MAIL_MAILER' => 'log',
 ];
 
+// Mail: a mailbox login and password are enough (Gmail app password by default).
+$mailUser = trim((string) getenv('MAIL_USERNAME'));
+if ($mailUser !== '' && trim((string) getenv('MAIL_PASSWORD')) !== '') {
+    $defaults = [
+        'MAIL_MAILER' => 'smtp',
+        'MAIL_HOST' => 'smtp.gmail.com',
+        'MAIL_PORT' => '587',
+        'MAIL_FROM_ADDRESS' => str_contains($mailUser, '@') ? $mailUser : '',
+        'MAIL_FROM_NAME' => 'Impact Waves Agency',
+    ] + $defaults;
+    $defaults = array_filter($defaults, fn ($value) => $value !== '');
+}
+
 $set = function (string $key, string $value): void {
     putenv("$key=$value");
     $_ENV[$key] = $_SERVER[$key] = $value;

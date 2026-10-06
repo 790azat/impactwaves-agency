@@ -40,10 +40,6 @@
                        title="{{ auth()->user()->is_admin ? 'Admin panel' : 'My account' }}">
                         <x-icon :name="auth()->user()->is_admin ? 'shield' : 'user'" class="size-4 text-ocean-400" /><span class="hidden xl:inline">{{ auth()->user()->is_admin ? 'Admin' : 'Account' }}</span>
                     </a>
-                @else
-                    <a href="{{ route('login') }}" class="hidden items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-white/5 hover:text-white sm:inline-flex">
-                        <x-icon name="user" class="size-4 text-ocean-400" /><span class="hidden xl:inline">Sign in</span>
-                    </a>
                 @endauth
                 <a href="{{ route('contact') }}" wire:navigate class="btn btn-primary hidden !py-2.5 whitespace-nowrap sm:inline-flex lg:!px-4 xl:!px-5">
                     Start a Partnership <x-icon name="arrow" class="size-4" />
@@ -64,13 +60,11 @@
                 @foreach ($nav as $item)
                     <li><a href="{{ $item['href'] }}" wire:navigate @click="open = false" class="flex items-center gap-3 rounded-md px-4 py-3 text-base font-medium text-white hover:bg-white/5"><x-icon :name="$item['icon']" class="size-5 text-ocean-400" />{{ $item['label'] }}</a></li>
                 @endforeach
-                <li>
-                    @auth
+                @auth
+                    <li>
                         <a href="{{ auth()->user()->is_admin ? route('admin.dashboard') : route('account') }}" class="flex items-center gap-3 rounded-md px-4 py-3 text-base font-medium text-white hover:bg-white/5"><x-icon :name="auth()->user()->is_admin ? 'shield' : 'user'" class="size-5 text-ocean-400" />{{ auth()->user()->is_admin ? 'Admin panel' : 'My account' }}</a>
-                    @else
-                        <a href="{{ route('login') }}" class="flex items-center gap-3 rounded-md px-4 py-3 text-base font-medium text-white hover:bg-white/5"><x-icon name="user" class="size-5 text-ocean-400" />Sign in</a>
-                    @endauth
-                </li>
+                    </li>
+                @endauth
                 <li class="pt-2"><a href="{{ route('contact') }}" wire:navigate class="btn btn-primary w-full">Start a Partnership <x-icon name="arrow" class="size-4" /></a></li>
             </ul>
         </div>

@@ -10,5 +10,4 @@
         </label>
         <button type="submit" class="btn btn-primary w-full"><x-icon name="lock" class="size-4" /> Sign in</button>
     </form>
-    <x-slot:footer>New here? <a href="{{ route('register') }}" class="font-semibold text-ocean-600 hover:text-ocean-800">Create an account</a></x-slot:footer>
 </x-auth.card>

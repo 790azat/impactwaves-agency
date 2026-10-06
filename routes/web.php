@@ -4,7 +4,6 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordResetController;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\TelegramWebhookController;
 use App\Http\Middleware\EnsureAdmin;
 use App\Models\Vacancy;
@@ -54,8 +53,6 @@ Route::get('/careers/{slug}', function (string $slug) {
 Route::post('/telegram/webhook', TelegramWebhookController::class)->name('telegram.webhook');
 
 Route::middleware('guest')->group(function () {
-    Route::get('/register', [RegisterController::class, 'create'])->name('register');
-    Route::post('/register', [RegisterController::class, 'store'])->middleware('throttle:10,10');
     Route::get('/login', [LoginController::class, 'create'])->name('login');
     Route::post('/login', [LoginController::class, 'store']);
     Route::get('/forgot-password', [PasswordResetController::class, 'request'])->name('password.request');
@@ -184,7 +181,7 @@ Route::get('/feed.xml', function () {
 // Only the public domain is crawlable; vercel.app and preview hosts are not.
 Route::get('/robots.txt', function () {
     $body = Seo::onPublicHost()
-        ? "User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /account\nDisallow: /login\nDisallow: /register\nDisallow: /forgot-password\nDisallow: /reset-password\nDisallow: /livewire\n\nSitemap: ".config('agency.site_url')."/sitemap.xml\n"
+        ? "User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /account\nDisallow: /livewire\n\nSitemap: ".config('agency.site_url')."/sitemap.xml\n"
         : "User-agent: *\nDisallow: /\n";
 
     return response($body, 200, ['Content-Type' => 'text/plain']);

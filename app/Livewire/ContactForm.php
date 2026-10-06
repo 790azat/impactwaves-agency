@@ -100,7 +100,6 @@ class ContactForm extends Component
                     ->replyTo($data['email'], $data['name'])
                     ->subject('New lead: '.$data['name'].($data['company'] ? ' ('.$data['company'].')' : ''));
             });
-            $this->notifyTelegram($body);
         } catch (\Throwable $e) {
             Log::error('Contact form delivery failed', ['error' => $e->getMessage()]);
 
@@ -110,6 +109,12 @@ class ContactForm extends Component
 
                 return;
             }
+        }
+
+        try {
+            $this->notifyTelegram($body);
+        } catch (\Throwable $e) {
+            Log::error('Contact form Telegram notification failed', ['error' => $e->getMessage()]);
         }
 
         Log::info('New contact lead', ['email' => $data['email'], 'services' => $data['services']]);
